@@ -1,0 +1,36 @@
+[
+    {
+      "id":1,
+      "productName":"Men Timberland",
+      "productPrice":25000,
+      "inStock":105,
+      "Date":"23/10/2018"
+    },
+  
+    {
+      "id":2,
+      "productName":"women bridals",
+      "priceEach":5000,
+      "inStock":105,
+      "Date":"29/10/2018"
+    },
+  
+   {
+      "id":3,
+      "productName":"vans pro skate",
+      "priceEach":4500,
+      "inStock":100,
+      "Date":"27/10/2018"
+    },
+
+    {
+        "id":4,
+        "productName":"cycling shoes",
+        "priceEach":6000,
+        "inStock":20,
+        "Date":"25/10/2018"
+      }
+    
+  
+  ]
+  
