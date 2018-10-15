@@ -1,3 +1,6 @@
+import controller from '../controllers/index';
+
+const {products } = controller
 
 
  module.exports = (app) => {
@@ -6,7 +9,7 @@
      message: 'Welcome to the Store Manager API!',
    }));
 
-       
+   app.get('/api/v1/products',products.getproducts)  
 
    app.all('/sales/:salesId/', (req, res) =>
      res.status(405).send({
