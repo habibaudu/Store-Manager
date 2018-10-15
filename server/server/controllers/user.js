@@ -11,7 +11,7 @@ export default {
         let token;
         let message;
     for(let user of users){
-      if(user.name!=req.body.name){
+      if(user.username!=req.body.username){
           message="Wrong Name";
       }else{
           if(user.password!=req.body.password){
