@@ -4,6 +4,7 @@
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory records",
   "main": "app.js",
   "scripts": {
+    "start": "nodemon --watch server --exec babel-node  -- server/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
