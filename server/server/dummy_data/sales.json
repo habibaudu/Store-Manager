@@ -1,0 +1,53 @@
+[
+    {
+      "id":1,
+      "username":"lucasdaniel",
+      "customerName":"moses",
+      "Date":"23/10/2018",
+      "Price":25000,
+      "product":"Men Timberland",
+      "quantity":1
+     
+      
+    },
+  
+    {
+        "id":2,
+        "username":"gomezsmart",
+        "customerName":"Felix",
+        "Date":"2/10/2019",
+        "Price":9000,
+        "product":"vans pro skate",
+        "quantity":2
+    },
+  
+   {
+    "id":3,
+    "username":"lucasdaniel",
+    "customerName":"Ade",
+    "Date":"2/10/2019",
+    "Price":6000,
+    "product":"cycling shoes",
+    "quantity":1
+    },
+
+    {
+        "id":4,
+        "username":"gomezsmart",
+        "customerName":"sara",
+        "Date":"2/10/2019",
+        "Price":5000,
+        "product":"men loafers",
+        "quantity":1
+      },
+      {
+        "id":5,
+        "username":"vandaik",
+        "customerName":"john",
+        "Date":"28/11/2019",
+        "Price":10000,
+        "product":"men loafers",
+        "quantity":2
+      }
+      
+]

@@ -1,6 +1,6 @@
 import express from "express";
 import jwt from 'jsonwebtoken';
-import users from '../dummy_data/users.json';
+import users from '../dummy_data/user.json';
 import config from '../configkey/key.js';
 
 const app = express();
@@ -11,10 +11,10 @@ export default {
         let token;
         let message;
     for(let user of users){
-      if(user.username!=req.body.username){
+      if(user.username!==req.body.username){
           message="Wrong Name";
       }else{
-          if(user.password!=req.body.password){
+          if(user.password!==req.body.password){
               message="Wrong Password";
               break;
           }

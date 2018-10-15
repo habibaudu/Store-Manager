@@ -2,20 +2,20 @@
     { 
       "userid":1,
       "username":"habibaudu",
-      "password":"hba123456",
+      "password":"hba",
       "role":"Admin"
     },
     {
       "userid":2,  
       "username":"lucasdaniel",
-      "password":"raven123456",
+      "password":"raven",
       "role":"user"
     },
 
     {
         "userid":3,  
-        "username":"gomez99",
-        "password":"gomez123",
+        "username":"gomezsmart",
+        "password":"gomez",
         "role":"user"
       },
       {

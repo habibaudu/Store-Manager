@@ -1,6 +1,7 @@
 import controller from '../controllers/index';
-
-const {products } = controller
+import auth from '../auth/authroutes.js';
+import Check from './validation';
+const {products ,users, sales } = controller
 
 
  module.exports = (app) => {
@@ -10,7 +11,9 @@ const {products } = controller
    }));
 
    app.get('/api/v1/products',products.getproducts);
-   app.get('/api/v1/products/:productId',products.getAproduct);  
+   app.get('/api/v1/products/:productId',products.getAproduct);
+   app.post('/api/v1/login',Check.login,users.login);
+   app.get('/api/v1/sales',auth,sales.allSales);  
 
    app.all('/sales/:salesId/', (req, res) =>
      res.status(405).send({
