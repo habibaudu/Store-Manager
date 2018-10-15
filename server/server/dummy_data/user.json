@@ -1,0 +1,27 @@
+[
+    { 
+      "userid":1,
+      "username":"habibaudu",
+      "password":"hba123456",
+      "role":"Admin"
+    },
+    {
+      "userid":2,  
+      "username":"lucasdaniel",
+      "password":"raven123456",
+      "role":"user"
+    },
+
+    {
+        "userid":3,  
+        "username":"gomez99",
+        "password":"gomez123",
+        "role":"user"
+      },
+      {
+        "userid":4,  
+        "username":"vandaik",
+        "password":"vansmart",
+        "role":"user"
+      }
+    ]
