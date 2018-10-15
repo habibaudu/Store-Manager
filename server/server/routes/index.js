@@ -9,7 +9,8 @@ const {products } = controller
      message: 'Welcome to the Store Manager API!',
    }));
 
-   app.get('/api/v1/products',products.getproducts)  
+   app.get('/api/v1/products',products.getproducts);
+   app.get('/api/v1/products/:productId',products.getAproduct);  
 
    app.all('/sales/:salesId/', (req, res) =>
      res.status(405).send({
