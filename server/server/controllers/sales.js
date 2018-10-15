@@ -17,6 +17,53 @@ allSales(req,res) {
    
 }
 
+},
+
+getAsalesRecord(req,res) {
+    for (let i = 0; i < sales.length; i++) {
+      if (sales[i].id === parseInt(req.params.saleId, 10)) {
+           
+       let id=sales[i].id;
+       let username=sales[i].username;
+       let  customerName=sales[i].customerName; 
+       let date=sales[i].Date;
+       let price = sales[i].price;
+       let  product= sales[i].product;
+       let  quantity =sales[i].quantity;
+  
+  let aSale=[
+  {
+   id,
+   username,
+   customerName,
+   date,
+   price,
+   product,
+   quantity
+   }
+    ]
+          if(req.decoded.role === "Admin" || req.decoded.username ===username){
+                return res.status(200).json({
+                aSale,
+                error:false
+                });
+     
+      }else{
+        return res.status(401).json({
+            message:'Only the Admin or the creator of the sales record can access',
+            error:true
+            });
+    }
+    }
 }
+    return res.status(404).json({
+      message: 'Sale record not found',
+      error: true
+    });
+  
+  
+  
+}
+
 
 };
