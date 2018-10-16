@@ -2,7 +2,6 @@ import products from '../dummy_data/products.json';
 
 export default {
 getproducts(req,res) {
-  // console.log(req.decoded.role);
        if(products){
        return res.status(200).json({
          products,
