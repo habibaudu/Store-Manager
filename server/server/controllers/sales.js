@@ -61,9 +61,42 @@ getAsalesRecord(req,res) {
       error: true
     });
   
-  
-  
-}
+},
+
+createSalesOrder(req,res) {
+ 
+  if(req.decoded.role == "user"){
+  if (!req.body.product || !req.body.price || !req.body.quantity || !req.body.username || !req.body.Date || !req.body.customerName || !req.body.id) {
+      return res.json({
+        message: 'NO product created',
+        error: true
+      });
+    }
+    let Date2=req.body.Date;
+    Date2 = Date2.match(/^(\d{1,2})(\/)(\d{1,2})(\/)(\d{4})$/)||[Date2];
+    if(Date2.length > 1){
+
+    sales.push(req.body);
+
+    return res.json({
+      message: 'sales Created successfully',
+      error: false
+    });
+    }else{
+      return res.json({
+      message: 'wrong Date format, enter in 12/08/2020',
+      error:true
+    });
+    }
+    }else{
+       return res.json({
+        message: 'Only a store attendant  can create a sales record',
+        error:true
+      });
+    }
+
+  }
+
 
 
 };

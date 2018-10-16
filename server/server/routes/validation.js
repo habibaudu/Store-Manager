@@ -36,6 +36,26 @@ class Check {
     next();
   }
 
+
+  static salesRecord(req, res, next) {
+    req.checkBody('product', 'product Name cannot be null').notEmpty();
+    
+    req.checkBody('price', 'price cannot be null').notEmpty();
+    req.checkBody('price', 'price Must be a number').isInt();
+    req.checkBody('quantity', 'quantity cannot be null').notEmpty();
+    
+    req.checkBody('Date', 'Date cannot be null').notEmpty();
+    req.checkBody('customerName', 'customerName cannot be null').notEmpty();
+   
+
+    const errormsg = req.validationErrors();
+    if (errormsg) {
+      res.status(400).send({ message: 'create product error', errormsg });
+      return;
+    }
+    next();
+  }
+
 }
 
 

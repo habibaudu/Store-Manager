@@ -15,7 +15,8 @@ const {products ,users, sales } = controller
    app.post('/api/v1/login',Check.login,users.login);
    app.get('/api/v1/sales',auth,sales.allSales);
    app.get('/api/v1/sales/:saleId',auth,sales.getAsalesRecord); 
-   app.post('/api/v1/products',auth,Check.createproduct,products.createProduct); 
+   app.post('/api/v1/products',auth,Check.createproduct,products.createProduct);
+   app.post('/api/v1/sales',auth,Check.salesRecord,sales.createSalesOrder); 
 
    app.all('/sales/salesId/', (req, res) =>
      res.status(405).send({
