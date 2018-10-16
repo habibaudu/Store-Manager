@@ -17,6 +17,25 @@ class Check {
     next();
   }
 
+  static createproduct(req, res, next) {
+    req.checkBody('productName', 'product Name cannot be null').notEmpty();
+    // req.checkBody('productName', 'productName Must be a String').isAlpha();
+    req.checkBody('priceEach', 'priceEach cannot be null').notEmpty();
+    req.checkBody('priceEach', 'priceEach Must be a number').isInt();
+    req.checkBody('mininumAllowedinStock', 'mininumAllowedinStock cannot be null').notEmpty();
+    // req.checkBody('mininumAllowedinStock', 'mininumAllowedinStock Must be a number').isInt();
+    req.checkBody('Date', 'Date cannot be null').notEmpty();
+    req.checkBody('inStock', 'inStock cannot be null').notEmpty();
+    // req.checkBody('inStock', 'inStock Must be a number').isInt();
+
+    const errormsg = req.validationErrors();
+    if (errormsg) {
+      res.status(400).send({ message: 'create product error', errormsg });
+      return;
+    }
+    next();
+  }
+
 }
 
 
