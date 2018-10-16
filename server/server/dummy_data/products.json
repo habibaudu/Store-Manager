@@ -2,7 +2,7 @@
     {
       "id":1,
       "productName":"Men Timberland",
-      "productPrice":25000,
+      "priceEach":25000,
       "inStock":15,
       "mininumAllowedinStock":10,
       "Date":"23/10/2018"

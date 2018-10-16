@@ -70,7 +70,7 @@ createProduct(req,res) {
     Date2 = Date2.match(/^(\d{1,2})(\/)(\d{1,2})(\/)(\d{4})$/)||[Date2];
     if(Date2.length > 1){
     products.push(req.body);
-    return res.json({
+    return res.status(201).json({
       message: 'products Created successfully',
       error: false
     });
