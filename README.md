@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=master)](https://travis-ci.org/habibaudu/Store-Manager)
+[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=develop)](https://travis-ci.org/habibaudu/Store-Manager)
 
 
 
