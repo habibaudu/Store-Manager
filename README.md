@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=develop)](https://travis-ci.org/habibaudu/Store-Manager)
 
-[![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=master)](https://coveralls.io/github/habibaudu/Store-Manager?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=chore_coverage)](https://coveralls.io/github/habibaudu/Store-Manager?branch=chore_coverage)
 
 
 
