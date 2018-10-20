@@ -2,8 +2,15 @@
  * @class Check
  */
 
-class Check {
+/**
+   * @param {object} req 
+   * @param {object} res 
+   * @param {object} next 
+   * @returns {object} users array
+   */
 
+class Check {
+  
   static login(req, res, next) {
     req.checkBody('password', 'password cannot be null').notEmpty();
     req.checkBody('username', ' username Must be a String').isAlpha();

@@ -10,11 +10,11 @@ import expressValidator from 'express-validator';
 
 const app = express();
 
- /**
+/**
   * express validator to validate user input
   */
 
-  app.use(expressValidator());
+app.use(expressValidator());
 
 /**
  * log request to the console
@@ -50,10 +50,6 @@ server.listen(port, () => {
 
 require('./server/routes')(app);
 
-app.get('*', (req, res) => res.status(200).send({ message: 'Welcome To Store Manager Api',
-})
-
-);
+app.get('*', (req, res) => res.status(200).send({ message: 'Welcome To Store Manager Api' }));
 
 export default app;
-
