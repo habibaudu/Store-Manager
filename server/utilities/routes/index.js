@@ -1,10 +1,8 @@
 import controller from '../controllers/index';
-import auth from '../auth/authroutes';
-
-import Check from './validation';
+import auth from '../middleware/authroutes';
+import Check from '../middleware/validation';
 
 const { products, users, sales } = controller;
-
 
 module.exports = (app) => {
   app.get('/api', (req, res) => res.status(200).send({
