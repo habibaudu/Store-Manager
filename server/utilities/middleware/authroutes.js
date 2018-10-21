@@ -1,16 +1,14 @@
-import express from 'express';
 import jwt from 'jsonwebtoken';
-import config from '../configkey/key';
+import dotenv from 'dotenv';
 
-const app = express();
-app.set('superSecret', config.secret);
+dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env' });
+
+
 export default (req, res, next) => {
 // check header or url parameters or post parameters for token
   const token = req.body.token || req.query.token || req.headers['x-access-token'];
   if (token) {
-  //Decode the token
-
-    jwt.verify(token, app.get('superSecret'), (err, decoded) => {
+    jwt.verify(token, process.env.SECRET, (err, decoded) => {
       if (err) {
         res.status(403).json({
           message: 'Wrong Token'
