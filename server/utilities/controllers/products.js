@@ -16,12 +16,7 @@ export default {
   getAproduct(req, res) {
     for (let i = 0; i < products.length; i++) {
       if (products[i].id === parseInt(req.params.productId, 10)) {
-        const { id } = products[i];
-        const { productName } = products[i];
-        const { priceEach } = products[i];
-        const { inStock } = products[i];
-        const { mininumAllowedinStock } = products[i];
-        const { date } = products[i];
+        const { id, productName, priceEach, inStock, mininumAllowedinStock, date } = products[i];
         const aProduct = [
           {
             id,
