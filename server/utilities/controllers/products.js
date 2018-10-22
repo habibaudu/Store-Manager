@@ -14,9 +14,9 @@ export default {
     });
   },
   getAproduct(req, res) {
-    for (let i = 0; i < products.length; i++) {
-      if (products[i].id === parseInt(req.params.productId, 10)) {
-        const { id, productName, priceEach, inStock, mininumAllowedinStock, date } = products[i];
+    products.forEach((product) => {
+      if (product.id === parseInt(req.params.productId, 10)) {
+        const { id, productName, priceEach, inStock, mininumAllowedinStock, date } = product;
         const aProduct = [
           {
             id,
@@ -32,7 +32,8 @@ export default {
           error: false
         });
       }
-    }
+    });
+
     return res.status(404).json({
       message: 'Product not found',
       error: true
