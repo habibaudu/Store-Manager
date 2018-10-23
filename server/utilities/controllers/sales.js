@@ -16,8 +16,7 @@ export default {
   },
 
   getAsalesRecord(req, res) {
-
-    sales.forEach((sale) => {
+    for(let sale of sales) {
       if (sale.id === parseInt(req.params.saleId, 10)) {
         const { id, username, customerName, date, price, product, quantity } = sale;
         const aSale = [
@@ -42,7 +41,7 @@ export default {
           error: true
         });
       }
-    });
+    }
 
     return res.status(404).json({
       message: 'Sale record not found',
