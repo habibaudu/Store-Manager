@@ -3,7 +3,7 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 
-import controller from './utilities/controllers/index';
+import controller from './utilities/controllers/controller';
 import auth from './utilities/middleware/authroutes';
 import Check from './utilities/middleware/validation';
 
@@ -57,8 +57,8 @@ app.get('/api/v1/sales', auth, sales.allSales);
 app.get('/api/v1/sales/:saleId', auth, sales.getAsalesRecord);
 app.post('/api/v1/products', auth, Check.createproduct, products.createProduct);
 app.post('/api/v1/sales', auth, Check.salesRecord, sales.createSalesOrder);
-app.listen(3000);
-console.log('app running on port ', 3000);
+app.listen(8080);
+console.log('app running on port ', 8080);
 
 
 app.get('*', (req, res) => res.status(200).send({ message: 'Welcome To Store Manager Api' }));
