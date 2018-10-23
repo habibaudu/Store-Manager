@@ -32,9 +32,11 @@
     "express-validator": "^5.3.0",
     "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
+    "moment": "^2.22.2",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
-    "nyc": "^13.1.0"
+    "nyc": "^13.1.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "coveralls": "^3.0.2",
