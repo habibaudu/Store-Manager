@@ -50,12 +50,14 @@ app.get('/api', (req, res) => res.status(200).send({
   message: 'Welcome to the Store Manager API!',
 }));
 
-app.get('/api/v1/products', products.getproducts);
-app.get('/api/v1/products/:productId', products.getAproduct);
+app.get('/api/v1/products', auth, products.getAll);
+app.put('/api/v1/products/:productId', auth, products.update);
+app.delete('/api/v1/products/:productId', auth, products.delete);
+app.get('/api/v1/products/:productId', auth, products.getOne);
 app.post('/api/v1/login', Check.login, users.login);
 app.get('/api/v1/sales', auth, sales.allSales);
 app.get('/api/v1/sales/:saleId', auth, sales.getAsalesRecord);
-app.post('/api/v1/products', auth, Check.createproduct, products.createProduct);
+app.post('/api/v1/products', auth, Check.createproduct, products.create);
 app.post('/api/v1/sales', auth, Check.salesRecord, sales.createSalesOrder);
 app.listen(8080);
 console.log('app running on port ', 8080);

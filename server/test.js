@@ -16,23 +16,15 @@ describe('Products', () => {
       });
   });
 
-  it('it should return status code of 200', (done) => {
+  it('it should return status code of 403', (done) => {
     chai.request(server)
       .get('/api/v1/products')
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(403);
         done();
       });
   });
-  it('it first product should be Men Timberland ', (done) => {
-    chai.request(server)
-      .get('/api/v1/products')
-      .end((err, res) => {
-        res.body.should.be.a('object');
-        expect(res.body.products[0].productName).to.equal('Men Timberland');
-        done();
-      });
-  });
+
   it('it return No Token', (done) => {
     chai.request(server)
       .post('/api/v1/products')
@@ -102,7 +94,7 @@ describe('Products', () => {
     chai.request(server)
       .get('/api/v1/products/1')
       .end((err, res) => {
-        res.should.have.status(200);
+        res.should.have.status(403);
         done();
       });
   });
@@ -111,9 +103,9 @@ describe('Products', () => {
     chai.request(server)
       .get('/api/v1/products/8')
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(403);
         res.body.should.be.a('object');
-        expect(res.body.message).to.equal('Product not found');
+        expect(res.body.message).to.equal('No Token');
         done();
       });
   });
@@ -122,7 +114,7 @@ describe('Products', () => {
     chai.request(server)
       .get('/api/v1/products/8')
       .end((err, res) => {
-        res.should.have.status(404);
+        res.should.have.status(403);
         done();
       });
   });

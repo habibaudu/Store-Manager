@@ -31,7 +31,7 @@ class Check {
     req.checkBody('priceEach', 'priceEach Must be a number').isInt();
     req.checkBody('mininumAllowedinStock', 'mininumAllowedinStock cannot be null').notEmpty();
   
-    req.checkBody('Date', 'Date cannot be null').notEmpty();
+    // req.checkBody('Date', 'Date cannot be null').notEmpty();
     req.checkBody('inStock', 'inStock cannot be null').notEmpty();
   
 
