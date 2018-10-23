@@ -1,48 +1,6 @@
 import moment from 'moment';
 import uuid from 'uuid';
 
-
-// [
-//     {
-//       "id":1,
-//       "productName":"Men Timberland",
-//       "priceEach":25000,
-//       "inStock":15,
-//       "mininumAllowedinStock":10,
-//       "Date":"23/10/2018"
-//     },
-  
-//     {
-//       "id":2,
-//       "productName":"women bridals",
-//       "priceEach":5000,
-//       "inStock":105,
-//       "mininumAllowedinStock":10,
-//       "Date":"29/10/2018"
-//     },
-  
-//    {
-//       "id":3,
-//       "productName":"vans pro skate",
-//       "priceEach":4500,
-//       "inStock":100,
-//       "mininumAllowedinStock":5,
-//       "Date":"27/10/2018"
-//     },
-
-//     {
-//         "id":4,
-//         "productName":"cycling shoes",
-//         "priceEach":6000,
-//         "inStock":20,
-//         "mininumAllowedinStock":3,
-//         "Date":"25/10/2018"
-//       }
-    
-  
-//   ]
-
-
 class product {
   /**
    * class constructor
