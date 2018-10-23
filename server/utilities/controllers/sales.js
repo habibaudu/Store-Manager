@@ -17,32 +17,32 @@ export default {
 
   getAsalesRecord(req, res) {
 
-   sales.forEach((sale) => {
-    if (sale.id === parseInt(req.params.saleId, 10)) {
-      const { id, username, customerName, date, price, product, quantity } = sale;
-      const aSale = [
-        {
-          id,
-          username,
-          customerName,
-          date,
-          price,
-          product,
-          quantity
+    sales.forEach((sale) => {
+      if (sale.id === parseInt(req.params.saleId, 10)) {
+        const { id, username, customerName, date, price, product, quantity } = sale;
+        const aSale = [
+          {
+            id,
+            username,
+            customerName,
+            date,
+            price,
+            product,
+            quantity
+          }
+        ];
+        if (req.decoded.role === 'Admin' || req.decoded.username === username) {
+          return res.status(200).json({
+            aSale,
+            error: false
+          });
         }
-      ];
-      if (req.decoded.role === 'Admin' || req.decoded.username === username) {
-        return res.status(200).json({
-          aSale,
-          error: false
+        return res.status(401).json({
+          message: 'Only the Admin or the creator of the sales record can access',
+          error: true
         });
       }
-      return res.status(401).json({
-        message: 'Only the Admin or the creator of the sales record can access',
-        error: true
-      });
-    }
-   });
+    });
 
     return res.status(404).json({
       message: 'Sale record not found',
