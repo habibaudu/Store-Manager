@@ -1,8 +1,10 @@
+import moment from 'moment';
+import uuid from 'uuid';
+
 import sales from '../dummy_data/sales.json';
 
 export default {
   allSales(req, res) {
-  // console.log(req.decoded.role);
     if (req.decoded.role === 'Admin') {
       return res.status(200).json({
         sales,
@@ -51,27 +53,31 @@ export default {
 
   createSalesOrder(req, res) {
     if (req.decoded.role === 'user') {
-      if (!req.body.product || !req.body.price || !req.body.quantity || !req.body.username || !req.body.Date || !req.body.customerName || !req.body.id) {
+      if (!req.body.product || !req.body.price || !req.body.quantity || !req.body.username || !req.body.customerName ) {
         return res.json({
-          message: 'NO product created',
+          message: 'NO sales order created',
           error: true
         });
       }
-      let Date2 = req.body.Date;
-      Date2 = Date2.match(/^(\d{1,2})(\/)(\d{1,2})(\/)(\d{4})$/) || [Date2];
-      if (Date2.length > 1) {
-        sales.push(req.body);
 
-        return res.json({
-          message: 'sales Created successfully',
-          error: false
-        });
-      }
+      const newsales = {
+        id: uuid.v4(),
+        product: req.body.product || '',
+        price: req.body.price || '',
+        quantity: req.body.quantity || '',
+        username: req.body.username || '',
+        customerName: req.body.customerName || '',
+        created_at: moment.now(),
+      };
+
+      sales.push(newsales);
+
       return res.json({
-        message: 'wrong Date format, enter in 12/08/2020',
-        error: true
+        message: 'sales Created successfully',
+        error: false
       });
     }
+   
     return res.json({
       message: 'Only a store attendant  can create a sales record',
       error: true
