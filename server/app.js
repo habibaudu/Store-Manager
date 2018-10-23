@@ -1,8 +1,13 @@
 import express from 'express';
-import http from 'http';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
+
+import controller from './utilities/controllers/index';
+import auth from './utilities/middleware/authroutes';
+import Check from './utilities/middleware/validation';
+
+const { products, users, sales } = controller;
 /**
  * set up app server
  */
@@ -40,15 +45,21 @@ app.use(bodyParser.urlencoded({ extended: false }));
  * @param {integer} -Binds and listens for connections on port 4000
  * @param {function} - callback function that console port number
  */
-const port = parseInt(process.env.PORT, 10) || 4000;
-app.set('port', port);
 
-const server = http.createServer(app);
-server.listen(port, () => {
-  console.log(`server started and runing on port ${port}`);
-});
+app.get('/api', (req, res) => res.status(200).send({
+  message: 'Welcome to the Store Manager API!',
+}));
 
-require('./server/routes')(app);
+app.get('/api/v1/products', products.getproducts);
+app.get('/api/v1/products/:productId', products.getAproduct);
+app.post('/api/v1/login', Check.login, users.login);
+app.get('/api/v1/sales', auth, sales.allSales);
+app.get('/api/v1/sales/:saleId', auth, sales.getAsalesRecord);
+app.post('/api/v1/products', auth, Check.createproduct, products.createProduct);
+app.post('/api/v1/sales', auth, Check.salesRecord, sales.createSalesOrder);
+app.listen(3000);
+console.log('app running on port ', 3000);
+
 
 app.get('*', (req, res) => res.status(200).send({ message: 'Welcome To Store Manager Api' }));
 
