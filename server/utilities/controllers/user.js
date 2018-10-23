@@ -15,23 +15,23 @@ export default {
         return res.status(403).json({
           message
         });
-        
-      } else if (user.password !== req.body.password) {
+      } 
+      if (user.password !== req.body.password) {
         message = 'Wrong Password';
         return res.status(403).json({
           message
         });
-      } else {
-        // create the token.
-        token = jwt.sign(user, process.env.SECRET, {
-          expiresIn: 86400 // expires in 24 hours
-        });
-        message = 'Login Successful';
-        return res.status(200).json({
-          message,
-          token
-        });
-      }
+      } 
+
+      // create the token.
+      token = jwt.sign(user, process.env.SECRET, {
+        expiresIn: 86400 // expires in 24 hours
+      });
+      message = 'Login Successful';
+      return res.status(200).json({
+        message,
+        token
+      });
     });
 
     // If token is present pass the token to client else send respective message
