@@ -4,8 +4,8 @@ import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 
 import controller from './utilities/controllers/controller';
-import auth from './utilities/middleware/authroutes';
-import Check from './utilities/middleware/validation';
+import authroutes from './utilities/middleware/authroutes';
+import validation from './utilities/middleware/validation';
 
 const { products, users, sales } = controller;
 /**
@@ -50,15 +50,15 @@ app.get('/api', (req, res) => res.status(200).send({
   message: 'Welcome to the Store Manager API!',
 }));
 
-app.get('/api/v1/products', auth, products.getAll);
-app.put('/api/v1/products/:productId', auth, products.update);
-app.delete('/api/v1/products/:productId', auth, products.delete);
-app.get('/api/v1/products/:productId', auth, products.getOne);
-app.post('/api/v1/login', Check.login, users.login);
-app.get('/api/v1/sales', auth, sales.allSales);
-app.get('/api/v1/sales/:saleId', auth, sales.getAsalesRecord);
-app.post('/api/v1/products', auth, Check.createproduct, products.create);
-app.post('/api/v1/sales', auth, Check.salesRecord, sales.createSalesOrder);
+app.get('/api/v1/products',authroutes, products.getAll);
+app.put('/api/v1/products/:productId', authroutes, products.update);
+app.delete('/api/v1/products/:productId',authroutes, products.delete);
+app.get('/api/v1/products/:productId', authroutes, products.getOne);
+app.post('/api/v1/login', validation.login, users.login);
+app.get('/api/v1/sales',authroutes, sales.allSales);
+app.get('/api/v1/sales/:saleId', authroutes, sales.getAsalesRecord);
+app.post('/api/v1/products', authroutes, validation.createproduct, products.create);
+app.post('/api/v1/sales',authroutes, validation.salesRecord, sales.createSalesOrder);
 app.listen(8080);
 console.log('app running on port ', 8080);
 
