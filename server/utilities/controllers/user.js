@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import users from '../dummy_data/user.json';
+import Helper from './Helper';
 
 
 dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env' });
@@ -13,9 +14,10 @@ dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env
       if(user.username !== req.body.username){
           message="Wrong Name";
       }else{
-          if(user.password !== req.body.password){
-              message="Wrong Password";
-              break;
+        if(!Helper.comparePassword(user.password, req.body.password)) {
+            message ="Wrong Password";
+            console.log('wrong password');
+            break;
           }
           else{
             //create the token.
