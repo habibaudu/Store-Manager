@@ -1,4 +1,4 @@
-import productmodel from '../dummy_data/products';
+import products from '../dummy_data/products';
 
 const product = {
   /**
@@ -12,7 +12,7 @@ const product = {
     if (!req.body.productName && !req.body.priceEach && !req.body.inStock && !req.body.mininumAllowedinStock) {
       return res.status(400).send({ message: 'All fields are required'})
     }
-    const product = productmodel.create(req.body);
+    const product = products.create(req.body);
     return res.status(201).send({ message: 'products Created successfully'});
   }
   return res.json({
@@ -28,8 +28,8 @@ const product = {
    */
   getAll(req, res) {
     if (req.decoded.role === 'Admin' || req.decoded.role === 'user') {
-    const products = productmodel.findAll();
-    return res.status(200).send(products);
+    const productss = products.findAll();
+    return res.status(200).send(productss);
   }
   return res.json({
     message: 'Only a registered user can get all product',
@@ -44,7 +44,7 @@ const product = {
    */
   getOne(req, res) {
     if (req.decoded.role === 'Admin' || req.decoded.role === 'user') {
-    const product = productmodel.findOne(req.params.productId);
+    const product = products.findOne(req.params.productId);
     if (!product) {
       return res.status(404).send({message: 'product not found'});
     }
@@ -65,11 +65,11 @@ const product = {
    */
   update(req, res) {
     if (req.decoded.role === 'Admin') {
-    const product = productmodel.findOne(req.params.productId);
+    const product = products.findOne(req.params.productId);
     if (!product) {
       return res.status(404).send({message: 'product not found'});
     }
-    const updatedproduct = productmodel.update(req.params.productId, req.body);
+    const updatedproduct = products.update(req.params.productId, req.body);
     return res.status(200).send(updatedproduct);
   }
   return res.json({
@@ -85,11 +85,11 @@ const product = {
    */
   delete(req, res) {
     if (req.decoded.role === 'Admin') {
-    const product = productmodel.findOne(req.params.productId);
+    const product = products.findOne(req.params.productId);
     if (!product) {
       return res.status(404).send({message: 'product not found'});
     }
-    const ref = productmodel.delete(req.params.productId);
+    const ref = products.delete(req.params.productId);
     return res.status(204).send(ref);
   }
   return res.json({
