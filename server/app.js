@@ -3,9 +3,9 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 
-import controller from './utilities/controllers/controller';
-import authroutes from './utilities/middleware/authroutes';
-import validation from './utilities/middleware/validation';
+import controller from './controllers/controller';
+import authroutes from './middleware/authroutes';
+import validation from './middleware/validation';
 
 const { products, users, sales } = controller;
 /**
