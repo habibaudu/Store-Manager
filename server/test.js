@@ -2,15 +2,48 @@ import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import server from './app';
 
-const adminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiaGFiaWJhdWR1IiwicGFzc3dvcmQiOiIkMmIkMDgkZnE4NFVxUG4wSlNTUjVKQTB0T092dUlsQ3NPVTJWRzJoNzVFaHVUNWJDUTluSWRtVjBXMlMiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE1NDAzOTM4NDcsImV4cCI6MTU0MDk5ODY0N30.FJlIhxR-UbYGhhHwfq3e8Cg8lDiJdtekCXYwkBRw3h8';
+// let adminToken;
 
-const attendantsToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsInVzZXJuYW1lIjoibHVjYXNkYW5pZWwiLCJwYXNzd29yZCI6IiQyYiQwOCRrWDUyNTdOeHRoS3RTTURId3dXbmN1d1pzcndYWG9UWUQ5Y2JxZDdPeWJOTi92b3dDSnNKZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTQwMzkzOTQ4LCJleHAiOjE1NDA5OTg3NDh9.U7f_JMFZ-hEZGkaiLcer61Scmsb3wVEEvlujF8NQSCw';
+// let attendantsToken;
 
 const should = chai.should();
 
 chai.use(chaiHttp);
 
 describe('Products', () => {
+  let adminToken = null;
+  let attendantsToken = null;
+  before((done)=> {       
+    //get token
+    
+      chai.request(server)
+        .post('/api/v1/login')
+        .send({
+          username: 'habibaudu',
+          password: 'hba',
+        })
+        .end((err, res) => {
+         adminToken = res.body.token;
+          
+        });
+
+
+        
+      chai.request(server)
+        .post('/api/v1/login')
+        .send({
+          username: 'lucasdaniel',
+          password: 'raven',
+        })
+        .end((err, res) => {
+         attendantsToken = res.body.token;
+          done();
+        });
+  
+
+      });
+
+
   it('it should return an object', (done) => {
     chai.request(server)
       .get('/api/v1/products')
