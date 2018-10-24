@@ -70,9 +70,9 @@ const product = {
       return res.status(404).send({message: 'product not found'});
     }
     const updatedproduct = productmodel.update(req.params.productId, req.body);
-    return res.status(200).send(updatedproduct);
+    return res.status(200).send({message: 'Product update was successful'});
   }
-  return res.json({
+  return res.status(400).json({
     message: 'Only an admin can update a product',
     error: true
   });

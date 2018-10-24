@@ -58,7 +58,7 @@ app.post('/api/v1/login', Check.login, users.login);
 app.get('/api/v1/sales', auth, sales.allSales);
 app.get('/api/v1/sales/:saleId', auth, sales.getAsalesRecord);
 app.post('/api/v1/products', auth, Check.createproduct, products.create);
-app.post('/api/v1/sales', auth, Check.salesRecord, sales.createSalesOrder);
+app.post('/api/v1/sales', auth, sales.createSalesOrder);
 app.listen(8080);
 console.log('app running on port ', 8080);
 
