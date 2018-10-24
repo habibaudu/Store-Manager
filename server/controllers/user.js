@@ -4,7 +4,7 @@ import users from '../dummy_data/user.json';
 import Helper from './Helper';
 
 
-dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env' });
+dotenv.config();
 
   export default {
     login(req, res){
