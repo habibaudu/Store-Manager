@@ -22,7 +22,7 @@ dotenv.config();
           else{
             //create the token.
                token = jwt.sign(user,process.env.SECRET, {
-          expiresIn: 86400 // expires in 24 hours
+          expiresIn: '7d' // expires in 24 hours
         });
               message="Login Successful";
               break;
