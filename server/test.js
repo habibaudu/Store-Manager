@@ -2,6 +2,10 @@ import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import server from './app';
 
+const adminToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjEsInVzZXJuYW1lIjoiaGFiaWJhdWR1IiwicGFzc3dvcmQiOiIkMmIkMDgkZnE4NFVxUG4wSlNTUjVKQTB0T092dUlsQ3NPVTJWRzJoNzVFaHVUNWJDUTluSWRtVjBXMlMiLCJyb2xlIjoiQWRtaW4iLCJpYXQiOjE1NDAzNzE1NDQsImV4cCI6MTU0MDQ1Nzk0NH0.NVixVZplk1HrTn0Sj3HIyMVxclASAB8SFCWS0h56eZ8';
+
+const attendantsToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyaWQiOjIsInVzZXJuYW1lIjoibHVjYXNkYW5pZWwiLCJwYXNzd29yZCI6IiQyYiQwOCRrWDUyNTdOeHRoS3RTTURId3dXbmN1d1pzcndYWG9UWUQ5Y2JxZDdPeWJOTi92b3dDSnNKZSIsInJvbGUiOiJ1c2VyIiwiaWF0IjoxNTQwMzcxNDU5LCJleHAiOjE1NDA0NTc4NTl9.kxzDnCJj91iunDFsp7cUnTXIognMq2ryvhz5K1tTbe0';
+
 const should = chai.should();
 
 chai.use(chaiHttp);
