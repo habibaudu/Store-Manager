@@ -20,16 +20,16 @@ dotenv.config();
             break;
           }
           else{
-            //create the token.
+          
                token = jwt.sign(user,process.env.SECRET, {
-          expiresIn: '7d' // expires in 24 hours
+          expiresIn: '7d'
         });
               message="Login Successful";
               break;
           }
       }
     }
-    //If token is present pass the token to client else send respective message
+  
     if(token){
         res.status(200).json({
             message,

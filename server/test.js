@@ -2,9 +2,7 @@ import chaiHttp from 'chai-http';
 import chai, { expect } from 'chai';
 import server from './app';
 
-// let adminToken;
 
-// let attendantsToken;
 
 const should = chai.should();
 
@@ -14,7 +12,7 @@ describe('Products', () => {
   let adminToken = null;
   let attendantsToken = null;
   before((done)=> {       
-    //get token
+   
     
       chai.request(server)
         .post('/api/v1/login')
