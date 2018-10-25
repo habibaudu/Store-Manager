@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import users from '../dummy_data/user.json';
-import Helper from './Helper';
+import checkPassword from './Helper/checkPassword';
 
 
 dotenv.config();
@@ -14,7 +14,7 @@ dotenv.config();
       if(user.username !== req.body.username){
           message="Wrong Name";
       }else{
-        if(!Helper.comparePassword(user.password, req.body.password)) {
+        if(!checkPassword.comparePassword(user.password, req.body.password)) {
             message ="Wrong Password";
             console.log('wrong password');
             break;

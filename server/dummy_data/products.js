@@ -16,10 +16,10 @@ class product {
   create(data) {
     const newProducts = {
       id: uuid.v4(),
-      productName: data.productName || '',
-      priceEach: data.priceEach || '',
-      inStock: data.inStock || '',
-      mininumAllowedinStock: data.mininumAllowedinStock || '',
+      productName: data.productName ,
+      priceEach: data.priceEach,
+      inStock: data.inStock,
+      mininumAllowedinStock: data.mininumAllowedinStock ,
       created_at: moment.now(),
       modified_at: moment.now()
     };

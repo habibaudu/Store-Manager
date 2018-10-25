@@ -5,7 +5,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const Helper = {
+const checkPassword = {
 
   /**
    * comparePassword
@@ -19,4 +19,4 @@ const Helper = {
 
 };
 
-export default Helper;
+export default checkPassword;
