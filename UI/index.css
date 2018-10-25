@@ -11,8 +11,8 @@ nav{
     justify-content: space-around;
     align-items: center;
     min-height: 10vh;
-    font-family: 'Poppins',sans-serif;
-    background-color: rgb(8, 15, 91);
+    font-family: Sabo;
+    background-color: #062f4f;
     border-bottom: rgb(226,226,226) 3px solid;  
 }
 
@@ -23,7 +23,7 @@ nav{
   letter-spacing: 4px;
   font-size: 50px;
   font-weight: bold; 
-  font-family: Helvetica;
+  font-family: Sabo;
   text-shadow: 0 3px 0 #000, 0 3px 0 #000;
 
 } 
@@ -32,15 +32,14 @@ letter-spacing: 5px;
 color: rgb(226,226,226);
 font-size: 21px;
 font-weight: bold;
-font-family: Helvetica;
+font-family:  Sabo;
 text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
     
 }  
 .container{
-
 width:100%;
 height: 100%;
-background-color: #080f5b;
+background-color: #062f4f;
 color:#e4c580;
 
 
@@ -66,7 +65,7 @@ color:#e4c580;
     width:50%;
    
     float: right;
-    background-color:#0d19a3;
+    background-color:#062f4f;
     text-align: center;
     border-radius: 5px;
     padding: 70px 10px;
@@ -110,7 +109,7 @@ letter-spacing: 5px;
 color:#e4c580;
 font-size: 40px;
 font-weight: bold;
-font-family: Helvetica;
+font-family:Sabo;
 
 text-shadow: 0 1px 0 #e4c580, 0 2px 0 #e4c580, 0 3px 0 #e4c580, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
     
@@ -133,6 +132,7 @@ text-shadow: 0 1px 0 #e4c580, 0 2px 0 #e4c580, 0 3px 0 #e4c580, 0 4px 0 #b9b9b9,
     letter-spacing: 3px;
     font-weight: bold;
     font-size:14px;
+    font-family: Sabo;
 }
 
 .burger{
@@ -149,7 +149,7 @@ text-shadow: 0 1px 0 #e4c580, 0 2px 0 #e4c580, 0 3px 0 #e4c580, 0 4px 0 #b9b9b9,
    }
 
 .highlight,.current a{
-    color:rgb(160, 12, 1);
+    color:#B82601;
     font-weight:bold;  
  }
 
@@ -295,7 +295,7 @@ header #nav_slide {
  .adminbox{
    margin:auto;  
     width:65%;
-    background-color: #0d19a3;
+    background-color: #062f4f;
     color:#e4c580;
     box-sizing: border-box;
     padding: 70px 30px;
@@ -307,7 +307,7 @@ header #nav_slide {
  #adminlogo{
     border-radius:50px;
     background:white;
-    height:70px;   
+    height:33px;   
  }
 
 
@@ -325,7 +325,7 @@ header #nav_slide {
 .edit{
     width:100%;
     color:#e4c580;
-    background:#080f5b;
+    background:#062f4f;
     border-radius: 2px;
     border:none;
     padding: 2px;
@@ -342,12 +342,13 @@ header #nav_slide {
      text-align: center;
      font-size: 22px;
      color:rgb(226,226,226);
+     font-family: Sabo;
 
   } 
 .formbox{
     margin:auto; 
     width:55%;
-    background-color: #0d19a3;
+    background-color: #062f4f;
     color:#e4c580;
     box-sizing: border-box;
     padding: 80px 30px;
@@ -366,6 +367,7 @@ header #nav_slide {
     padding: 0;
     font-weight: bold;
     color:rgb(226,226,226);
+    font-family: Sabo;
 }
 .formbox input{
     width :100%;
@@ -410,6 +412,7 @@ header #nav_slide {
     line-height: 20px;
     color : rgb(226,226,226);
     font-size: 18px;
+    font-family: Sabo;
 }
 
 
@@ -426,6 +429,7 @@ header #nav_slide {
     background:  rgb(160, 12, 1);
     display: table;
     color: #e4c580;
+    font-family: Sabo;
     border-radius: 7px;
     cursor: pointer;
 
@@ -446,6 +450,7 @@ a.btn {
     padding: 15px 30px;
     border-radius: 7px;
     letter-spacing: 4px;
+    font-family: Sabo;
     font-weight: bold;
     font-size:70%;
     
@@ -453,12 +458,13 @@ a.btn {
 }
 a.btn2 {
     text-decoration: none;
-    background-color: #080f5b;
+    background-color: rgb(160, 12, 1);
     margin-bottom: 1em;
     text-align: center;
     display: inline-block;
-    color:#aaa;
+    color:#e4c580;
     padding: 8px 15px;
+    font-family: Sabo;
     border-radius: 7px;
     letter-spacing: 4px;
     font-weight: bold;
@@ -469,9 +475,10 @@ a.btn2 {
 .addbox{
     margin:auto; 
     width:55%;
-    background-color: #0d19a3;
+    background-color: #062f4f;
     color:#e4c580;
     box-sizing: border-box;
+    font-family: Sabo;
     padding: 80px 30px;
     border-radius: 7px;
     box-shadow:  inset 2px  2px 10px rgb(226,226,226);
@@ -483,6 +490,7 @@ a.btn2 {
     font-size: 100%;
     display: inline-block;
     color:#35424a;
+
     border:none;
     border-radius: 4px;
    
@@ -535,7 +543,7 @@ td {
     
 }
 
-tr:hover {background-color: #080f5b;}
+tr:hover {background-color: #062f4f;}
 
 tr:nth-child(odd) {background-color: #e4c580;
  color:rgb(160, 12, 1);}
@@ -550,7 +558,8 @@ tr:nth-child(odd) {background-color: #e4c580;
     margin-bottom: 12px;
     border-radius: 4px;
     cursor: pointer;
-	color:#e4c580;
+    color:#e4c580;
+    font-family: Sabo;
     background-color: rgb(160, 12, 1);
 	
     
@@ -562,7 +571,7 @@ tr:nth-child(odd) {background-color: #e4c580;
     color:#e4c580;   
    }
 .note {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Sabo;
     font-size:15px;
     line-height: 1.6;
     font-weight: bold;
@@ -571,7 +580,7 @@ tr:nth-child(odd) {background-color: #e4c580;
 
 }
 .note2 {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Sabo;
     font-size:15px;
      text-align: center;
     line-height: 1.6;
@@ -590,7 +599,7 @@ tr:nth-child(odd) {background-color: #e4c580;
     text-shadow: 0 1px 0 #000, 0 1px 0 #000;
     text-align: center;
     font-size: 1em;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family:Sabo;
     letter-spacing: 1px; 
     text-transform: uppercase;
     box-shadow: 1px  1px 2px #35424a;   
@@ -604,7 +613,7 @@ tr:nth-child(odd) {background-color: #e4c580;
     color:#e4c580;
     text-align: center;
     font-size: 1em;
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Sabo;
     letter-spacing: 1px; 
     text-transform: uppercase;
     
@@ -619,7 +628,7 @@ tr:nth-child(odd) {background-color: #e4c580;
 }
 
 #title a:hover{
-    color: #080f5b;
+    color: #062f4f;
     
 }
 
@@ -633,7 +642,7 @@ tr:nth-child(odd) {background-color: #e4c580;
 }
 .article section{
     text-align: center;
-    background-color: #0d19a3;
+    background-color: #062f4f;
     box-shadow: 1px  1px 2px #000;
     margin-bottom: 2%;
 }
@@ -778,6 +787,7 @@ tr:nth-child(odd) {background-color: #e4c580;
     border-radius: 4px;
     letter-spacing: 4px;
     font-weight: bold;
+    font-family: Sabo;
     font-size:100%;
     border:none;
     cursor: pointer;
@@ -791,7 +801,7 @@ footer{
     bottom: 0; */
 
     width: 100%;
-    background-color: #0d19a3;
+    background-color: #000000;
     color:#e4c580;
     clear: both;
     padding: 35px;
@@ -818,7 +828,7 @@ footer{
         letter-spacing: 4px;
         font-size: 40px;
         font-weight: bold; 
-        font-family: Helvetica;
+       
         text-shadow: 0 3px 0 #000, 0 3px 0 #000;
     
     } 
@@ -855,7 +865,7 @@ footer{
     .divide .landing2 {
         width:90%;
         align-content: center;
-        background-color:#0d19a3;
+        background-color:#062f4f;
         text-align: center;
         border-radius: 5px;
         padding: 20px 2px;
@@ -956,7 +966,7 @@ footer{
     .divide .landing2 {
         width:100%;
         align-content: center;
-        background-color:#0d19a3;
+        background-color:#062f4f;
         text-align: center;
         border-radius: 5px;
         padding: 0px 0px;
@@ -1001,7 +1011,7 @@ footer{
         right:0px;
         height:92vh;
         top:8vh;
-        background-color: #080f5b;
+        background-color: #062f4f;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1093,7 +1103,7 @@ footer{
     font-size: 100%;
 }
 #note {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Sabo;
     font-size:15px;
     line-height: 1.5;
     color:#e4c580;
@@ -1101,7 +1111,7 @@ footer{
 }
 
 #note2 {
-    font-family: Arial,Helvetica,sans-serif;
+    font-family: Sabo;
     font-size:15px;
     letter-spacing: 3px;
   
