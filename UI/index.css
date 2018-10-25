@@ -458,14 +458,16 @@ a.btn {
 }
 a.btn2 {
     text-decoration: none;
-    background-color: rgb(160, 12, 1);
+    background-color: #062f4f;
     margin-bottom: 1em;
     text-align: center;
     display: inline-block;
     color:#e4c580;
-    padding: 8px 15px;
+    padding: 8px 40px;
     font-family: Sabo;
     border-radius: 7px;
+    box-shadow: 1px  1px 7px #000;
+
     letter-spacing: 4px;
     font-weight: bold;
     font-size:100%;  
