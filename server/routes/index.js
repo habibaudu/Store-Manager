@@ -8,14 +8,14 @@ const { products, users, sales } = controller;
 const router = express.Router();
 
 
-router.get('/api/v1/products', authroutes, products.getAll);
-router.put('/api/v1/products/:productId',authroutes, products.update);
-router.delete('/api/v1/products/:productId', authroutes, products.delete);
-router.get('/api/v1/products/:productId',authroutes, products.getOne);
-router.post('/api/v1/login', validation.login, users.login);
-router.get('/api/v1/sales',authroutes, sales.allSales);
-router.get('/api/v1/sales/:saleId', authroutes, sales.getAsalesRecord);
-router.post('/api/v1/products', authroutes, validation.createproduct, products.create);
-router.post('/api/v1/sales',authroutes, sales.createSalesOrder);
+router.get('/products', authroutes, products.getAll);
+router.put('/products/:productId',authroutes, products.update);
+router.delete('/products/:productId', authroutes, products.delete);
+router.get('/products/:productId',authroutes, products.getOne);
+router.post('/login', validation.login, users.login);
+router.get('/sales',authroutes, sales.allSales);
+router.get('/sales/:saleId', authroutes, sales.getAsalesRecord);
+router.post('/products', authroutes, validation.createproduct, products.create);
+router.post('/sales',authroutes, sales.createSalesOrder);
 
 export default router;

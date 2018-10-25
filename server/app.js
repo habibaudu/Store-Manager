@@ -19,12 +19,13 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 8080;
-app.set('port', port);
-app.listen(port);
-console.log('app running on port ', port);
 
-app.use('/', index);
+app.use('/api/v1', index);
 
 app.get('*', (req, res) => res.status(200).send({ message: 'Welcome To Store Manager Api' }));
+
+app.listen(port, () => {
+  console.log('app running on port ', port);
+});
 
 export default app;
