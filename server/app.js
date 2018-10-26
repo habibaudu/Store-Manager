@@ -3,7 +3,6 @@ import logger from 'morgan';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import dotenv from 'dotenv';
-
 import index from './routes/index';
 
 dotenv.config();
@@ -19,6 +18,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 const port = process.env.PORT || 8080;
+
+/**
+ * created my server using http.createServer
+ * @param {app} - express app
+ * set port to 4000
+ * @param {integer} - port number
+ * server.listen(port)
+ * @param {integer} -Binds and listens for connections on port 4000
+ * @param {function} - callback function that console port number
+ */
+
+app.get('/api', (req, res) => res.status(200).send({
+  message: 'Welcome to the Store Manager API!',
+}));
 
 app.use('/api/v1', index);
 

@@ -11,7 +11,8 @@ Store Manager is a web application that helps store owners manage sales and prod
 
 
    - HTML CSS JAVASCRIPT for Frontend  
-   - Node express For Backend 
+   - Node express For Backend
+
 
 ## ouputs
 
@@ -19,10 +20,14 @@ Store Manager is a web application that helps store owners manage sales and prod
   - backend : https://store-manager2.herokuapp.com/
    
 
-## How to Run
+## How to Clone
+On your git bash run the following command
+   - git clone https://github.com/habibaudu/Store-Manager.git
+   - Run  npm install
+
+## Alternatively
    - Download the Project
    - Run  npm install 
-
 
 
 

@@ -1,7 +1,7 @@
 import moment from 'moment';
 import uuid from 'uuid';
 
-class product {
+class ProductModel {
   /**
    * class constructor
    * @param {object} data
@@ -66,4 +66,5 @@ class product {
     return {};
   }
 }
-export default new product(); 
+export default new ProductModel();
+ 
