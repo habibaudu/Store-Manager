@@ -21,15 +21,51 @@ Store Manager is a web application that helps store owners manage sales and prod
 
 ## How to Run
    - Download the Project
-   - Run  npm install  
+   - Run  npm install 
 
 
- ## expected Endpoints
- - POST /api/v1/users/login
- - GET: /api/v1/sales/:salesId
- - GET: /api/v1/sales
- - GET: /api/v1/products
- - GET /api/v1/produts/:productId
- - POST /api/v1/products
- - POST /api/v1/sales
+
+
+## expected Endpoints
+  - POST /api/v1/users/login
+  - GET: /api/v1/sales/:salesId
+  - GET: /api/v1/sales
+  - GET: /api/v1/products
+  - GET :/api/v1/produts/:productId
+  - POST: /api/v1/products
+  - DELETE: /api/v1/products/:productId
+  - PUT :/api/v1/products/:productId
+  - POST :/api/v1/sales
+
+## Fire up Postman
+  Enter the following routes
+  - POST : localhost:8080/api/v1/login  
+        Enter password and username click send to login and receive token
+
+  - GET : localhost:8080/api/v1/sales/:salesId 
+        To get a single sales record, :salesId is id of sales to get
+
+  - GET : localhost:8080/api/v1/sales 
+        To get all sales record 
+
+  - GET : localhost:8080/api/v1/products
+        To get all products
+
+  - GET : localhost:8080/api/v1/products/:productId
+        To get a single product, :productId is id of product to get
+
+  - POST : localhost:8080/api/v1/products  to add a product
+         Enter productName,Price,inStock,minimumAllowedInStock and click send to create a product 
+
+  - DELETE : localhost:8080/api/v1/products/:productId
+         - To delete a single product, productId is the ID of product to be deleted
+
+  - PUT : localhost:8080/api/v1/products/:productId
+        Update a product  productId is the ID of product to be updated
+
+  - POST : localhost:8080/api/v1/sales 
+      Enter product,Price,quantity  username, CustomerName and click send to create a sales  
+        
+
  
+## license "ISC",

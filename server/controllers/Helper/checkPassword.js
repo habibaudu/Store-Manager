@@ -3,9 +3,9 @@ import jwt from 'jsonwebtoken';
 
 import dotenv from 'dotenv';
 
-dotenv.config({path:'/Users/HabibAudu/Documents/boot/Store-Manager/server/.env'});
+dotenv.config();
 
-const Helper = {
+const checkPassword = {
 
   /**
    * comparePassword
@@ -19,4 +19,4 @@ const Helper = {
 
 };
 
-export default Helper;
+export default checkPassword;

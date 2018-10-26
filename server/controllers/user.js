@@ -1,10 +1,10 @@
 import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 import users from '../dummy_data/user.json';
-import Helper from './Helper';
+import checkPassword from './Helper/checkPassword';
 
 
-dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env' });
+dotenv.config();
 
   export default {
     login(req, res){
@@ -14,22 +14,22 @@ dotenv.config({ path: '/Users/HabibAudu/Documents/boot/Store-Manager/server/.env
       if(user.username !== req.body.username){
           message="Wrong Name";
       }else{
-        if(!Helper.comparePassword(user.password, req.body.password)) {
+        if(!checkPassword.comparePassword(user.password, req.body.password)) {
             message ="Wrong Password";
             console.log('wrong password');
             break;
           }
           else{
-            //create the token.
+          
                token = jwt.sign(user,process.env.SECRET, {
-          expiresIn: 86400 // expires in 24 hours
+          expiresIn: '7d'
         });
               message="Login Successful";
               break;
           }
       }
     }
-    //If token is present pass the token to client else send respective message
+  
     if(token){
         res.status(200).json({
             message,
