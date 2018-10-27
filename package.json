@@ -37,6 +37,7 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.18.4",
     "nyc": "^13.1.0",
+    "pg": "^7.6.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
