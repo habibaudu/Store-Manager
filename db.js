@@ -53,6 +53,7 @@ const createProductTable = () => {
         description TEXT NOT NULL,
         price  INT  NOT NULL,
         quantity INT NOT NULL,
+        images TEXT NOT NULL,
         created_date TIMESTAMP,
         modified_date TIMESTAMP
       )`;
