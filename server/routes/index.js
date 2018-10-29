@@ -17,6 +17,7 @@ const { User } = controller_db;
 const router = express.Router();
 
 router.post('/users',User.create);
+router.post('/users/login',User.login);
 
 
 
