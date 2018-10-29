@@ -39,13 +39,44 @@ const createUserTable = () => {
     });
 }
 
+/**
+ * Create products Table
+ */
+
+const createProductTable = () => {
+  const queryText =
+    `CREATE TABLE IF NOT EXISTS
+      products(
+        id UUID PRIMARY KEY,
+        productname TEXT NOT NULL,
+        minimum INT  NOT NULL,
+        description TEXT NOT NULL,
+        price  INT  NOT NULL,
+        quantity INT NOT NULL,
+        created_date TIMESTAMP,
+        modified_date TIMESTAMP
+      )`;
+
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
+
+
 pool.on('remove', () => {
   console.log('client removed');
   process.exit(0);
 });
 
 module.exports = {
-  createUserTable
+  createUserTable,
+  createProductTable
 }
 
 require('make-runnable');
