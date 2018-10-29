@@ -10,7 +10,7 @@ const User = {
    * @param {object} res
    * @returns {object} user  object 
    */
-  async create(req, res) {
+   async create(req, res) {
     // if(req.user.role === 'ADMIN'){
     if (!req.body.email || !req.body.password || !req.body.username || !req.body.Role) {
       return res.status(400).send({'message': 'All fields are required'});

@@ -1,10 +1,11 @@
+import 'babel-polyfill';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import dotenv from 'dotenv';
 import index from './routes/index';
-import 'babel-polyfill';
+
 dotenv.config();
 const app = express();
 app.use(expressValidator());
