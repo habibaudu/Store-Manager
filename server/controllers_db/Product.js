@@ -75,7 +75,30 @@ export default {
          
      return res.status(401).send({ 'message': 'Only An Admin can update a product' });
   }
+  },
+
+   /**
+   * Delete A product
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {void} return statuc code 204 
+   */
+  async delete(req, res) {
+    if(req.user.role === 'ADMIN'){
+    const deleteQuery = 'DELETE FROM products WHERE id=$1 returning *';
+    try {
+      const { rows } = await db.query(deleteQuery, [req.params.productId]);
+      if(!rows[0]) {
+        return res.status(404).send({'message': 'product not found'});
+      }
+      return res.status(204).send({ 'message': ' product deleted' });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+  }else{ 
+    return res.status(401).send({ 'message': 'Only An Admin can delete a product' });
   }
+}
   
    
   }
