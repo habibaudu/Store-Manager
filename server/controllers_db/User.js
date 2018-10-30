@@ -141,6 +141,29 @@ const User = {
        
     return res.status(401).send({ 'message': 'Only An Admin can get all  users' });
   }
+},
+/**
+   * Delete A User
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {void} return status code 204 
+   */
+  async delete(req, res) {
+    if(req.user.role === 'ADMIN'){
+  const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';
+  try {
+    const { rows } = await db.query(deleteQuery, [req.params.userId]);
+    if(!rows[0]) {
+      return res.status(404).send({'message': 'user not found'});
+    }
+    return res.status(204).send({ 'message': 'deleted' });
+  } catch(error) {
+    return res.status(400).send(error);
+  }
+}else{
+
+  return res.status(401).send({ 'message': 'Only An Admin can delete a user' });
+}
 }
 
 
