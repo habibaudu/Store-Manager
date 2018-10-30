@@ -12,7 +12,7 @@ import validation from '../middleware/validation';
 dotenv.config();
 const controller = process.env.TYPE === 'db' ? controller_db : controllers ;
 
-const { User,Product } = controller_db;
+const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
@@ -23,6 +23,7 @@ router.put('/products/:productId',auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);
 router.get('/products/:productId',auth.verifyToken,Product.getOne);
+router.post('/sales',auth.verifyToken,Sales.create);
 
 
 
