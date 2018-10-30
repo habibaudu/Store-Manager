@@ -69,6 +69,31 @@ const createProductTable = () => {
     });
 }
 
+const createsalesTable = () => {
+  const queryText =
+    `CREATE TABLE IF NOT EXISTS
+      sales(
+        id UUID PRIMARY KEY,
+        attendants_Id UUID NOT NULL,
+        order json,NOT NULL,
+        totalPrice  INT  NOT NULL,
+        created_date TIMESTAMP,
+        modified_date TIMESTAMP,
+        FOREIGN KEY (attendants_Id) REFERENCES users (id) ON DELETE CASCADE
+      )`;
+
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+}
+
+
 
 pool.on('remove', () => {
   console.log('client removed');
