@@ -85,6 +85,55 @@ export default {
 
     return res.status(401).send({ 'message': 'Only A User can create a  sales record' });
     }
+  },
+
+  /**
+   * Get All sales Record by an attendant  for admin only
+   * @param {object} req 
+   * @param {object} res
+   * @returns {object} sales object
+   */
+  async getOne(req, res) {
+    if(req.user.role === 'ADMIN'){
+    const text = 'SELECT * FROM sales WHERE attendants_id = $1';
+    try {
+      const { rows } = await db.query(text, [req.params.salesId]);
+      if (!rows[0]) {
+        return res.status(404).send({'message': 'sales not found'});
+      }
+      return res.status(200).send(rows);
+    } catch(error) {
+      return res.status(400).send(error)
+    }
+  }else{ 
+     
+    return res.status(401).send({ 'message': 'Only Admin can filter  sales record by attendant' });
+}
+  
+},
+
+/**
+   * Get All sales record for admin only
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} sales array
+   */
+  async getAll(req, res) {
+    if(req.user.role === 'ADMIN'){
+    
+        const findAllQuery = 'SELECT * FROM sales';
+    try {
+      const { rows, rowCount } = await db.query(findAllQuery);
+      return res.status(200).send({ rows, rowCount });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+    
+    }else{ 
+     
+        return res.status(401).send({ 'message': 'Only Admin can get all sales record' });
+   }
   }
+
 
 }
