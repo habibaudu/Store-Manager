@@ -10,7 +10,7 @@ export default {
    * @returns {object} sales object 
    */
   async create(req, res) {
-    // if(req.user.role === 'USER'){
+    if(req.user.role === 'USER'){
     
     const text = `INSERT INTO
       sales(id,attendants_id, salesOrders,totalPrice ,created_date, modified_date)
@@ -81,10 +81,10 @@ export default {
     }
 
     
-    // }else{
+    }else{
 
-    // return res.status(401).send({ 'message': 'Only A User can create a  sales record' });
-    // }
+    return res.status(401).send({ 'message': 'Only A User can create a  sales record' });
+    }
   }
 
 }
