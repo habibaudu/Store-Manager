@@ -18,6 +18,7 @@ const router = express.Router();
 
 router.post('/users',User.create);
 router.post('/users/login',User.login);
+router.get('/users',auth.verifyToken,User.getAllUsers);
 router.post('/products',auth.verifyToken,Product.create);
 router.put('/products/:productId',auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
