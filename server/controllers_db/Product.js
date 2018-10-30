@@ -98,7 +98,51 @@ export default {
   }else{ 
     return res.status(401).send({ 'message': 'Only An Admin can delete a product' });
   }
-}
+},
+
+/**
+   * Get All products
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} products array
+   */
+  async getAll(req, res) {
+    if(req.user.role === 'ADMIN' || req.user.role === 'USER'){
+    const findAllQuery = 'SELECT * FROM products';
+    try {
+      const { rows, rowCount } = await db.query(findAllQuery);
+      return res.status(200).send({ rows, rowCount });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+  }else{ 
+    return res.status(401).send({ message: 'Only An Admin or a store attendant can get all product' });
+  }
+  },
+
+  /**
+   * Get A product
+   * @param {object} req 
+   * @param {object} res
+   * @returns {object} product object
+   */
+  async getOne(req, res) {
+    if(req.user.role === 'ADMIN' || req.user.role === 'USER'){
+    const text = 'SELECT * FROM products WHERE id = $1';
+    try {
+      const { rows } = await db.query(text, [req.params.productId]);
+      if (!rows[0]) {
+        return res.status(404).send({'message': 'product not found'});
+      }
+      return res.status(200).send(rows[0]);
+    } catch(error) {
+      return res.status(400).send(error)
+    }
+  }else{ 
+    return res.status(401).send({ message: 'Only An Admin or a store attendant can get a product' });
+  }
+  }
+
   
    
   }

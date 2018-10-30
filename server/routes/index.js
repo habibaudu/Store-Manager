@@ -21,6 +21,8 @@ router.post('/users/login',User.login);
 router.post('/products',auth.verifyToken,Product.create);
 router.put('/products/:productId',auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
+router.get('/products',auth.verifyToken,Product.getAll);
+router.get('/products/:productId',auth.verifyToken,Product.getOne);
 
 
 
