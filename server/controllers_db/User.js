@@ -82,7 +82,44 @@ const User = {
     } catch(error) {
       return res.status(400).send(error)
     }
+  },
+
+  /**
+   * Give admin rights to A users
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} users array
+   */
+  async grantAdminRights(req, res) {
+    if(req.user.role === 'ADMIN'){
+        const findOneQuery = 'SELECT firstname, lastname,email,password,Role, modified_date, id FROM users WHERE id=$1';
+        const updateOneQuery =`UPDATE users 
+        SET firstname=$1,lastname=$2,email=$3,password=$4,Role=$5,modified_date=$6 WHERE id = $7 returning *`;
+        try {
+          const { rows } = await db.query(findOneQuery, [req.params.userId]);
+          if(!rows[0]) {
+            return res.status(404).send({'message': 'user not found'});
+          }
+          const values = [
+            req.body.firstname || rows[0].firstname,
+            req.body.lastname || rows[0].lastname,
+            req.body.email || rows[0].email,
+            req.body.password || rows[0].password,
+            req.body.Role || rows[0].role,
+            moment(new Date()),
+            req.params.userId 
+          ];
+          const response = await db.query(updateOneQuery, values);
+          return res.status(200).send(response.rows[0]);
+        } catch(err) {
+          return res.status(400).send(err);
+        }
+  }else{
+       
+    return res.status(401).send({ 'message': 'Only An Admin can give privilages' });
   }
+}
+
 
 }
 
