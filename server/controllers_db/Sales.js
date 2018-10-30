@@ -133,7 +133,30 @@ export default {
      
         return res.status(401).send({ 'message': 'Only Admin can get all sales record' });
    }
-  }
+  },
 
+  /**
+   * Get All my sales record, for an attendant
+   * @param {object} req 
+   * @param {object} res 
+   * @returns {object} sales array
+   */
+  async getMy(req, res) {
+    if(req.user.role === 'USER'){
+    
+    const findAllQuery = 'SELECT * FROM sales WHERE attendants_id =$1';
+    try {
+      const { rows, rowCount } = await db.query(findAllQuery,[req.user.id]);
+      return res.status(200).send({ rows, rowCount });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+  }else{ 
+     
+    return res.status(401).send({ 'message': 'Only Sales atttendant can access this route' });
+}
+
+
+}
 
 }

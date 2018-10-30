@@ -26,6 +26,7 @@ router.get('/products/:productId',auth.verifyToken,Product.getOne);
 router.post('/sales',auth.verifyToken,Sales.create);
 router.get('/sales/:salesId',auth.verifyToken,Sales.getOne);
 router.get('/sales',auth.verifyToken,Sales.getAll);
+router.get('/sale',auth.verifyToken,Sales.getMy);
 
 
 
