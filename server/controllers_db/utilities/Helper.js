@@ -20,6 +20,7 @@ const Helper = {
    * @returns {Boolean} return True or False
    */
   comparePassword(hashPassword, password) {
+    
     return bcrypt.compareSync(password, hashPassword);
   },
   /**
