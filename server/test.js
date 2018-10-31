@@ -165,17 +165,6 @@ describe('Products', () => {
       });
   });
 
-  // it('should return product not found', (done) => {
-  //   chai.request(server)
-  //     .delete('/api/v1/products/30')
-  //     .set('x-access-token', adminToken)
-  //     .end((err, res) => {
-  //       res.body.should.be.a('object');
-  //       res.should.have.status(404);
-  //       expect(res.body.message).to.equal('product not found');
-  //       done();
-  //     });
-  // });
 
   it('should return onli an admin should update a product', (done) => {
     chai.request(server)
