@@ -96,7 +96,10 @@ export default {
       return res.status(400).send(error);
     }
   }else{ 
-    return res.status(401).send({ 'message': 'Only An Admin can delete a product' });
+    return res.json({
+      message: 'Only an admin can delete a product',
+      error: true
+    });
   }
 },
 

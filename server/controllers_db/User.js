@@ -59,10 +59,12 @@ const User = {
    */
   async login(req, res) {
     if (!req.body.email || !req.body.password) {
-      return res.status(400).send({'message': 'Some values are missing'});
+      let message = 'Some values are missing'
+      return res.status(400).send({message});
     }
     if (!Helper.isValidEmail(req.body.email)) {
-      return res.status(400).send({ 'message': 'Please enter a valid email address' });
+      let message = 'Please enter a valid email address'
+      return res.status(400).send({message});
     }
     const text = 'SELECT * FROM users WHERE email = $1';
     try {
@@ -101,9 +103,7 @@ const User = {
             return res.status(404).send({'message': 'user not found'});
           }
           const values = [
-            // req.body.username || rows[0].username,
-            // req.body.email || rows[0].email,
-            // req.body.password || rows[0].password,
+
             req.body.Role || rows[0].role,
             moment(new Date()),
             req.params.userId 
@@ -138,8 +138,8 @@ const User = {
       return res.status(400).send(error);
     }
   }else{
-       
-    return res.status(401).send({ 'message': 'Only An Admin can get all  users' });
+     let message = 'Only An Admin can get all  users'  
+    return res.status(401).send({message});
   }
 },
 /**

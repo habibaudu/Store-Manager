@@ -3,14 +3,14 @@ import express from 'express';
 import dotenv from 'dotenv';
 
 
-import controllers from '../controllers/controllers';
+// import controllers from '../controllers/controllers';
 import controller_db from '../controllers_db/controllers_db';
 import authroutes from '../middleware/authroutes';
 import auth from '../middleware/auth';
 import validation from '../middleware/validation';
 
 dotenv.config();
-const controller = process.env.TYPE === 'db' ? controller_db : controllers ;
+// const controller = process.env.TYPE === 'db' ? controller_db : controllers ;
 
 const { User, Product, Sales } = controller_db;
 
