@@ -6,7 +6,7 @@ script:
   - npm test
   - npm install
   - nyc --reporter=lcov npm run test
-services
+services:
   - postgresql
 
 before_script:
