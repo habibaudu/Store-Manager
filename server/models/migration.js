@@ -27,11 +27,11 @@ const createsalesTable = () => {
   pool.query(queryText)
     .then((res) => {
       console.log(res);
-      pool.end();
+      // pool.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      // pool.end();
     });
 };
 
@@ -56,11 +56,11 @@ const createUserTable = () => {
   pool.query(queryText)
     .then((res) => {
       console.log(res);
-      pool.end();
+      // pool.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      // pool.end();
     });
 }
 
@@ -86,25 +86,22 @@ const createProductTable = () => {
   pool.query(queryText)
     .then((res) => {
       console.log(res);
-      pool.end();
+      // pool.end();
     })
     .catch((err) => {
       console.log(err);
-      pool.end();
+      // pool.end();
     });
 }
 
+createProductTable();
+createsalesTable();
+createUserTable();
 
 pool.on('remove', () => {
   console.log('client removed');
   process.exit(0);
 });
 
- export default{
-  createProductTable,
-  createsalesTable,
-  createUserTable
-}
 
-require('make-runnable');
 

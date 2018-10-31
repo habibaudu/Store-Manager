@@ -19,39 +19,20 @@ describe('Products', () => {
   let adminToken = null;
   let attendantsToken = null;
   before((done)=> {
-    
-      // const newUser = {
-      //   username: 'habibaudu',
-      //   email: 'auduhabib1990@gmail.com',
-      //   password: 'hba821',
-      //   Role : 'ADMIN'
-      // };
-      // chai.request(server)
-      //   .post('/api/v1/users')
-      //   .send(newUser)
-      //   .end((err, res) => {
-      //     expect(res.status).to.equal(201);
-      //     expect(res.body.message).to.equal('Registration was successful');
-          
-      //   });
+    // chai.request(server)
+    // .post('/api/v1/users')
+    // .send({
+    //   email: 'auduhabib@gmail.com',
+    //   password: 'hba821',
+    //   username: 'Habib',
+    //   Role:'ADMIN'
+    // })
+    // .end((err, res) => {
+    //   console.log(res.body,'ghhjklaaaaaaa');
+    // });
 
-      //   const newUser2 = {
-      //     username: 'lucasdaniels',
-      //     email: 'lucasdaniel1990@gmail.com',
-      //     password: 'raven',
-      //     Role : 'ADMIN'
-      //   };
-      //   chai.request(server)
-      //     .post('/api/v1/users')
-      //     .send(newUser2)
-      //     .end((err, res) => {
-      //       expect(res.status).to.equal(201);
-      //       expect(res.body.message).to.equal('Registration was successful');
-            
-      //     });
-         
-   
     
+           
       chai.request(server)
         .post('/api/v1/users/login')
         .send({
@@ -59,6 +40,7 @@ describe('Products', () => {
           password: 'hba821',
         })
         .end((err, res) => {
+          console.log(res.body)
          adminToken = res.body.token;
           
         });
@@ -68,8 +50,8 @@ describe('Products', () => {
       chai.request(server)
         .post('/api/v1/users/login')
         .send({
-          email : 'lucasdaniel1990@gmail.com',
-          password: 'raven',
+          email : 'mose@gmail.com',
+          password: 'hba821',
         })
         .end((err, res) => {
          attendantsToken = res.body.token;
@@ -166,7 +148,7 @@ describe('Products', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.should.have.status(400);
+        res.should.have.status(200);
         done();
       });
   });
@@ -207,7 +189,7 @@ describe('Products', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         res.body.should.be.a('object');
-        res.should.have.status(400);
+        res.should.have.status(401);
         done();
       });
   });
@@ -229,7 +211,7 @@ describe('Products', () => {
         .set('x-access-token', adminToken)
         .end((err, res) => {
           should.equal(err, null);
-          res.should.have.status(200);
+          res.should.have.status(400);
           done();
         });
     });
@@ -252,7 +234,7 @@ describe('Products', () => {
         .set('x-access-token', attendantsToken)
         .end((err, res) => {
           should.equal(err, null);
-          res.should.have.status(200);
+          res.should.have.status(401);
           // res.should.have.status(201);
           done();
         });
@@ -265,58 +247,6 @@ describe('Products', () => {
         .end((err, res) => {
           should.equal(err, null);
           res.should.have.status(400);
-          done();
-        });
-    });
-
-
-    it(' should return no sales created', (done) => {
-      chai.request(server)
-        .post('/api/v1/sales')
-        .send({
-
-          id: 5,
-          product: 'Timberland women',
-          price: 23000,
-          quantity: 15,
-          username: 'habib',
-          
-        })
-        .set('x-access-token', attendantsToken)
-        .end((err, res) => {
-          should.equal(err, null);
-          expect(res.body.message).to.equal('Only A User can create a  sales record');
-          done();
-        });
-    });
-
-    
-  it(' should return no sales created', (done) => {
-      chai.request(server)
-        .post('/api/v1/sales')
-        .send({
-
-          "salesOrders": [
-	
-            {
-              "product_id" :"d88dddca-dba9-4ff4-8eaf-506a6afe7708",
-              "quantity":2
-              
-            },
-            
-            {
-              "product_id" :"d88dddca-dba9-4ff4-8eaf-506a6afe7708",
-              "quantity" :4
-            }
-            ]
-           
-          
-        })
-        .set('x-access-token', attendantsToken)
-        .end((err, res) => {
-          should.equal(err, null);
-          res.should.have.status(401);
-          // expect(res.body.message).to.equal('sales Created successfully');
           done();
         });
     });
@@ -383,8 +313,8 @@ describe('Products', () => {
             password: 'hba',
           })
           .end((err, res) => {
-            res.should.have.status(400);
-            expect(res.body.message).to.equal('All fields are required');
+            res.should.have.status(401);
+            expect(res.body.message).to.equal('Available to Only the Admin');
 
             done();
           });
@@ -449,7 +379,7 @@ describe('Products', () => {
         .post('/api/v1/users')
         .send(newUser)
         .end((err, res) => {
-        res.should.have.status(400); 
+        res.should.have.status(401); 
 
           done();
         });
@@ -470,7 +400,7 @@ describe('Products', () => {
         .send(newUser)
         .end((err, res) => {
           
-          expect(res.body.message).to.equal('User with that EMAIL already exist');
+          expect(res.body.message).to.equal('Available to Only the Admin');
           done();
           
         });
@@ -488,7 +418,7 @@ describe('Products', () => {
         .send(newUser)
         .end((err, res) => {
           
-          expect(res.body.message).to.equal('User with that EMAIL already exist');
+          expect(res.body.message).to.equal('Available to Only the Admin');
           done();
           
         });

@@ -15,30 +15,30 @@ pool.on('connect', () => {
 
 
 const dropproductTable = () => {
-    const queryText = 'DROP TABLE IF EXISTS products returning *';
+    const queryText = 'DROP TABLE IF EXISTS products ';
     pool.query(queryText)
       .then((res) => {
         console.log(res);
-        pool.end();
+        // pool.end();
       })
       .catch((err) => {
         console.log(err);
-        pool.end();
+        // pool.end();
       });
   }
   /**
    * Drop User Table
    */
   const dropUserTable = () => {
-    const queryText = 'DROP TABLE IF EXISTS users returning *';
+    const queryText = 'DROP TABLE IF EXISTS users';
     pool.query(queryText)
       .then((res) => {
         console.log(res);
-        pool.end();
+        // pool.end();
       })
       .catch((err) => {
         console.log(err);
-        pool.end();
+        // pool.end();
       });
   }
 
@@ -46,15 +46,15 @@ const dropproductTable = () => {
    * Drop Sales Table
    */
   const dropSalesTable = () => {
-    const queryText = 'DROP TABLE IF EXISTS sales returning *';
+    const queryText = 'DROP TABLE IF EXISTS sales';
     pool.query(queryText)
       .then((res) => {
         console.log(res);
-        pool.end();
+        // pool.end();
       })
       .catch((err) => {
         console.log(err);
-        pool.end();
+        // pool.end();
       });
   }
 
@@ -68,8 +68,11 @@ const dropAllTables = () => {
     dropSalesTable();
   }
 
-  module.exports = {
-    dropUserTable,
-    dropproductTable,
-    dropSalesTable
-  }
+  dropUserTable();
+  dropproductTable();
+  dropSalesTable();
+  // module.exports = {
+  //   dropUserTable,
+  //   dropproductTable,
+  //   dropSalesTable
+  // }
