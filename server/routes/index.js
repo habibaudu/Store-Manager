@@ -16,12 +16,12 @@ const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
-router.post('/users',User.create);
-router.post('/users/login',User.login);
+router.post('/users',validation.signup,User.create);
+router.post('/users/login',validation.signin,User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
-router.post('/products',auth.verifyToken,Product.create);
-router.put('/products/:productId',auth.verifyToken,Product.update);
+router.post('/products',validation.updateproduct,auth.verifyToken,Product.create);
+router.put('/products/:productId',validation.updateproduct,auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);
 router.get('/products/:productId',auth.verifyToken,Product.getOne);
@@ -29,7 +29,7 @@ router.post('/sales',auth.verifyToken,Sales.create);
 router.get('/sales/:salesId',auth.verifyToken,Sales.getOne);
 router.get('/sales',auth.verifyToken,Sales.getAll);
 router.get('/sale',auth.verifyToken,Sales.getMy);
-router.put('/users/:userId',auth.verifyToken,User.grantAdminRights);
+router.put('/users/:userId',validation.giverights,auth.verifyToken,User.grantAdminRights);
 
 
 
