@@ -3,6 +3,7 @@ language: node_js
 node_js:
   - stable
 script:
+  - npm run undo && npm run migrate && npm run seed
   - npm test
   - npm install
   - nyc --reporter=lcov npm run test
