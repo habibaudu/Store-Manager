@@ -27,7 +27,6 @@ describe('Products', () => {
           password: 'hba821',
         })
         .end((err, res) => {
-          console.log(res.body)
          adminToken = res.body.token;
           
         });
@@ -168,7 +167,7 @@ describe('Products', () => {
         .set('x-access-token', adminToken)
         .end((err, res) => {
           should.equal(err, null);
-          res.should.have.status(200);
+          res.should.have.status(400);
           done();
         });
     });
