@@ -127,9 +127,10 @@ pool.on('remove', () => {
 });
 
 module.exports = {
+  createUserTable,
   createProductTable,
   createsalesTable,
-  createUserTable
+
   createproductSalesTable,
 }
 

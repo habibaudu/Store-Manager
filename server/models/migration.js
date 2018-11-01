@@ -86,7 +86,7 @@ const createproductSalesTable = () => {
       console.log(err);
       pool.end();
     });
-};
+}
 
 
 /**

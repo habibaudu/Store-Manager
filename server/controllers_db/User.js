@@ -12,7 +12,7 @@ const User = {
    */
    async create(req, res) {
     try{
-    if(req.user.role === 'ADMIN'){
+    // if(req.user.role === 'ADMIN'){
     
     if (!req.body.email || !req.body.password || !req.body.username || !req.body.Role) {
       return res.status(400).send({'message': 'All fields are required'});
@@ -47,7 +47,7 @@ const User = {
       }
       return res.status(400).send(error);
     }
-} 
+// } 
 }catch(error){
 
     return res.status(401).send({ 'message': 'Available to Only the Admin' });

@@ -11,75 +11,85 @@ export default {
    */
   async create(req, res) {
     if(req.user.role === 'USER'){
-    
+    const querysales = `INSERT INTO productSales(id,products_Id,sales_Id,created_date)VALUES($1,$2,$3,$4)`;
     const text = `INSERT INTO
-      sales(id,attendants_id, salesOrders,totalPrice ,created_date, modified_date)
-      VALUES($1, $2, $3, $4, $5, $6)
+      sales(id,attendants_id,product_id,quantity,totalPrice ,created_date, modified_date)
+      VALUES($1,$2,$3,$4,$5,$6,$7)
       returning *`;
 
     let total = 0;
-    for(let i = 0; i < req.body.salesOrders.length; i++) {
-      const { product_id , quantity } = req.body.salesOrders[i];
-      const findOneQuery = 'SELECT * FROM products WHERE id=$1';
+    
+    const product_Id  = req.body.product_id;
+
+      // const findOneQuery = 'SELECT * FROM products WHERE id=$1';
         
-      try {
-        const { rows } = await db.query(findOneQuery, [product_id]);
+      //  try {
+      //    const { rows } = await db.query(findOneQuery, [product_Id]);
 
-        if(!rows[0]) {
-          return res.status(404).send({ message : 'product not found'});
-        }
+      //    if(!rows[0]) {
+      //      return res.status(404).send({ message : 'product not found'});
+      //    }
                 
-        if(rows[0].quantity < quantity) {
-          return res.status(400).send({ message: 'quantity exceeds available product inStock'});
-        }
+      //    if(rows[0].quantity < quantity) {
+      //      return res.status(400).send({ message: 'quantity exceeds available product inStock'});
+      //    }
 
-        total += rows[0].price * quantity;
+      //    total += rows[0].price * quantity;
 
-      }catch(error) {
-        return res.status(400).send(error);
-      }
+      //  }catch(error) {
+      //    return res.status(400).send(error);
+      //  }
 
             
-    }
+    
 
-    for (let i = 0; i < req.body.salesOrders.length; i++) {
-        const { product_id , quantity } = req.body.salesOrders[i];
-        const findOneQuery = 'SELECT * FROM products WHERE id=$1';
+
+
+    // const findOneQuery1 = 'SELECT * FROM products WHERE id=$1';
           
-        try {
-          const { rows } = await db.query(findOneQuery, [product_id]);
+    //      try {
+    //        const { rows } = await db.query(findOneQuery1, [product_Id]);
 
-          const newQuantity = rows[0].quantity - quantity;
-          const updateOneQuery =`UPDATE products SET quantity=$1
-            WHERE id=$2 `;
+    //        const newQuantity = rows[0].quantity - quantity;
+    //        const updateOneQuery =`UPDATE products SET quantity=$1
+    //          WHERE id=$2 `;
             
-          const response = await db.query(updateOneQuery,[newQuantity,product_id] );
+    //        const response = await db.query(updateOneQuery,[newQuantity,product_id] );
   
          
-        }catch(error) {
-          return res.status(400).send(error);
-        }
+    //      }catch(error) {
+    //        return res.status(400).send(error);
+    //      }
+
   
-              
-      }
-    
+    const Id  = uuidv4();
+
     const values = [
-      uuidv4(),
+      Id,
       req.user.id,
-      JSON.stringify(req.body.salesOrders),
+      product_Id,
+      req.body.quantity,
       total,
       moment(new Date()),
       moment(new Date())
     ];
 
+    const values2 = [
+      uuidv4(),
+      product_Id,
+      Id,
+      moment(new Date())
+    ];
+
     try {
       const { rows } = await db.query(text, values);
+       console.log('I am here')
+      const { row2 } = await db.query(querysales, values2);
       return res.status(201).send(rows[0]);
     } catch(error) {
         console.log(error)
       return res.status(400).send(error);
     }
-
     
     }else{
 
@@ -121,7 +131,7 @@ export default {
   async getAll(req, res) {
     if(req.user.role === 'ADMIN'){
     
-        const findAllQuery = 'SELECT * FROM sales';
+        const findAllQuery = 'SELECT * from products as p INNER JOIN productSales as ps ON p.id = ps.products_id';
     try {
       const { rows, rowCount } = await db.query(findAllQuery);
       return res.status(200).send({ rows, rowCount });

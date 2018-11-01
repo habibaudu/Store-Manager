@@ -1,1 +1,1 @@
-web: npm start
+web: npm migrate &&  npm run undo && npm run seed && npm run start
