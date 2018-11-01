@@ -1,7 +1,11 @@
+
 dist: trusty
 language: node_js
 node_js:
   - stable
+
+env:
+ - DATABASE_URL = postgres://Habib:123456@127.0.0.1:5432/storemanager
 script:
   - npm run undo && npm run migrate && npm run seed
   - npm test
