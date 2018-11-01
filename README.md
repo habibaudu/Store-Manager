@@ -28,7 +28,9 @@ On your git bash run the following command
    - Download the Project
    - Run  npm install 
 
-
+## Environmental Variables (.env)
+- SECRET
+- DATABASE_URL
 
 ## expected Endpoints
   - POST /api/v1/users/login
@@ -72,4 +74,4 @@ On your git bash run the following command
         
 
  
-## license "ISC",
+## license This is licensed for your use, modification and distribution under the MIT license,
