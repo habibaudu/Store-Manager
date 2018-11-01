@@ -26,6 +26,20 @@ const dropproductTable = () => {
         // pool.end();
       });
   }
+
+  const dropproductSalesTable = () => {
+    const queryText = 'DROP TABLE IF EXISTS productSales ';
+    pool.query(queryText)
+      .then((res) => {
+        console.log(res);
+        // pool.end();
+      })
+      .catch((err) => {
+        console.log(err);
+        // pool.end();
+      });
+  }
+  
   /**
    * Drop User Table
    */
@@ -71,8 +85,5 @@ const dropAllTables = () => {
   dropUserTable();
   dropproductTable();
   dropSalesTable();
-  // module.exports = {
-  //   dropUserTable,
-  //   dropproductTable,
-  //   dropSalesTable
-  // }
+  dropproductSalesTable();
+ 
