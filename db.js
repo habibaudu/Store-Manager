@@ -17,11 +17,35 @@ const createsalesTable = () => {
       sales(
         id UUID PRIMARY KEY,
         attendants_Id UUID NOT NULL,
-        salesOrders json NOT NULL,
+        product_id  UUID NOT NULL,
         totalPrice  INT,
+        quantity INT NOT NULL,
         created_date TIMESTAMP,
         modified_date TIMESTAMP,
         FOREIGN KEY (attendants_Id) REFERENCES users (id) ON DELETE CASCADE
+      )`;
+
+  pool.query(queryText)
+    .then((res) => {
+      console.log(res);
+      pool.end();
+    })
+    .catch((err) => {
+      console.log(err);
+      pool.end();
+    });
+};
+
+const createproductSalesTable = () => {
+  const queryText =
+    `CREATE TABLE IF NOT EXISTS
+      productSales(
+        id UUID PRIMARY KEY,
+        products_Id UUID NOT NULL,
+        sales_Id UUID NOT NULL,
+        created_date TIMESTAMP,
+        FOREIGN KEY (products_Id) REFERENCES products (id) ON DELETE CASCADE,
+        FOREIGN KEY (sales_Id) REFERENCES sales (id) ON DELETE CASCADE
       )`;
 
   pool.query(queryText)
@@ -106,6 +130,7 @@ module.exports = {
   createProductTable,
   createsalesTable,
   createUserTable
+  createproductSalesTable,
 }
 
 require('make-runnable');
