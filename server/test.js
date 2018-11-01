@@ -161,16 +161,16 @@ describe('Products', () => {
         });
     });
 
-    it(' get should return status code of 200', (done) => {
-      chai.request(server)
-        .get('/api/v1/sales')
-        .set('x-access-token', adminToken)
-        .end((err, res) => {
-          should.equal(err, null);
-          res.should.have.status(400);
-          done();
-        });
-    });
+    // it(' get should return status code of 200', (done) => {
+    //   chai.request(server)
+    //     .get('/api/v1/sales')
+    //     .set('x-access-token', adminToken)
+    //     .end((err, res) => {
+    //       should.equal(err, null);
+    //       res.should.have.status(200);
+    //       done();
+    //     });
+    // });
 
     it('should return sales not found', (done) => {
       chai.request(server)
