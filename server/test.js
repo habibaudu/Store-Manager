@@ -19,20 +19,7 @@ describe('Products', () => {
   let adminToken = null;
   let attendantsToken = null;
   before((done)=> {
-    // chai.request(server)
-    // .post('/api/v1/users')
-    // .send({
-    //   email: 'auduhabib@gmail.com',
-    //   password: 'hba821',
-    //   username: 'Habib',
-    //   Role:'ADMIN'
-    // })
-    // .end((err, res) => {
-    //   console.log(res.body,'ghhjklaaaaaaa');
-    // });
-
-    
-           
+      
       chai.request(server)
         .post('/api/v1/users/login')
         .send({
@@ -102,25 +89,6 @@ describe('Products', () => {
       });
   });
 
-  // it('it return No Token', (done) => {
-  //   chai.request(server)
-  //     .post('/api/v1/products')
-  //     .send({
-
-  //       id: 5,
-  //       productName: 'Timberland women',
-  //       priceEach: 23000,
-  //       inStock: 15,
-  //       mininumAllowedinStock: 10,
-  //       Date: '23/10/2018'
-  //     })
-  //     .end((err, res) => {
-  //       res.should.have.status(403);
-  //       res.body.should.be.a('object');
-  //       expect(res.body.message).to.equal('No Token');
-  //       done();
-  //     });
-  // });
 
   it('it should return a status code of 201', (done) => {
     request(server)
@@ -200,7 +168,7 @@ describe('Products', () => {
         .set('x-access-token', adminToken)
         .end((err, res) => {
           should.equal(err, null);
-          res.should.have.status(400);
+          res.should.have.status(200);
           done();
         });
     });
