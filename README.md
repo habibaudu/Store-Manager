@@ -74,4 +74,5 @@ On your git bash run the following command
         
 
  
-## license This is licensed for your use, modification and distribution under the MIT license,
+## license 
+This is licensed for your use, modification and distribution under the MIT license,
