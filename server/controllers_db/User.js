@@ -103,7 +103,7 @@ const User = {
         try {
           const { rows } = await db.query(findOneQuery, [req.params.userId]);
           if(!rows[0]) {
-            return res.status(404).send({'message': 'user not found'});
+            return res.status(404).send({message: 'user not found'});
           }
           const values = [
 
@@ -120,7 +120,7 @@ const User = {
         }
   }else{
        
-    return res.status(401).send({ 'message': 'Only An Admin can give privilages' });
+    return res.status(401).send({message: 'Only An Admin can give privilages' });
   }
 },
 
@@ -159,7 +159,7 @@ const User = {
     if(!rows[0]) {
       return res.status(404).send({'message': 'user not found'});
     }
-    return res.status(204).send({ 'message': 'deleted' });
+    return res.status(200).send({ message: 'deleted' });
   } catch(error) {
     return res.status(400).send(error);
   }

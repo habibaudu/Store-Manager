@@ -395,4 +395,78 @@ describe('Products', () => {
       });
     });
   });
+
+  describe('default route /', () => {
+    it('should return Welcome to the Store Manager API!', (done) => {
+      request(server)
+        .get('/api')
+        .end((err, res) => {
+          expect(res.status).to.equal(200);
+          expect(res.body.message).to.equal('Welcome to the Store Manager API!');
+          done();
+        });
+    });
+
+    it('Available to Only the Admin', (done) => {
+      request(server)
+        .post('/api/v1/users')
+        .set('x-access-token','gshdhhdjj')
+        .end((err, res) => {
+          expect(res.status).to.equal(401);
+          expect(res.body.message).to.contain('Available to Only the Admin');
+          done();
+        });
+    });
+
+    it('Only An Admin can give privilages', (done) => {
+      request(server)
+        .put('/api/v1/users/69')
+        .set('x-access-token','gshdhhdjj')
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          done();
+        });
+    });
+
+    it('should return 400', (done) => {
+      request(server)
+        .put('/api/v1/users/affeacdd-4e67-4af1-8399-d9b1626bd123')
+        .set('x-access-token',adminToken)
+        .end((err, res) => {
+          expect(res.status).to.equal(404);
+         
+          done();
+        });
+    });
+
+    it('should return 400', (done) => {
+      request(server)
+        .delete('/api/v1/users/1')
+        .set('x-access-token',adminToken)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          done();
+        });
+    });
+
+    it('should return 201', (done) => {
+      chai.request(server)
+          .post('/api/v1/users')
+          .send({
+            email: 'aud456677@gmail.com',
+            password: 'hba821',
+            username:'howareu',
+            Role:'ADMIN',
+  
+          })
+          .set('x-access-token',adminToken)
+          .end((err, res) => {
+          
+          expect(res.status).to.equal(401);
+          done();
+          });
+  
+        });
+  });
+  
 });
