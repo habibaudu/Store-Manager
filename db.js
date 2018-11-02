@@ -124,11 +124,18 @@ pool.on('remove', () => {
   process.exit(0);
 });
 
+const alltables =  ()=>{
+  createUserTable();
+  createProductTable();
+  createsalesTable();
+
+  createproductSalesTable();
+}
 module.exports = {
   createUserTable,
   createProductTable,
   createsalesTable,
-
+  alltables,
   createproductSalesTable
 }
 
