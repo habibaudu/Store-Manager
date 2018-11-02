@@ -17,9 +17,7 @@ const createsalesTable = () => {
       sales(
         id UUID PRIMARY KEY,
         attendants_Id UUID NOT NULL,
-        product_id  UUID NOT NULL,
         totalPrice  INT,
-        quantity INT NOT NULL,
         created_date TIMESTAMP,
         modified_date TIMESTAMP,
         FOREIGN KEY (attendants_Id) REFERENCES users (id) ON DELETE CASCADE
@@ -131,7 +129,7 @@ module.exports = {
   createProductTable,
   createsalesTable,
 
-  createproductSalesTable,
+  createproductSalesTable
 }
 
 require('make-runnable');

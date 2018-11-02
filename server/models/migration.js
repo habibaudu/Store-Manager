@@ -17,9 +17,7 @@ const createsalesTable = () => {
       sales(
         id UUID PRIMARY KEY,
         attendants_Id UUID NOT NULL,
-        product_id  UUID NOT NULL,
         totalPrice  INT,
-        quantity INT NOT NULL,
         created_date TIMESTAMP,
         modified_date TIMESTAMP,
         FOREIGN KEY (attendants_Id) REFERENCES users (id) ON DELETE CASCADE
@@ -34,7 +32,7 @@ const createsalesTable = () => {
       console.log(err);
       // pool.end();
     });
-};
+}
 
 
 /**
@@ -118,11 +116,11 @@ const createProductTable = () => {
       // pool.end();
     });
 }
-
+createproductSalesTable();
 createProductTable();
 createsalesTable();
 createUserTable();
-createproductSalesTable();
+
 
 pool.on('remove', () => {
   console.log('client removed');
