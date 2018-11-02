@@ -42,6 +42,7 @@ On your git bash run the following command
   - DELETE: /api/v1/products/:productId
   - PUT :/api/v1/products/:productId
   - POST :/api/v1/sales
+  - get :/api/v1/sale
 
 ## Fire up Postman
   Enter the following routes

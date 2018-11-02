@@ -16,8 +16,8 @@ const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
-router.post('/users',User.create);
-router.post('/users/login',User.login);
+router.post('/auth/signup',User.create);
+router.post('/auth/login',User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
 router.post('/products',auth.verifyToken,Product.create);
