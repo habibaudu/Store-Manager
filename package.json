@@ -4,7 +4,7 @@
   "description": "Store Manager is a web application that helps store owners manage sales and product inventory records",
   "main": "app.js",
   "scripts": {
-    "start": "npm run undo && npm run migrate && npm run seed && npm run migrate2 && npm run migrate3 nodemon --watch server --exec babel-node  -- server/app.js",
+    "start": "npm run undo && npm run migrate && npm run seed && npm run migrate2 && npm run migrate3 && nodemon --watch server --exec babel-node  -- server/app.js",
     "test": "nyc --reporter=html --reporter=text mocha --exit --compilers js:babel-core/register server/test.js",
     "cover": "istanbul cover _mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
@@ -12,7 +12,7 @@
     "undo": "node server/models/dropTables.js",
     "migrate": "node server/models/migration.js",
     "migrate2": "node db.js  createproductSalesTable",
-    "migrate3": "node db.js  createsalesTable"
+    "migrate3": "node db.js  createproductSalesTable"
 
   },
   "repository": {
