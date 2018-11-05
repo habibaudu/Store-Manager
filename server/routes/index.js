@@ -16,12 +16,12 @@ const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
-router.post('/auth/signup',validation.signup,User.create);
-router.post('/auth/login',validation.signin,User.login);
+router.post('/auth/signup',auth.verifyToken,User.create);
+router.post('/auth/login',User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
-router.post('/products',validation.updateproduct,auth.verifyToken,Product.create);
-router.put('/products/:productId',validation.updateproduct,auth.verifyToken,Product.update);
+router.post('/products',auth.verifyToken,Product.create);
+router.put('/products/:productId',auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);
 router.get('/products/:productId',auth.verifyToken,Product.getOne);

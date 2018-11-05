@@ -67,7 +67,8 @@ export default {
         req.params.productId
       ];
       const response = await db.query(updateOneQuery, values);
-      return res.status(200).send(response.rows[0]);
+      let message = 'product updated sucessfully';
+      return res.status(200).send({message});
     } catch(err) {
       return res.status(400).send(err);
     }

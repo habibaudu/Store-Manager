@@ -12,7 +12,7 @@ const User = {
    */
    async create(req, res) {
     try{
-    // if(req.user.role === 'ADMIN'){
+    if(req.user.role === 'ADMIN'){
     
     if (!req.body.email || !req.body.password || !req.body.username || !req.body.Role) {
       return res.status(400).send({'message': 'All fields are required'});
@@ -38,7 +38,6 @@ const User = {
 
     try {
       const { rows } = await db.query(createQuery, values);
-      // const token = Helper.generateToken(rows[0].id,rows[0].Role);
       let message = 'Registration was successful';
       return res.status(201).send({message});
     } catch(error) {
@@ -47,7 +46,10 @@ const User = {
       }
       return res.status(400).send(error);
     }
-// } 
+ }else{ 
+       
+       return res.status(401).send({ 'message': 'Available to Only the Admin' }); 
+ }
 }catch(error){
 
     return res.status(401).send({ 'message': 'Available to Only the Admin' });
@@ -136,7 +138,9 @@ const User = {
     const findAllQuery = 'SELECT * FROM users';
     try {
       const { rows, rowCount } = await db.query(findAllQuery);
-      return res.status(200).send({ rows, rowCount });
+      let message ='All Users';
+      return res.status(200).send({ message,
+        rows, rowCount });
     } catch(error) {
       return res.status(400).send(error);
     }
