@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "npm run undo && npm run migrate && npm run seed && npm run migrate2 && npm run migrate3 && nodemon --watch server --exec babel-node  -- server/app.js",
-    "test": "nyc --reporter=html --reporter=text mocha --exit --compilers js:babel-core/register server/tests/**/*.test.js",
+    "test": "nyc --reporter=html --reporter=text mocha --exit --compilers js:babel-core/register server/combine.test.js",
     "cover": "istanbul cover _mocha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "seed": " babel-node server/models/seed.js",
