@@ -10,7 +10,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "seed": " babel-node server/models/seed.js",
     "undo": "node server/models/dropTables.js",
-    "migrate": "node server/models/migration.js",
+    "migrate": "babel-node server/models/migration.js",
     "migrate2": "node db.js  createproductSalesTable",
     "migrate3": "node db.js  createproductSalesTable"
 
