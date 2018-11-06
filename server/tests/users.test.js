@@ -2,7 +2,7 @@ import chai ,{ expect } from 'chai';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import dotenv from 'dotenv';
-import server from '../app';
+import server from './combine.test';
 
 dotenv.config();
 const secret = process.env.SECRET;

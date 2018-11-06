@@ -47,6 +47,11 @@ describe('Products', () => {
 
       });
 
+      // after((done)=> {
+      //   server.close();
+      //   done();
+      // });
+
       
   it('it should return an object', (done) => {
     chai.request(server)
@@ -522,3 +527,5 @@ describe('Products', () => {
 });
 
 });
+
+export default server;
