@@ -36,8 +36,7 @@ CREATE TABLE sales(
   attendants_Id INT NOT NULL,
   totalPrice  INT,
   created_date TIMESTAMP,
-  modified_date TIMESTAMP,
-  FOREIGN KEY (attendants_Id) REFERENCES users (id) ON DELETE CASCADE
+  modified_date TIMESTAMP
 );
 
 CREATE TABLE productSales(

@@ -1,5 +1,5 @@
 import moment from 'moment';
-import uuidv4 from 'uuid/v4';
+
 import db from '../db';
 
 export default {
@@ -12,11 +12,10 @@ export default {
     async create(req, res) {
       if(req.user.role ==='ADMIN'){
       const text = `INSERT INTO
-        products(id,productname, minimum,description,images,price, quantity, created_date, modified_date)
-        VALUES($1, $2, $3, $4, $5, $6 , $7, $8, $9)
+        products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+        VALUES($1, $2, $3, $4, $5 , $6, $7, $8)
         returning *`;
       const values = [
-        uuidv4(),
         req.body.productname,
         req.body.minimum,
         req.body.description,

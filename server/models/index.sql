@@ -1,1 +1,0 @@
-\ir ./user.sql

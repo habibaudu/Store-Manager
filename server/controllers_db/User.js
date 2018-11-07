@@ -1,5 +1,4 @@
 import moment from 'moment';
-import uuidv4 from 'uuid/v4';
 import db from '../db';
 import Helper from './utilities/Helper';
 
@@ -23,11 +22,10 @@ const User = {
     const hashPassword = Helper.hashPassword(req.body.password);
     
     const createQuery = `INSERT INTO
-      users(id, username,email,Role, password,created_date, modified_date)
-      VALUES($1, $2, $3, $4, $5,$6,$7)
+      users(username,email,Role, password,created_date, modified_date)
+      VALUES($1, $2, $3, $4,$5,$6)
       returning *`;
     const values = [
-      uuidv4(),
       req.body.username,
       req.body.email,
       req.body.Role,

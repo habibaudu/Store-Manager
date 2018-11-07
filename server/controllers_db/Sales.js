@@ -1,5 +1,4 @@
 import moment from 'moment';
-import uuidv4 from 'uuid/v4';
 import db from '../db';
 
 export default {
@@ -11,16 +10,14 @@ export default {
    */
   async create(req, res) {
     if(req.user.role === 'USER'){
-       const querysales = `INSERT INTO productSales(id,products_Id,sales_Id,created_date)VALUES($1,$2,$3,$4)`;
-    // const text = `INSERT INTO
-    //   sales(id,attendants_id,product_id,quantity,totalPrice ,created_date, modified_date)
-    //   VALUES($1,$2,$3,$4,$5,$6,$7)
-    //   returning *`;
-
+    const querysales = `INSERT INTO productSales(products_Id,sales_Id,created_date)VALUES($1,$2,$3)`;
+  
+    const find_Id = `SELECT id FROM sales WHERE attendants_id = $1 AND created_date = $2`;
+  
 
     const text = `INSERT INTO
-      sales(id,attendants_id,totalPrice ,created_date, modified_date)
-      VALUES($1, $2, $3, $4, $5)
+      sales(attendants_id,totalPrice ,created_date, modified_date)
+      VALUES($1, $2, $3, $4)
       returning *`;
 
     let total = 0;
@@ -71,31 +68,20 @@ export default {
               
       }
 
-  
-    const Id  = uuidv4();
-
+   const dateNOW = moment(new Date());
     const values = [
-      Id,
       req.user.id,
       total,
-      moment(new Date()),
+      dateNOW,
       moment(new Date())
     ];
 
-
-  
-    // const values2 = [
-    //   uuidv4(),
-    //   product_Id,
-    //   Id,
-    //   moment(new Date())
-    // ];
-
     try {
       const { rows } = await db.query(text, values);
-      
+      const { row } = await db.query(find_Id,[req.user.id,dateNOW]);
+      const Id = row[0].id;
       for (let i = 0; i < data.length; i++) {
-        const { rows } = await db.query(querysales, [uuidv4(),data[i],Id,moment(new Date())]);
+        const { rows } = await db.query(querysales, [data[i],Id,moment(new Date())]);
         
       }
       return res.status(201).send(rows[0]);
