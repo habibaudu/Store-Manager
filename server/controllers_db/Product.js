@@ -89,9 +89,9 @@ export default {
     try {
       const { rows } = await db.query(deleteQuery, [req.params.productId]);
       if(!rows[0]) {
-        return res.status(404).send({'message': 'product not found'});
+        return res.status(404).send({message: 'product not found'});
       }
-      return res.status(200).send({ 'message': ' product deleted' });
+      return res.status(200).send({ message: 'product deleted' });
     } catch(error) {
       return res.status(400).send(error);
     }

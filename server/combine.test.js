@@ -1,4 +1,5 @@
 import { expect } from 'chai';
+import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import dotenv from 'dotenv';
@@ -53,13 +54,35 @@ describe('Products', () => {
       });
   });
 
+  it(' delete should return status code of 200', (done) => {
+    request(server)
+      .delete('/api/v1/products/2')
+      .set('x-access-token', adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(200);
+        expect(res.body.message).to.equal('product deleted');
+        done();
+      });
+  });
+
+  it(' delete should return product not found', (done) => {
+    request(server)
+      .delete('/api/v1/products/404')
+      .set('x-access-token', adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.message).to.equal('product not found');
+        done();
+      });
+  });
+
   it(' get should return status code of 400', (done) => {
     request(server)
       .get('/api/v1/products/1')
       .set('x-access-token', adminToken)
       .end((err, res) => {
        
-        expect(res.status).to.equal(400);
+        expect(res.status).to.equal(200);
         done();
       });
   });
@@ -151,11 +174,24 @@ describe('Products', () => {
         .set('x-access-token', adminToken)
         .end((err, res) => {
          
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(404);
          
           done();
         });
     });
+
+    it('should return sales not found', (done) => {
+      request(server)
+        .get('/api/v1/sales/1')
+        .set('x-access-token', adminToken)
+        .end((err, res) => {
+         
+          expect(res.status).to.equal(200);
+         
+          done();
+        });
+    });
+
 
     it('should return sales not found', (done) => {
       request(server)
@@ -169,16 +205,18 @@ describe('Products', () => {
         });
     });
 
-    it('should return status code of 200', (done) => {
+    it('should return sales not found', (done) => {
       request(server)
-        .get('/api/v1/sales/1')
-        .set('x-access-token', adminToken)
+        .get('/api/v1/sale')
+        .set('x-access-token', attendantsToken)
         .end((err, res) => {
+         
+          expect(res.status).to.equal(200);
           
-          expect(res.status).to.equal(400);
           done();
         });
     });
+
 
     it(' should return no sales created', (done) => {
       request(server)
@@ -201,6 +239,25 @@ describe('Products', () => {
         });
     });
 
+    // it(' should return status code of 201', (done) => {
+    //   request(server)
+    //     .post('/api/v1/sales')
+    //     .send({
+    //       attendants_id:1,
+    //       totalPrice: 23000,
+    //       created_date: moment(new Date()),
+    //       modified_date: moment(new Date())  
+          
+    //     })
+    //     .set('x-access-token', attendantsToken)
+    //     .end((err, res) => {
+         
+    //       expect(res.status).to.equal(201);
+    //       done();
+    //     });
+    // });
+
+
 
     it('get a sales  should return No Token', (done) => {
     request(server)
@@ -222,6 +279,16 @@ describe('Products', () => {
           done();
         });
     });
+
+    it('sales status code should be 400', (done) => {
+      request(server)
+        .get('/api/v1/sales')
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+                   
+          done();
+        });
+    });
     describe('User', () => {
       it('valid credentials  should return status code of 200', (done) => {
         request(server)
@@ -237,6 +304,41 @@ describe('Products', () => {
             done();
           });
       });
+
+      it(' update users should return status code of 200', (done) => {
+        request(server)
+          .put('/api/v1/users/2')
+          .send({
+            Role:'ADMIN',
+            modified_date: moment(new Date()),
+            userId:2
+              
+          })
+          .set('x-access-token', adminToken)
+          .end((err, res) => {
+           
+            expect(res.status).to.equal(200);
+            done();
+          });
+      });
+
+      it(' update users should return status code of 404', (done) => {
+        request(server)
+          .put('/api/v1/users/30')
+          .send({
+            Role:'ADMIN',
+            modified_date: moment(new Date())
+            
+              
+          })
+          .set('x-access-token', adminToken)
+          .end((err, res) => {
+           
+            expect(res.status).to.equal(404);
+            done();
+          });
+      });
+  
 
 
 
@@ -298,6 +400,44 @@ describe('Products', () => {
         .end((err, res) => {
           
           expect(res.body.message).to.equal('Token is not provided');
+          done();
+          
+        });
+
+      });
+
+    //   it('should return registration successful', (done) => {
+    //     const newUser12 = {
+    //     username: 'habib',
+    //     email: 'audu1990@gmail.com',
+    //     password: 'hba821',
+    //     Role : 'USER'
+    //   };
+    // request(server)
+    //     .post('/api/v1/auth/signup')
+    //     .send(newUser12)
+    //     .set('x-access-token',adminToken)
+    //     .end((err, res) => {
+    //       expect(res.status).to.equal(201);
+    //       expect(res.message).to.equal('Registration was successful');
+    //       done();
+          
+    //     });
+
+    //   });
+
+      it('should return updted sucessful', (done) => {
+        const newUser12 = {
+        Role2 : 'ADMIN'
+      
+      };
+    request(server)
+        .put('/api/v1/users/2')
+        .send(newUser12)
+        .set('x-access-token',adminToken)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+         
           done();
           
         });
@@ -470,7 +610,7 @@ describe('Products', () => {
 
     it('should return 400', (done) => {
       request(server)
-        .put('/api/v1/users/affeacdd-4e67-4af1-8399-d9b1626bd123')
+        .put('/api/v1/users/3')
         .set('x-access-token',adminToken)
         .end((err, res) => {
           expect(res.status).to.equal(400);
@@ -479,16 +619,16 @@ describe('Products', () => {
         });
     });
 
-    it('should return 400', (done) => {
+    it('delete should return 200', (done) => {
       request(server)
-        .delete('/api/v1/users/1')
+        .delete('/api/v1/users/3')
         .set('x-access-token',adminToken)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(200);
+          expect(res.body.message).to.equal('User deleted');
           done();
         });
     });
-
 
     it('invalid credentials  should return status code of 400', (done) => {
     request(server)
@@ -556,12 +696,12 @@ describe('Products', () => {
         });
     });
 
-    it('events error', (done) => {
+    it('should return 404', (done) => {
       request(server)
         .delete('/api/v1/users/88')
         .set('x-access-token',adminToken)
         .end((err, res) => {
-          expect(res.status).to.equal(400);
+          expect(res.status).to.equal(404);
          
           done();
         });

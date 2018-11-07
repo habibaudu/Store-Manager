@@ -161,7 +161,7 @@ const User = {
     if(!rows[0]) {
       return res.status(404).send({'message': 'user not found'});
     }
-    return res.status(200).send({ message: 'deleted' });
+    return res.status(200).send({ message: 'User deleted' });
   } catch(error) {
     return res.status(400).send(error);
   }
