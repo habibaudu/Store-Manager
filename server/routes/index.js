@@ -13,7 +13,7 @@ const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
-router.post('/auth/signup',validation.signup,User.create);
+router.post('/auth/signup',validation.signup,auth.verifyToken,User.create);
 router.post('/auth/login',validation.login,User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
