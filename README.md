@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=ch-Test-161608110)](https://travis-ci.org/habibaudu/Store-Manager)   [![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=ch-Test-161608110)](https://coveralls.io/github/habibaudu/Store-Manager?branch=ch-Test-161608110)
+[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=ch-Test-161608110)](https://travis-ci.org/habibaudu/Store-Manager)   [![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=ch-remove_uuid-improveTest-161750118)](https://coveralls.io/github/habibaudu/Store-Manager?branch=ch-remove_uuid-improveTest-161750118)
 
 
 
