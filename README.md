@@ -17,6 +17,9 @@ Store Manager is a web application that helps store owners manage sales and prod
 
   - Frontend : https://habibaudu.github.io/Store-Manager/UI/index.html
   - backend : https://store-manager2.herokuapp.com/
+
+## API DOCUMENTATION
+   -  API documentation is hosted at https://documenter.getpostman.com/view/2553415/RzZ9GeT1
    
 
 ## How to Clone
