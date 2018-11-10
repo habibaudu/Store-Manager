@@ -2,26 +2,23 @@ import 'babel-polyfill';
 import express from 'express';
 import dotenv from 'dotenv';
 
-
-// import controllers from '../controllers/controllers';
 import controller_db from '../controllers_db/controllers_db';
-import authroutes from '../middleware/authroutes';
 import auth from '../middleware/auth';
 import validation from '../middleware/validation';
 
 dotenv.config();
-// const controller = process.env.TYPE === 'db' ? controller_db : controllers ;
+
 
 const { User, Product, Sales } = controller_db;
 
 const router = express.Router();
 
-router.post('/auth/signup',auth.verifyToken,User.create);
-router.post('/auth/login',User.login);
+router.post('/auth/signup',validation.signup,auth.verifyToken,User.create);
+router.post('/auth/login',validation.login,User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
-router.post('/products',auth.verifyToken,Product.create);
-router.put('/products/:productId',auth.verifyToken,Product.update);
+router.post('/products',validation.product,auth.verifyToken,Product.create);
+router.put('/products/:productId',validation.product,auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);
 router.get('/products/:productId',auth.verifyToken,Product.getOne);

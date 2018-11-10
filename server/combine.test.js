@@ -102,19 +102,278 @@ describe('Products', () => {
       .post('/api/v1/products')
       .send({ 
         productname: 'Timberland women',
-        price: 23000,
-        minimum: 10,
+        minimum:10,
         description:'durable boots',
+        images :'hghhhhhh',
+        price:23000,
         quantity:50,
-        images :'hghhhhhh'
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(201);
+        done();
+      });
+  });
+
+  it('it should return a status code of 400', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: 'Timberland women',
+        minimum:93,
+        description:'durable boots',
+        images :'hghhhhhh',
+        price:'thesddd',
+        quantity:23,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
       })
       .set('x-access-token', adminToken)
       .end((err, res) => {
-        expect(res.status).to.equal(201);
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('price must be a number');
+
 
         done();
       });
   });
+
+  it('it should return a status code of 400', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: 'Timberland women',
+        minimum:93,
+        description:'durable boots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:'rtuopp',
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('quantity must be a number');
+
+
+        done();
+      });
+  });
+
+  
+
+  it('it should return a status code of 400', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: 'Timberland women',
+        minimum:'thrhjj',
+        description:'durable boots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('minimum must be a number');
+
+
+        done();
+      });
+  });
+
+  it('productname must be alphabetic, the use of spaces and "-" are allowed', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: '£$%^&*()!',
+        minimum:234,
+        description:'durable boots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('productname must contain at least one alphabet');
+
+
+        done();
+      });
+  });
+
+  it('productname must be alphabetic, the use of spaces and "-" are allowed', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: 'boots cool',
+        minimum:234,
+        description:'&*()^%$£!',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('description must contain at least one alphabet');
+
+
+        done();
+      });
+  });
+
+  it('minimum field is required', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname:'boots cool',
+      
+        description:'wonderful Bots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('minimum field is required');
+
+
+        done();
+      });
+  });
+
+  
+  it('quantity field is required', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname:'boots cool',
+        minimum:23,
+        description:'sweet boots',
+        images :'hjjkkkk',
+        price:67,
+        
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('quantity field is required');
+
+
+        done();
+      });
+  });
+
+  it('price field is required', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname:'boots cool',
+        minimum:23,
+        description:'sweet boots',
+        images :'hjjkkkk',
+      
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('price field is required');
+
+
+        done();
+      });
+  });
+
+  it('image field is required', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname:'boots cool',
+        minimum:23,
+        description:'sweet boots',
+        
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('image field is required');
+
+
+        done();
+      });
+  });
+
+
+  it('productname field is required', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: '',
+        minimum:234,
+        description:'good boots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('productname field is required');
+
+
+        done();
+      });
+  });
+
+  it('productname must be alphabetic, the use of spaces and "-" are allowed', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname:'boots cool',
+        minimum:234,
+        description:'',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) =>{ 
+        expect(res.status).to.equal(400);
+        expect(res.body.message).to.equal('description field is required');
+
+
+        done();
+      });
+  });
+
 
   it('should return only an admin can delete a product', (done) => {
     request(server)
@@ -150,7 +409,7 @@ describe('Products', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         
-        expect(res.status).to.equal(401);
+        expect(res.status).to.equal(400);
         done();
       });
   });
@@ -246,7 +505,9 @@ describe('Products', () => {
     //       attendants_id:1,
     //       totalPrice: 23000,
     //       created_date: moment(new Date()),
-    //       modified_date: moment(new Date())  
+    //       modified_date: moment(new Date()),
+    //       data :[1,2],
+    //       Id:1
           
     //     })
     //     .set('x-access-token', attendantsToken)
@@ -290,7 +551,7 @@ describe('Products', () => {
         });
     });
     describe('User', () => {
-      it('valid credentials  should return status code of 200', (done) => {
+      it('should return Minimum password length is 6', (done) => {
         request(server)
           .post('/api/v1/auth/login')
           .send({
@@ -299,7 +560,7 @@ describe('Products', () => {
           })
           .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.message).to.equal('The credentials you provided is incorrect');
+            expect(res.body.message).to.equal('Minimum password length is 6');
 
             done();
           });
@@ -342,7 +603,7 @@ describe('Products', () => {
 
 
 
-      it('should retur some values are missing', (done) => {
+      it('should retur password field is required', (done) => {
         request(server)
           .post('/api/v1/auth/login')
           .send({
@@ -350,7 +611,7 @@ describe('Products', () => {
           })
           .end((err, res) => {
             expect(res.status).to.equal(400);
-            expect(res.body.message).to.equal('Some values are missing');
+            expect(res.body.message).to.equal('password field is required');
             done();
           });
       });
@@ -406,25 +667,6 @@ describe('Products', () => {
 
       });
 
-    //   it('should return registration successful', (done) => {
-    //     const newUser12 = {
-    //     username: 'habib',
-    //     email: 'audu1990@gmail.com',
-    //     password: 'hba821',
-    //     Role : 'USER'
-    //   };
-    // request(server)
-    //     .post('/api/v1/auth/signup')
-    //     .send(newUser12)
-    //     .set('x-access-token',adminToken)
-    //     .end((err, res) => {
-    //       expect(res.status).to.equal(201);
-    //       expect(res.message).to.equal('Registration was successful');
-    //       done();
-          
-    //     });
-
-    //   });
 
       it('should return updted sucessful', (done) => {
         const newUser12 = {
@@ -446,7 +688,7 @@ describe('Products', () => {
 
       it('User with that EMAIL already exist', (done) => {
         const newUser7 = {
-        username: 'moses2390',
+        username: 'mosesss',
         email: 'auduhabib1990@gmail.com',
         password: 'hba821',
         Role : 'ADMIN'
@@ -464,9 +706,48 @@ describe('Products', () => {
 
       });
 
-      it('Please enter a valid email address', (done) => {
+      it('username must be alphabetic, the use of spaces and - are allowed', (done) => {
         const newUser7 = {
         username: 'moses2390',
+        email: 'auduhabib1990atGMAILLdotcom',
+        password: 'hba821',
+        Role : 'ADMIN'
+      };
+    request(server)
+        .post('/api/v1/auth/signup')
+        .set('x-access-token',adminToken)
+        .send(newUser7)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.message).to.equal('username must be alphabetic, the use of spaces and - are allowed');
+          done();
+          
+        });
+
+      });
+      it('Your username must be at least 6 characters', (done) => {
+        const newUser7 = {
+        username: 'moses',
+        email: 'auduhabib1990atGMAILLdotcom',
+        password: 'hba821',
+        Role : 'ADMIN'
+      };
+    request(server)
+        .post('/api/v1/auth/signup')
+        .set('x-access-token',adminToken)
+        .send(newUser7)
+        .end((err, res) => {
+          expect(res.status).to.equal(400);
+          expect(res.body.message).to.equal('Your username must be at least 6 characters');
+          done();
+          
+        });
+
+      });
+
+      it('Please enter a valid email address', (done) => {
+        const newUser7 = {
+        username: 'mosesss',
         email: 'auduhabib1990atGMAILLdotcom',
         password: 'hba821',
         Role : 'ADMIN'
@@ -484,6 +765,7 @@ describe('Products', () => {
 
       });
 
+
       it('Available to Only the Admin', (done) => {
         const newUser7 = {
         username: 'moses2390',
@@ -496,14 +778,14 @@ describe('Products', () => {
         .set('x-access-token',attendantsToken)
         .send(newUser7)
         .end((err, res) => {
-          expect(res.status).to.equal(401)
-          expect(res.body.message).to.equal('Available to Only the Admin');
+          expect(res.status).to.equal(400)
+    
           done();
           
         });
 
       });
-      it('All fields are required', (done) => {
+      it('username field is required', (done) => {
         const newUser7 = {
         username: '',
         email: 'audhabib1990@gmail',
@@ -516,7 +798,7 @@ describe('Products', () => {
         .send(newUser7)
         .end((err, res) => {
           
-          expect(res.body.message).to.equal('All fields are required');
+          expect(res.body.message).to.equal('username field is required');
           done();
           
         });
@@ -572,6 +854,35 @@ describe('Products', () => {
          done(); 
         });
       });
+
+      it('password field is required', (done) => {
+        request(server)
+          .post('/api/v1/auth/login')
+          .send({
+            email: 'auduhabib1990@gmail.com',
+            
+          })
+          .end((err, res) => {
+            expect(res.body.message).to.equal('password field is required');
+           done(); 
+          });
+        });
+
+        it('password must contain one or more alphabet', (done) => {
+          request(server)
+            .post('/api/v1/auth/login')
+            .send({
+              email: 'auduhabib1990@gmail.com',
+              password:'$£"%^&'
+              
+            })
+            .end((err, res) => {
+              expect(res.body.message).to.equal('password must contain one or more alphabet');
+             done(); 
+            });
+          });
+  
+        
     });
   });
 
@@ -660,13 +971,13 @@ describe('Products', () => {
         });
     });
 
-    it('events error', (done) => {
+    it('Role fields required', (done) => {
       request(server)
         .put('/api/v1/users/affeacdd-4e67-4af1-8399-d9b1626bd123')
         .set('x-access-token',attendantsToken)
         .end((err, res) => {
           expect(res.status).to.equal(400);
-          expect(res.body.message).to.equal('events error');
+          expect(res.body.message).to.equal('Role fields required');
          
           done();
         });
