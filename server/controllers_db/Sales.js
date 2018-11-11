@@ -31,6 +31,7 @@ export default {
         const { rows } = await db.query(findOneQuery, [product_id]);
 
         if(!rows[0]) {
+          console.log('406')
           return res.status(404).send({ message : 'product not found'});
         }
                 
@@ -41,6 +42,7 @@ export default {
         total += rows[0].price * quantity;
 
       }catch(error) {
+        console.log(error)
         return res.status(400).send(error);
       }
 
@@ -62,6 +64,7 @@ export default {
   
          
         }catch(error) {
+          console.log(error)
           return res.status(400).send(error);
         }
   
@@ -77,14 +80,15 @@ export default {
     ];
 
     try {
-      const { rows } = await db.query(text, values);
-      const { row } = await db.query(find_Id,[req.user.id,dateNOW]);
-      const Id = row[0].id;
+      const { row } = await db.query(text, values);
+      console.log(req.user.id);
+      const { rows } = await db.query(find_Id,[req.user.id,dateNOW]);
+      const Id = rows[0].id;
       for (let i = 0; i < data.length; i++) {
         const { rows } = await db.query(querysales, [data[i],Id,moment(new Date())]);
         
       }
-      return res.status(201).send(rows[0]);
+      return res.status(201).send({ message: 'sales record record created' });
     } catch(error) {
       console.log(error)
       return res.status(400).send(error);
@@ -92,7 +96,7 @@ export default {
     
     }else{
 
-    return res.status(401).send({ 'message': 'Only A User can create a  sales record' });
+    return res.status(401).send({ message:'Only A User can create a  sales record' });
     }
   },
 
@@ -108,7 +112,7 @@ export default {
     try {
       const { rows } = await db.query(text, [req.params.salesId]);
       if (!rows[0]) {
-        return res.status(404).send({'message': 'sales not found'});
+        return res.status(404).send({message: 'sales not found'});
       }
       return res.status(200).send(rows);
     } catch(error) {
@@ -116,7 +120,7 @@ export default {
     }
   }else{ 
      
-    return res.status(401).send({ 'message': 'Only Admin can filter  sales record by attendant' });
+    return res.status(401).send({message: 'Only Admin can filter  sales record by attendant' });
 }
   
 },
@@ -140,7 +144,7 @@ export default {
     
     }else{ 
      
-        return res.status(401).send({ 'message': 'Only Admin can get all sales record' });
+        return res.status(401).send({ message: 'Only Admin can get all sales record' });
    }
   },
 
@@ -162,7 +166,7 @@ export default {
     }
   }else{ 
      
-    return res.status(401).send({ 'message': 'Only Sales atttendant can access this route' });
+    return res.status(401).send({ message: 'Only Sales atttendant can access this route' });
 }
 
 

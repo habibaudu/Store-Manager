@@ -159,7 +159,7 @@ const User = {
   try {
     const { rows } = await db.query(deleteQuery, [req.params.userId]);
     if(!rows[0]) {
-      return res.status(404).send({'message': 'user not found'});
+      return res.status(404).send({message: 'user not found'});
     }
     return res.status(200).send({ message: 'User deleted' });
   } catch(error) {

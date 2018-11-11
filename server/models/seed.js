@@ -1,169 +1,59 @@
-import db from  '../db';
-import moment from 'moment';
+import pg from 'pg';
+import dotenv from 'dotenv';
+dotenv.config();
 
 import Helper from '../controllers_db/utilities/Helper';
-
-const seedsales = () => {
-  const salestext = `INSERT INTO
-      sales(id,attendants_id,totalPrice,created_date, modified_date)
-      VALUES($1, $2, $3, $4, $5) `;
-   
-         
-       const values = [
-        1,
-        1,
-        25000,
-        moment(new Date()),
-        moment(new Date())
-      ];
-    db.query(salestext,values);
-  
-    const value2 = [
-      2,
-      2,
-      55000,
-      moment(new Date()),
-      moment(new Date())
-    ];
-  db.query(salestext,value2);
-  
-  
-const value3 = [
-  3,
-  1,
-  100000,
-  moment(new Date()),
-  moment(new Date())
-];
-db.query(salestext,value3);
-  }
-  
-  seedsales();
-
 const hash = Helper.hashPassword('hba821');
-const seedproduct = () => {
-const producttext = `INSERT INTO
-        products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-        VALUES($1, $2, $3, $4, $5, $6 , $7, $8)
-        returning *`;
- 
-        const productvalue1 = [
-            'Timberland Men',
-            34,
-            'durable boots',
-            'http:uuiiiggggg//dfff',
-            300,
-            50,
-            moment(new Date()),
-            moment(new Date())
-          ];
-  db.query(producttext,productvalue1);
 
-  const productvalue2 = [
+const sql = `INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('habibaudu','auduhabib1990@gmail.com','ADMIN','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
 
-    'Women snikkers',
-    30,
-    'durable women boots',
-    'http:uuiiiggggg//dfff',
-    200,
-    50,
-    moment(new Date()),
-    moment(new Date())
-  ];
-db.query(producttext,productvalue2);
+    INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('mariam','mariam@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
 
-const productvalue3 = [
-  'ALL Stars',
-  60,
-  'durable Boots for hiking',
-  'http:uuiiiggggg//dfff',
-  100,
-  50,
-  moment(new Date()),
-  moment(new Date())
-];
-db.query(producttext,productvalue3);
-}
+    INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('moses','moses@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
 
-seedproduct();
+    INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('moses','tokenuser@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
 
+    INSERT INTO
+    sales(attendants_id,totalPrice,created_date, modified_date)
+    VALUES(2,75000,Now(),Now());
 
-const seedusers = ()=>{
+    INSERT INTO
+    sales(attendants_id,totalPrice,created_date, modified_date)
+    VALUES(3,55000,Now(),Now());
 
-const usertext =  `INSERT INTO
-    users(id,username,email,Role, password,created_date, modified_date)
-    VALUES($1, $2, $3, $4, $5,$6,$7)`;
+    INSERT INTO
+    sales(attendants_id,totalPrice,created_date, modified_date)
+    VALUES(2,150000,Now(),Now());
 
-const usersvalues = [
-    1,
-    'Habibaudu',
-    'auduhabib1990@gmail.com',
-    'ADMIN',
-     hash,
-    moment(new Date()),
-    moment(new Date())
-  ];
-db.query(usertext,usersvalues);
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Timberland Men',10,'durable boots for hiking men','path/to/picture',75000,20,Now(),Now());
 
-const usersvalues2 = [
-    2,
-    'moses',
-    'mose@gmail.com',
-    'USER',
-    hash,
-    moment(new Date()),
-    moment(new Date())
-  ];
-db.query(usertext,usersvalues2);
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Timberland Women',10,'light weight boots for hiking women','path/to/picture',25000,15,Now(),Now());
 
-const usersvalues3 = [
-  3,
-  'mariam',
-  'mariame@gmail.com',
-  'USER',
-  hash,
-  moment(new Date()),
-  moment(new Date())
-];
-db.query(usertext,usersvalues3);
-
-}
-
-seedusers();
-
-
-// const seedproductsales = () => {
-//   const text = `INSERT INTO
-//       productSales(id,products_id, sales_id,created_date)
-//       VALUES($1, $2, $3, $4) `;
-   
-         
-//        const values = [
-//         1,
-//         1,
-//         1,
-//         moment(new Date())
-//       ];
-//     db.query(text,values);
-  
-//     const value2 = [
-//       2,
-//       2,
-//       2,
-//       moment(new Date())
-//     ];
-//   db.query(text,value2);
-  
-  
-// const value3 = [
-//   3,
-//   2,
-//   2,
-//   moment(new Date())
-// ];
-// db.query(text,value3);
-//   }
-  
-// seedproductsales();
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Allstars',10,'light weight  snikers','path/to/picture',5000,25,Now(),Now());
+`;
+const client = new pg.Client(process.env.DATABASE_URL);
+client.connect();
+client.query(sql, (err) => {
+  if (err) {
+    console.log(err);
+    client.end();
+  } else {
+    client.end();
+  }
+});
 
 
