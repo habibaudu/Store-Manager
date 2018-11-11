@@ -1,3 +1,4 @@
+import 'babel-polyfill';
 import express from 'express';
 import logger from 'morgan';
 import bodyParser from 'body-parser';
@@ -17,7 +18,7 @@ app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 80;
 
 /**
  * created my server using http.createServer

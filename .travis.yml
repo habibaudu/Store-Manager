@@ -1,10 +1,23 @@
+
 dist: trusty
 language: node_js
 node_js:
   - stable
+
+env:
+ - DATABASE_URL=postgres://postgres:smirk200@localhost:5432/storemanager
 script:
+  - npm run migrate && npm run seed
   - npm test
   - npm install
   - nyc --reporter=lcov npm run test
+services:
+  - postgresql
+
+before_script:
+  - psql -c 'create database storemanager;' -U postgres
+  - psql -c "CREATE USER Habib WITH PASSWORD '123456';" -U postgres
 after_success: 
+  
   - npm run coverage
+ 

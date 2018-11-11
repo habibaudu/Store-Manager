@@ -1,6 +1,5 @@
-[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=develop)](https://travis-ci.org/habibaudu/Store-Manager)
+[![Build Status](https://travis-ci.org/habibaudu/Store-Manager.svg?branch=ch-Test-161608110)](https://travis-ci.org/habibaudu/Store-Manager)  [![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=ch-remove_uuid-improveTest-161750118)](https://coveralls.io/github/habibaudu/Store-Manager?branch=ch-remove_uuid-improveTest-161750118)
 
-[![Coverage Status](https://coveralls.io/repos/github/habibaudu/Store-Manager/badge.svg?branch=chore_coverage)](https://coveralls.io/github/habibaudu/Store-Manager?branch=chore_coverage)
 
 
 
@@ -18,6 +17,9 @@ Store Manager is a web application that helps store owners manage sales and prod
 
   - Frontend : https://habibaudu.github.io/Store-Manager/UI/index.html
   - backend : https://store-manager2.herokuapp.com/
+
+## API DOCUMENTATION
+   -  API documentation is hosted at https://documenter.getpostman.com/view/2553415/RzZ9GeT1
    
 
 ## How to Clone
@@ -29,7 +31,9 @@ On your git bash run the following command
    - Download the Project
    - Run  npm install 
 
-
+## Environmental Variables (.env)
+- SECRET
+- DATABASE_URL
 
 ## expected Endpoints
   - POST /api/v1/users/login
@@ -41,6 +45,7 @@ On your git bash run the following command
   - DELETE: /api/v1/products/:productId
   - PUT :/api/v1/products/:productId
   - POST :/api/v1/sales
+  - get :/api/v1/sale
 
 ## Fire up Postman
   Enter the following routes
@@ -73,4 +78,5 @@ On your git bash run the following command
         
 
  
-## license "ISC",
+## license 
+This is licensed for your use, modification and distribution under the MIT license,
