@@ -13,7 +13,8 @@ nav{
     min-height: 10vh;
     font-family: Sabo;
     background-color: #062f4f;
-    border-bottom: rgb(226,226,226) 3px solid;  
+    border-bottom: rgb(226,226,226) 3px solid; 
+  
 }
 
 #header{
@@ -639,9 +640,7 @@ tr:nth-child(odd) {background-color: #e4c580;
     font-size: 1em;
     font-family: Sabo;
     letter-spacing: 1px; 
-    text-transform: uppercase;
-    
-      
+    text-transform: uppercase;     
 }
 
 #title a{
@@ -655,8 +654,6 @@ tr:nth-child(odd) {background-color: #e4c580;
     color: #062f4f;
     
 }
-
-
 
 .article{
     width:90%;
@@ -750,6 +747,7 @@ tr:nth-child(odd) {background-color: #e4c580;
 
     
 }
+
 .show2{
     width:95%;
     margin:auto;
@@ -1026,11 +1024,12 @@ footer{
     body{
      overflow-x: hidden;
     }
+
     .logo{  
         letter-spacing: 2px;
         font-size: 25px;
         } 
-   
+
      .nav-links{
         position: absolute;
         right:0px;
