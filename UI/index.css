@@ -4,7 +4,6 @@
     box-sizing: border-box;  
 }
 
-
 nav{
     margin-bottom: 0.3%;
     display: flex;
@@ -13,9 +12,9 @@ nav{
     min-height: 10vh;
     font-family: Sabo;
     background-color: #062f4f;
-    border-bottom: rgb(226,226,226) 3px solid; 
-  
+    border-bottom: rgb(226,226,226) 3px solid;  
 }
+
 
 #header{
   width:60%;
@@ -27,7 +26,8 @@ nav{
   font-family: Sabo;
   text-shadow: 0 3px 0 #000, 0 3px 0 #000;
 
-} 
+}
+ 
 .logo_landing{  
 letter-spacing: 5px;
 color: rgb(226,226,226);
