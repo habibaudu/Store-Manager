@@ -79,11 +79,13 @@ const User = {
         return res.status(400).send({ 'message': 'The credentials you provided is incorrect' });
       }
       const token = Helper.generateToken(rows[0].id,rows[0].role);
+      const userRole = Helper.decodeRole(token);
      
       let message = 'Login was successful';
       return res.status(200).send({
         message, 
-        token });
+        token,
+        userRole });
     } catch(error) {
       return res.status(400).send(error)
     }

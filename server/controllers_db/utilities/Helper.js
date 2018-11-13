@@ -45,7 +45,16 @@ const Helper = {
       process.env.SECRET, { expiresIn: '7d' }
     );
     return token;
+  },
+
+  decodeRole(token) {
+    
+    const decoded =jwt.verify(token, process.env.SECRET);
+    const { userRole } = decoded;
+    return userRole;
   }
+
+
 }
 
 export default Helper;
