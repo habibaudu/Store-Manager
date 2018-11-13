@@ -4,7 +4,6 @@ dotenv.config();
 
 import Helper from '../controllers_db/utilities/Helper';
 const hash = Helper.hashPassword('hba821');
-
 const sql = `INSERT INTO
     users(username,email,Role, password,created_date, modified_date)
     VALUES('habibaudu','auduhabib1990@gmail.com','ADMIN','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());

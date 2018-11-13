@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import expressValidator from 'express-validator';
 import dotenv from 'dotenv';
 import index from './routes/index';
+import cors from 'cors';
 
 dotenv.config();
 const app = express();
@@ -17,7 +18,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cors());
 const port = process.env.PORT || 80;
 
 /**
