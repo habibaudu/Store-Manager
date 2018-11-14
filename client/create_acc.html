@@ -28,18 +28,23 @@
               
             <div class='log_head'><h1>Create User</h1></div>
     
-            <form>
+            <form id='postData'>
                 <p>User name</p>
-                <input type="text" name ="" placeholder="Enter Username">
+                <input type="text" name ="" placeholder="Enter Username" id="username">
                 <p>Email</p>
-                <input type="email" name ="" placeholder="Enter Email">
+                <input type="email" name ="" placeholder="Enter Email"  id="email">
                 <p>Password</p>
-                <input type="password" name="" placeholder="Enter password">
+                <input type="password" name="" placeholder="Enter password" id="password">
                 <p>confirm password</p>
-                <input type="password" name="" placeholder="confirm password">
-                <label id="#bb"> choose image
+                <input type="password" name="" placeholder="confirm password" id="password2">
+                <p>Role</p><br>
+                <select name="" id="Role">
+                        <option value="ADMIN">ADMIN</option>
+                        <option value="USER">USER</option>
+                </select><br>
+                <!-- <label id="#bb"> choose image
                         <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg" />
-                        </label> 
+                        </label>  -->
                 
                 
                 <input type="submit" name ="" value ="submit">
@@ -52,6 +57,9 @@
                     <p>Store Manager copyright &copy 2018 </p>
                     </div>
         </div>
+
+
+<script src ='create_acc.js'></script>
 
 <script src ='index.js'></script>
     
