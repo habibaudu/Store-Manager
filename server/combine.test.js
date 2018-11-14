@@ -113,6 +113,7 @@ describe('Products', () => {
       .set('x-access-token',adminToken)
       .end((err, res) => {
         expect(res.status).to.equal(201);
+        expect(res.body.message).to.equal('Product Created sucessfully');
         done();
       });
   });

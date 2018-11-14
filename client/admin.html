@@ -127,23 +127,72 @@
         <!-- Modal content -->
         <div class="addbox"> 
           <span class="close">&times;</span>
-          <div class='log_head'><h1>Create product</h1></div>        
+          <div class='log_head'><h1>Create product</h1></div> 
+          <form id='postData'>       
                 <p>Product Name</p><br>
-                <input type="text" name ="" placeholder="Product Name"><br>
-                <p>product Price</p><br>
-                <input type="text" name ="" placeholder="Product Price"><br>
-                <p>Date</p><br>
-                <input type="text" name="" placeholder="Date"><br>
+                <input type="text" name ="" placeholder="Product Name" id="productname"><br>
+                <p>Price</p><br>
+                <input type="text" name ="" placeholder="Product Price" id='Price'><br>
+                <p>Minimum Allowed</p><br>
+                <select name="" id="Minimum">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+               </select><br>
                 <p>Quantity</p><br>
-                <select>
+
+                <select name="" id="Quantity">
                         <option value="0">0</option>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
                 </select><br>
+
+                <label id="#bb"> choose image
+                        <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg" />
+                        </label>
+                <textarea name="" id="description" cols="20" rows="5" placeholder="Enter Description of product"></textarea> 
                 <input type="submit"  value="Add"><br>
+
+              </form>
         </div>
     </div>
+    <script src ='admin.js'></script>
     <script src ='index.js'></script>
 </body>
 </html>
