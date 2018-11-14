@@ -28,13 +28,13 @@ export default {
   
       try {
         const { rows } = await db.query(text, values);
-        return res.status(201).send(rows[0]);
+        return res.status(201).send({message: 'Product Created sucessfully' });
       } catch(error) {
         return res.status(400).send(error);
       }
     }else{
             
-            return res.status(401).send({ 'message': 'Only An Admin can add or create a product' });
+            return res.status(401).send({message: 'Only An Admin can add or create a product' });
      }
     },
 
