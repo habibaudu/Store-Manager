@@ -34,15 +34,51 @@ const sql = `INSERT INTO
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Timberland Men',10,'durable boots for hiking men','path/to/picture',75000,20,Now(),Now());
+    VALUES('Timberland Women',10,'durable boots for hiking men','img/timberland women.jpg',30000,20,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Timberland Women',10,'light weight boots for hiking women','path/to/picture',25000,15,Now(),Now());
+    VALUES('Men Loafers',10,'light weight boots for hiking women','img/men loafers.jpg',5000,70,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Allstars',10,'light weight  snikers','path/to/picture',5000,25,Now(),Now());
+    VALUES('steel pipe dance',10,'light weight  snikers','img/steel pipe dance.jpg',5000,25,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Cycling Shoes',10,'light weight  snikers','img/ccling shoes.jpg',6000,20,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Adidas Women',10,'light weight  snikers','img/adidas women.jpg',6000,20,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Block Heel  Sandal',10,'light weight  snikers','img/block heel transparent sandal.jpg',7000,30,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Vans pro skate',10,'light weight  snikers','img/vans pro skate.png',7000,30,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Blue Nike Shoes',10,'light weight  snikers','img/blue nike shoe.jpeg',7000,45,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Anbessa Women Shoe',10,'light weight  snikers','img/anbessa women shoe.jpg',3000,45,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Women Bridals',10,'light weight  snikers','img/women bridals.jpg',5000,30,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Blue Timberland',10,'light weight  snikers','img/shoe5.jpg',75000,30,Now(),Now());
+
+    INSERT INTO
+    products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+    VALUES('Men Shoe',10,'light weight  snikers','img/shoe3.jpg',7500,20,Now(),Now());
 `;
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();
