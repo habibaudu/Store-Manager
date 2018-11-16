@@ -6,6 +6,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin Panel</title>
     <link rel='stylesheet' href="index.css" type="text/css">
+
+    <!-- <script type="text/javascript">
+      onload = function() {
+          if (!document.getElementsByTagName || !document.createTextNode) return;
+          var rows = document.getElementById('my_table').getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+          for (i = 0; i < rows.length; i++) {
+              rows[i].onclick = function() {
+              rol=this.rowIndex + 1
+                  alert(rol);
+              }
+          }
+      }
+      </script> -->
+    
     
 </head>
 <body>
@@ -35,86 +49,13 @@
         </nav> 
 
    <div class='adminbox'>
-        <button class='addproduct' id='butt'>+Add Product</button>
+        <button class='addproduct' id='butt'>+Add Product</button>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<button class='editproduct' id='modi'>Edit Product</button> &nbsp &nbsp &nbsp &nbsp &nbsp &nbsp<button class='addproduct' id='del'>Delete Product</button>
         <div style="overflow-x:auto;">
-
+                 
                 <table>
-                        <tr>
-                                <th>ProductID</th>
-                                <th>Product Name</th>
-                                <th>Stock</th>
-                                <th>Price each</th>
-                                <th>---</th>
-                                <th>---</th>
-                              </tr>
-                              <tr>
-                                <td>1</td>
-                                <td>Timberland</td>
-                                <td>20</td>
-                                <td>#75000</td>
-                                <td><button class='delete'>Delete</button></td>
-                                <td><button class='edit'>Edit</button></td>
-                                
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>women bridals</td>
-                                <td>150</td>
-                                <td>#5000</td>
-                                <td><button class='delete'>Delete</button></td>
-                                <td><button class='edit'>Edit</button></td>
-
-                                <tr>
-                                        <td>3</td>
-                                        <td>anbessa women shoe</td>
-                                        <td>30</td>
-                                        <td>#6000</td>
-                                        <td><button class='delete'>Delete</button></td>
-                                        <td><button class='edit'>Edit</button></td>
-                                      </tr>
-                                      <tr>
-                                        <td>4</td>
-                                        <td>vans pro skate</td>
-                                        <td>100</td>
-                                        <td>#4500</td>
-                                        <td><button class='delete'>Delete</button></td>
-                                        <td><button class='edit'>Edit</button></td>
-                                      </tr>
-
-                                      <tr>
-                                            <td>5</td>
-                                            <td>blue nike shoes</td>
-                                            <td>45</td>
-                                            <td>#8000</td>
-                                            <td><button class='delete'>Delete</button></td>
-                                            <td><button class='edit'>Edit</button></td>
-                                          </tr>
-                                          <tr>
-                                            <td>6</td>
-                                            <td>cycling shoes</td>
-                                            <td>20</td>
-                                            <td>#6000</td>
-                                            <td><button class='delete'>Delete</button></td>
-                                            <td><button class='edit'>Edit</button></td>
-                                          </tr>
-
-                                          <tr>
-                                                <td>7</td>
-                                                <td>adidas women</td>
-                                                <td>20</td>
-                                                <td>#3000</td>
-                                                <td><button class='delete'>Delete</button></td>
-                                                <td><button class='edit'>Edit</button></td>
-                                              </tr>
-                                              <tr>
-                                                <td>8</td>
-                                                <td>men loafers</td>
-                                                <td>150</td>
-                                                <td>#5000</td>
-                                                <td><button class='delete'>Delete</button></td>
-                                                <td><button class='edit'>Edit</button></td>
-                                              </tr>
-                        </tr>
+                <tbody id='allproducts'>       
+                             
+                 </tbody>
                 </table>
                 
         </div>
@@ -127,7 +68,11 @@
         <!-- Modal content -->
         <div class="addbox"> 
           <span class="close">&times;</span>
-          <div class='log_head'><h1>Create product</h1></div> 
+          <div class='log_head'><h1>Create product</h1></div>
+          <hr>
+          <br><br>
+          <p>Fill all fields in the form below and click submit or cancel to go back</p>
+          <br><br> 
           <form id='postData'>       
                 <p>Product Name</p><br>
                 <input type="text" name ="" placeholder="Product Name" id="productname"><br>
@@ -186,12 +131,159 @@
                 <label id="#bb"> choose image
                         <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg" />
                         </label>
-                <textarea name="" id="description" cols="20" rows="5" placeholder="Enter Description of product"></textarea> 
-                <input type="submit"  value="Add"><br>
+                <textarea name="" id="description" cols="20" rows="5" placeholder="Enter Description of product"></textarea><br><br> 
+                <a href = "admin.html" class="cancelproduct">Cancel</a><br><br>
+                <input type="submit"  value="submit"><br>
 
               </form>
         </div>
     </div>
+
+
+    <!-- The Modal -->
+<div id="myModal2" class="modal">
+
+    <!-- Modal content -->
+    <div class="addbox"> 
+      <span class="close2">&times;</span>
+      <div class='log_head'><h1>Update product</h1></div> 
+      <hr>
+      <br><br>
+          <p>Select ProductID of the product You want to Edit and click submit or cancel to go back</p>
+          <br><br>
+      <form id='postData'>
+          <select name="" id="ID">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+           </select><br><br>       
+            <p>Product Name</p><br>
+            <input type="text" name ="" placeholder="Product Name" id="productname"><br>
+            <p>Price</p><br>
+            <input type="text" name ="" placeholder="Product Price" id='Price'><br>
+            <p>Minimum Allowed</p><br>
+            <select name="" id="Minimum">
+              <option value="0">0</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+           </select><br>
+            <p>Quantity</p><br>
+
+            <select name="" id="Quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+            </select><br>
+
+            <label id="#bb"> choose image
+                    <input type="file" id="avatar" name="avatar"  accept="image/png, image/jpeg" />
+                    </label>
+            <textarea name="" id="description" cols="20" rows="5" placeholder="Enter Description of product"></textarea><br><br> 
+            <a href = "admin.html" class="cancelproduct">Cancel</a><br><br>
+            <input type="submit"  value="submit"><br>
+
+          </form>
+    </div>
+</div>
+
+
+    <!-- The Modal -->
+    <div id="myModal3" class="modal">
+
+        <!-- Modal content -->
+        <div class="addbox"> 
+          <span class="close3">&times;</span>
+          <div class='log_head'><h1>Delete Product</h1></div> 
+          <hr>
+          <br><br>
+          <p>Select ProductID of the product You want to Delete and click submit or cancel to go back</p>
+          <br><br>
+          <form id='deleteData'>
+                        <select name="" id="Id">
+                        <option value="0">0</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                </select><br><br>
+                <a href = "admin.html" class="cancelproduct">Cancel</a><br><br>
+                <input type="submit"  value="submit"><br><br><br>
+    
+              </form>
+        </div>
+    </div>
+
+
     <script src ='admin.js'></script>
     <script src ='index.js'></script>
 </body>

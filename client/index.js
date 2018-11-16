@@ -30,7 +30,82 @@ function navSlide() {
    navSlide();
 
 
+   function modalThree(){
+    // Get the modal
+ var modal3 = document.getElementById('myModal3');
+ 
+ 
+ // Get the button that opens the modal
+ var button3 = document.getElementById("del");
+ 
+ 
+ // Get the <span> element that closes the modal
+ var clox3 = document.getElementsByClassName("close3")[0];
+ 
+ 
+ // When the user clicks on the button, open the modal 
+ button3.onclick = function() {
+     modal3.style.display = "block";
+ }
+ 
+ 
+ // When the user clicks on <span> (x), close the modal
+ clox3.onclick = function() {
+     modal3.style.display = "none";
+ }
+ 
+ 
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+     if (event.target == modal3) {
+         modal3.style.display = "none";
+     }
+ }
+ 
+ }
+ 
+ modalThree();
 
+
+   function modalTwo(){
+    // Get the modal
+ var modal2 = document.getElementById('myModal2');
+ 
+ 
+ // Get the button that opens the modal
+ var button2 = document.getElementById("modi");
+ 
+ 
+ // Get the <span> element that closes the modal
+ var clox2 = document.getElementsByClassName("close2")[0];
+ 
+ 
+ // When the user clicks on the button, open the modal 
+ button2.onclick = function() {
+     modal2.style.display = "block";
+ }
+ 
+ 
+ // When the user clicks on <span> (x), close the modal
+ clox2.onclick = function() {
+     modal2.style.display = "none";
+ }
+ 
+ 
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+     if (event.target == modal2) {
+         modal2.style.display = "none";
+     }
+ }
+ 
+ }
+ 
+ modalTwo();
+
+
+
+function modalOne(){
    // Get the modal
 var modal = document.getElementById('myModal');
 
@@ -61,3 +136,44 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+}
+
+modalOne();
+
+
+function modalTwo(){
+    // Get the modal
+ var modal2 = document.getElementById('myModal2');
+ 
+ 
+ // Get the button that opens the modal
+ var button2 = document.getElementById("modi");
+ 
+ 
+ // Get the <span> element that closes the modal
+ var clox2 = document.getElementsByClassName("close2")[0];
+ 
+ 
+ // When the user clicks on the button, open the modal 
+ button2.onclick = function() {
+     modal2.style.display = "block";
+ }
+ 
+ 
+ // When the user clicks on <span> (x), close the modal
+ clox2.onclick = function() {
+     modal2.style.display = "none";
+ }
+ 
+ 
+ // When the user clicks anywhere outside of the modal, close it
+ window.onclick = function(event) {
+     if (event.target == modal2) {
+         modal2.style.display = "none";
+     }
+ }
+ 
+ }
+ 
+ modalTwo();
