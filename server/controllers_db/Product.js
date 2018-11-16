@@ -53,7 +53,7 @@ export default {
     try {
       const { rows } = await db.query(findOneQuery, [req.params.productId]);
       if(!rows[0]) {
-        return res.status(404).send({'message': 'product not found'});
+        return res.status(404).send({message: 'product not found'});
       }
       const values = [
         req.body.productname || rows[0].productname,
