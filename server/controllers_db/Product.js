@@ -135,7 +135,7 @@ export default {
     try {
       const { rows } = await db.query(text, [req.params.productId]);
       if (!rows[0]) {
-        return res.status(404).send({'message': 'product not found'});
+        return res.status(404).send({message: 'product not found'});
       }
       return res.status(200).send(rows[0]);
     } catch(error) {
