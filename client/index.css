@@ -374,26 +374,39 @@ header #nav_slide {
     color:#e4c580;
     padding: 30px 20px;
 }
+form.byid input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+  }
 
-#ani input[type=text] {
-    width: 130px;
-    margin:auto;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px;
-    background-color: white;
-    background-image: url('searchicon.png');
-    background-position: 10px 10px; 
-    background-repeat: no-repeat;
-    padding: 12px 20px 12px 40px;
-    -webkit-transition: width 0.4s ease-in-out;
-    transition: width 0.4s ease-in-out;
-}
+  form.byid button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background:#062f4f;
+    color: #e4c580;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+  }
 
-#ani input[type=text]:focus {
-    width: 100%;
-}
+
+  form.byid button:hover {
+    background: rgb(160, 12, 1);
+
+  }
+  
+
+  form.byid::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
 .formbox p{
     margin :0;
@@ -686,6 +699,32 @@ tr:nth-child(odd) {background-color: #e4c580;
 }
 
 .article section img {
+    width:100%;
+    
+    height :200px;
+    border-bottom: rgb(226,226,226) 2px solid;
+    height:200px;
+}
+
+.article2{
+    width:90%;
+    margin: auto;
+    /* margin: 2em; */
+    
+}
+.article2 section{
+    text-align: center;
+    background-color: #062f4f;
+    box-shadow: 1px  1px 2px #000;
+    margin-bottom: 2%;
+}
+
+.article2 section p{
+  text-align: justify;
+  line-height: 2em;
+}
+
+.article2 section img {
     width:100%;
     
     height :200px;
@@ -1002,6 +1041,25 @@ footer{
         height:22em;
         overflow: hidden;
     }
+
+    .article2 section {
+        float :left;
+        width:46.3%;
+        margin-left: 2.5%;
+        box-shadow: 1px  1px 5px #000;
+    }
+
+ 
+
+    #article2 section img{
+        height :250px;
+        
+
+    }
+    .article2 section p{
+        height:22em;
+        overflow: hidden;
+    }
 }
 
 @media only screen and (min-width : 500px) and (max-width : 1200px){
@@ -1020,6 +1078,25 @@ footer{
 
     }
     .article section p{
+        height:22em;
+        overflow: hidden;
+    }
+
+    .article2 section {
+        float :left;
+        width:60%;
+        margin-left: 5%;
+        box-shadow: 1px  1px 5px #000;
+    }
+
+   
+
+    #article2 section img{
+        height :200px;
+        
+
+    }
+    .article2 section p{
         height:22em;
         overflow: hidden;
     }
