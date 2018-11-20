@@ -22,16 +22,17 @@ export default {
 
     let total = 0;
     let data =[]
-    console.log(req.body.salesOrders);
+  
     for(let i = 0; i < req.body.salesOrders.length; i++) {
       const { product_id , quantity } = req.body.salesOrders[i];
+     
       const findOneQuery = 'SELECT * FROM products WHERE id=$1';
         
       try {
         const { rows } = await db.query(findOneQuery, [product_id]);
 
         if(!rows[0]) {
-          console.log('406')
+ 
           return res.status(404).send({ message : 'product not found'});
         }
                 
@@ -42,7 +43,7 @@ export default {
         total += rows[0].price * quantity;
 
       }catch(error) {
-        console.log(error)
+  
         return res.status(400).send(error);
       }
 
@@ -51,11 +52,12 @@ export default {
 
     for (let i = 0; i < req.body.salesOrders.length; i++) {
         const { product_id , quantity } = req.body.salesOrders[i];
+  
         const findOneQuery = 'SELECT * FROM products WHERE id=$1';
          data.push(product_id);  
         try {
           const { rows } = await db.query(findOneQuery, [product_id]);
-
+      
           const newQuantity = rows[0].quantity - quantity;
           const updateOneQuery =`UPDATE products SET quantity=$1
             WHERE id=$2 `;
@@ -81,7 +83,7 @@ export default {
 
     try {
       const { row } = await db.query(text, values);
-      console.log(req.user.id);
+   
       const { rows } = await db.query(find_Id,[req.user.id,dateNOW]);
       const Id = rows[0].id;
       for (let i = 0; i < data.length; i++) {
@@ -90,7 +92,7 @@ export default {
       }
       return res.status(201).send({ message: 'sales record record created' });
     } catch(error) {
-      console.log(error)
+  
       return res.status(400).send(error);
     }
     

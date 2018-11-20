@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href="index.css" type="text/css">
-    <title>view Cart</title>
+    <title>Add Cart</title>
 </head>
 <body> 
     
@@ -27,44 +27,99 @@
                                 </div>
         </nav>
     
-        <div class ="formbox">
-                <div id='title2'>Boot</div>
-        
-            <div class='show2'><img src='img/walltims.jpg'></div>
-            <div class='discrip2'>
-                <span id='title2'>blue timberland</span><br>
-                <p class='note2'>blue timberland  It has all the standard features of a top of the line hiking boot, coupled with the quality and aesthetic appeal one can expect from the Timberland brand</p>
+        <div class="addbox">
+            <button class='addproduct' id='butt2'>View cart</button> 
+            <div class='log_head'><h1>Add Product to Cart</h1></div> 
+            <hr>
+            <br><br>
+            <p>Select ProductID  and Quantity of the product You want to Add to Cart and click add or cancel to go back</p>
+            <br><br>
+            <form id='addCartdata'>
+                        <p>ID</p><br><br>
+                          <select name="" id="Id">
+                          <option value="0">0</option>
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                          <option value="6">6</option>
+                          <option value="7">7</option>
+                          <option value="8">8</option>
+                          <option value="9">9</option>
+                          <option value="10">10</option>
+                          <option value="11">11</option>
+                          <option value="12">12</option>
+                          <option value="13">13</option>
+                          <option value="14">14</option>
+                          <option value="15">15</option>
+                          <option value="16">16</option>
+                          <option value="17">17</option>
+                          <option value="18">18</option>
+                          <option value="19">19</option>
+                          <option value="20">20</option>
+                  </select><br><br>
+                  <p>Quantity</p><br><br>
+                  <select name="" id="Quantity">
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                    <option value="16">16</option>
+                    <option value="17">17</option>
+                    <option value="18">18</option>
+                    <option value="19">19</option>
+                    <option value="20">20</option>
+            </select><br><br>
+                  <a href = "products.html" class="cancelproduct">Cancel</a><br><br>
+                  <input type="submit"  value = "+ADD"><br><br><br>
+      
+                </form>
+
+                <div class='form_footer'>
+                    <p>Store Manager copyright &copy 2018 </p>
+                    </div> 
+
+          </div>
+
+<!-- The Modal -->
+<div id="myModal4" class="modal">
+
+        <!-- Modal content -->
+        <div class="addbox"> 
+          <span class="close4">&times;</span>
+          <div class='log_head'><h1>Your Cart</h1></div> 
+          <hr>
+          <br><br>
+          <p>Select sumbit to create a sales record, Empty Cart to empty the Cart or cancel to go back</p>
+          <br><br>
+         <form id='cart'>
+          <div id="cartproduct" class="article">
                 
-                <br>
-                <span class='note2'>#75000</span><br>
-                <br>
-                <span class='note2'>Quantity : &nbsp &nbsp <input type="text" placeholder="1" id ='amount'>
-                  </span><br><br>
+          </div>
+          <div class='article clearfix'>GRANDTOTAL :#<span id='price' class='note'></span></div>
+          <button class="cancelproduct" id='empty'>Empty Cart</button><br><br>
+          <a href = "products.html" class="cancelproduct">Cancel</a><br><br>
+          <input type="submit"  value="submit"><br><br><br>
+    
+              </form>
+        </div>
+    </div>
 
-                <span class='note2'>15 in stock
-                    </span><br><br>
-                
-                <span class='note2'>Mininum allowed in stock 5
 
-                    </span><br><br>
-                
-            
-            </div>
-
-           <button class='btn3'>Add to Cart</button>
-          
-                    <div class='form_footer'>
-                            <p>Store Manager copyright &copy 2018 </p>
-                            </div> 
-                      
-
-                </div>
-              
-               
-        
-
-            
-          
+<script src ='addcart.js'></script>          
 <script src ='index.js'></script>
     
 </body>

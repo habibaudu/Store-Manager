@@ -102,14 +102,15 @@ function getProducts(){
 
                             let products =` `;
                             data2.forEach((product) => {
-                                const {images,productname,price,quantity} = product
+                                const {id,images,productname,price,quantity} = product
                                 products +=
                                     `<section>
                                     <img src='${images}'>
+                                    <span class='note2'>${id}</span><br>
                                     <span class='note2'>${productname}</span><br>
                                     <span class='note'>#${price}</span><br>
                                     <span class='note2'>${quantity} in stock</span><br>
-                                    <a href='addcart.html' class='btn2'>details</a>
+                                    <a href='addcart.html' class='btn2'>Add to Cart</a>
                                     </section>`;
                                         document.getElementById('allproduct').innerHTML = products
                                 })
