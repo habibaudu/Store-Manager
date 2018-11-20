@@ -1,16 +1,19 @@
+document.getElementById('filterSales').addEventListener('submit',filterSales);
 
-window.addEventListener("load",getSales);
+function filterSales(event){
+    event.preventDefault();
 
-function getSales(){
-            
+    let id = document.getElementById('Id').value;
+    id = parseInt(id,10);
+    
     token = localStorage.getItem('token')
-    fetch('http://localhost:4000/api/v1/sales', {
+    fetch(`http://localhost:4000/api/v1/sales/${id}`, {
         method: 'GET',
-        mode:'cors',
+        mode: "cors",
         headers: {'Content-Type': 'application/json',
                    'x-access-token':token,
                    'pragma':'no-cache', 
-                   'cache-control': 'no-cache'               
+                   'cache-control': 'no-cache'                 
                            
                   }
        
@@ -21,8 +24,7 @@ function getSales(){
     .then((data) => {
         switch(status){
             case '200':
-                  
-                   data2 = data.rows
+                
                     let sales =` <tr>
                     <th>salesID</th>
                     <th>Sold By</th>
@@ -32,9 +34,9 @@ function getSales(){
                     <th>Total Amount</th>
                     <th>Date Sold</th>
                   </tr>`;
-                    data2.forEach((sale) => {
+                    data.forEach((sale) => {
                         const {id, productname, price, attendants_id, totalprice, created_date} = sale;
-                   
+
                         sales +=
                             `<tr>
                             <td>${id}</td>
@@ -45,7 +47,7 @@ function getSales(){
                             <td>${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
-                                document.getElementById('allSales').innerHTML = sales;
+                                document.getElementById('filSales').innerHTML = sales;
                         })
                     
                         break;
@@ -60,10 +62,7 @@ function getSales(){
                         alert(`${data.message}`);
                         window.location = 'index.html';
                         break;
-                        
-
         }
 })  
     .catch((err)=>console.log(err));
 }
-

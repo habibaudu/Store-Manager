@@ -29,6 +29,9 @@ function navSlide() {
    
    navSlide();
 
+
+
+
    function modalFour(){
     // Get the modal
  var modal4 = document.getElementById('myModal4');

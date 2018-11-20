@@ -446,7 +446,8 @@ describe('Products', () => {
         .set('x-access-token', adminToken)
         .end((err, res) => {
          
-          expect(res.status).to.equal(200);
+          expect(res.status).to.equal(404);
+          expect(res.body.message).to.equal('sales not found');
          
           done();
         });
