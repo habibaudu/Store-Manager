@@ -110,7 +110,8 @@ export default {
    */
   async getOne(req, res) {
     if(req.user.role === 'ADMIN'){
-    const text = 'SELECT * FROM sales WHERE attendants_id = $1';
+    const text = `SELECT p.productname,p.price,s.id,s.totalprice,s.attendants_id,ps.created_date from products as p  JOIN productSales as ps ON p.id = ps.products_id
+    JOIN sales as s ON s.id = ps.sales_id WHERE attendants_id = $1`;
     try {
       const { rows } = await db.query(text, [req.params.salesId]);
       if (!rows[0]) {

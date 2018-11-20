@@ -21,6 +21,14 @@ const sql = `INSERT INTO
     VALUES('moses','tokenuser@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
 
     INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('Bincom','bincom@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
+
+    INSERT INTO
+    users(username,email,Role, password,created_date, modified_date)
+    VALUES('Andela','Andela@gmail.com','USER','$2b$08$VRlMzq6xZXxbrkyrt1JnbeQD2vdhPnHrmmQZhN.E.MdvjCmJDyXN.',Now(),Now());
+
+    INSERT INTO
     sales(attendants_id,totalPrice,created_date, modified_date)
     VALUES(2,75000,Now(),Now());
 
