@@ -161,7 +161,8 @@ export default {
   async getMy(req, res) {
     if(req.user.role === 'USER'){
     
-    const findAllQuery = 'SELECT * FROM sales WHERE attendants_id =$1';
+    const findAllQuery = `SELECT p.productname,p.price,s.id,s.totalprice,s.attendants_id,ps.created_date from products as p  JOIN productSales as ps ON p.id = ps.products_id
+    JOIN sales as s ON s.id = ps.sales_id WHERE attendants_id = $1`;
     try {
       const { rows, rowCount } = await db.query(findAllQuery,[req.user.id]);
       return res.status(200).send({ rows, rowCount });
