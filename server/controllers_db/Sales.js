@@ -136,7 +136,8 @@ export default {
   async getAll(req, res) {
     if(req.user.role === 'ADMIN'){
     
-        const findAllQuery = 'SELECT * from products as p INNER JOIN productSales as ps ON p.id = ps.products_id';
+        const findAllQuery = `SELECT p.productname,p.price,s.id,s.totalprice,s.attendants_id,ps.created_date from products as p  JOIN productSales as ps ON p.id = ps.products_id
+        JOIN sales as s ON s.id = ps.sales_id`;
     try {
       const { rows, rowCount } = await db.query(findAllQuery);
       return res.status(200).send({ rows, rowCount });
