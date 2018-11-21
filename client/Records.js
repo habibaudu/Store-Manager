@@ -1,28 +1,26 @@
 
-window.addEventListener("load",getSales);
-
-function getSales(){
+window.addEventListener("load",() => {
             
-    token = localStorage.getItem('token')
+    const token = localStorage.getItem('token')
     fetch('http://localhost:4000/api/v1/sales', {
         method: 'GET',
         mode:'cors',
         headers: {'Content-Type': 'application/json',
                    'x-access-token':token,
-                   'pragma':'no-cache', 
+                   pragma: 'no-cache', 
                    'cache-control': 'no-cache'               
                            
                   }
        
-    }).then((Response) =>{
+    }).then((Response) => {
         status = Response.status;
         return Response.json();
     })
     .then((data) => {
-        switch(status){
+        switch (status) {
             case '200':
                   
-                   data2 = data.rows
+                   const data2 = data.rows;
                     let sales =` <tr>
                     <th>salesID</th>
                     <th>Sold By</th>
@@ -64,6 +62,6 @@ function getSales(){
 
         }
 })  
-    .catch((err)=>console.log(err));
-}
+    .catch(err => console.log(err));
+});
 
