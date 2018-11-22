@@ -44,7 +44,7 @@
     }
   
     static product(req, res, next) {
-      const nonCharTest = /[^a-zA-Z0-9/\s/-]+/g;
+      const nonCharTest = /[^a-zA-Z0-9/\s/-/.]/g;
       const charTest = /[a-zA-Z/\s]/g;
       const numTest = /[0-9]+/g;
       const imgTest = /[a-zA-Z0-9/\s/-/]+/g;

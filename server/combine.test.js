@@ -189,7 +189,7 @@ describe('Products', () => {
       });
   });
 
-  it('productname must be alphabetic, the use of spaces and "-" are allowed', (done) => {
+  it('productname must contain at least one alphabet', (done) => {
     request(server)
       .post('/api/v1/products')
       .send({ 
@@ -212,7 +212,7 @@ describe('Products', () => {
       });
   });
 
-  it('productname must be alphabetic, the use of spaces and "-" are allowed', (done) => {
+  it('description must contain at least one alphabet', (done) => {
     request(server)
       .post('/api/v1/products')
       .send({ 
@@ -415,6 +415,28 @@ describe('Products', () => {
       });
   });
 
+  it('should return onli an admin should update a product', (done) => {
+    request(server)
+      .put('/api/v1/products/1')
+      .send({      
+        minimum:10,
+        productname: 'addidas maen',
+        price:10000,
+        description: 'description must be a string',
+        quantity:50,
+        images: 'ihgfdsajkl/',
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())   
+      })
+      .set('x-access-token', adminToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('product updated sucessfully');
+        expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+
   describe('Sales', () => {
     it(' get should return status code of 403', (done) => {
      request(server)
@@ -541,18 +563,6 @@ describe('Products', () => {
         });
     });
 
-    // it('Only Sales atttendant can access this route', (done) => {
-    //   request(server)
-    //     .get('/api/v1/sales/1')
-    //     .set('x-access-token',adminToken)
-    //     .end((err, res) => {
-         
-    //       expect(res.status).to.equal(200);
-       
-          
-    //       done();
-    //     });
-    // });
 
     it('should return sales not found', (done) => {
       request(server)

@@ -1,8 +1,8 @@
 
 const navSlide = () => {
-  let burger = document.querySelector('.burger');
-  let nav = document.querySelector('.nav-links');
-  let navLinks = document.querySelectorAll('.nav-links li');
+  const burger = document.querySelector('.burger');
+  const nav = document.querySelector('.nav-links');
+  const navLinks = document.querySelectorAll('.nav-links li');
 
   burger.addEventListener('click',() => {
 
@@ -33,7 +33,6 @@ const modalOne = () => {
 
   const  button = document.getElementById('butt');
 
-
   const clox = document.getElementsByClassName('close')[0];
 
 
@@ -62,7 +61,7 @@ const modalTwo = () =>{
   const modal2 = document.getElementById('myModal2');
 
 
-const button2 = document.getElementById('modify');
+ const button2 = document.getElementById('modify');
 
   const clox2 = document.getElementsByClassName('close2')[0];
 

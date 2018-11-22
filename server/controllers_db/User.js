@@ -61,10 +61,7 @@ const User = {
    * @returns {object} user object 
    */
   async login(req, res) {
-    if (!req.body.email || !req.body.password) {
-      let message = 'Some values are missing'
-      return res.status(400).send({message});
-    }
+
     if (!Helper.isValidEmail(req.body.email)) {
       let message = 'Please enter a valid email address'
       return res.status(400).send({message});
@@ -116,7 +113,6 @@ const User = {
           const response = await db.query(updateOneQuery, values);
           return res.status(200).send(response.rows[0]);
         } catch(err) {
-          console.log(err);
           return res.status(400).send(err);
          
         }
