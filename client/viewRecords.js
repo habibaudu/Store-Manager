@@ -1,28 +1,26 @@
-window.addEventListener("load",mySales);
-
-function mySales(){
+window.addEventListener("load",() => {
             
-    token = localStorage.getItem('token')
-    fetch('http://localhost:4000/api/v1/sale', {
-        method: 'GET',
-        mode:'cors',
-        headers: {'Content-Type': 'application/json',
-                   'x-access-token':token,
-                   'pragma':'no-cache', 
-                   'cache-control': 'no-cache'               
+  const token = localStorage.getItem('token')
+  fetch('http://localhost:4000/api/v1/sale', {
+    method: 'GET',
+    mode:'cors',
+    headers: {'Content-Type': 'application/json',
+      'x-access-token': token,
+      pragma:'no-cache', 
+      'cache-control': 'no-cache'               
                            
-                  }
+    }
        
-    }).then((Response) =>{
-        status = Response.status;
-        return Response.json();
-    })
+  }).then((Response) => {
+    status = Response.status;
+    return Response.json();
+  })
     .then((data) => {
-        switch(status){
-            case '200':
+      switch (status) {
+        case '200':
                   
-                   data2 = data.rows
-                    let sales =` <tr>
+          const data2 = data.rows;
+          let sales =` <tr>
                     <th>salesID</th>
                     <th>Sold By</th>
                     <th>Product Name</th>
@@ -31,10 +29,10 @@ function mySales(){
                     <th>Total Amount</th>
                     <th>Date Sold</th>
                   </tr>`;
-                    data2.forEach((sale) => {
-                        const {id, productname, price, attendants_id, totalprice, created_date} = sale;
+          data2.forEach((sale) => {
+            const {id, productname, price, attendants_id, totalprice, created_date} = sale;
                    
-                        sales +=
+            sales +=
                             `<tr>
                             <td>${id}</td>
                             <td>${attendants_id}</td>
@@ -44,24 +42,24 @@ function mySales(){
                             <td>${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
-                                document.getElementById('myrecords').innerHTML = sales;
-                        })
+            document.getElementById('myrecords').innerHTML = sales;
+          })
                     
-                        break;
-            case '401': 
+          break;
+        case '401': 
                             
-                        alert(`${data.message}`);
-                        window.location = 'login.html'
-                        break;
+          alert(`${data.message}`);
+          window.location = 'login.html'
+          break;
                     
-            default:
+        default:
                 
-                        alert(`${data.message}`);
-                        window.location = 'index.html';
-                        break;
+          alert(`${data.message}`);
+          window.location = 'index.html';
+          break;
                         
 
-        }
-})  
-    .catch((err)=>console.log(err));
-}
+      }
+    })  
+    .catch(err => console.log(err));
+});

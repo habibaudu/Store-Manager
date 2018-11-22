@@ -1,31 +1,29 @@
-document.getElementById('filterSales').addEventListener('submit',filterSales);
+document.getElementById('filterSales').addEventListener('submit',(event) => {
+  event.preventDefault();
 
-function filterSales(event){
-    event.preventDefault();
-
-    let id = document.getElementById('Id').value;
-    id = parseInt(id,10);
+  let id = document.getElementById('Id').value;
+  id = parseInt(id,10);
     
-    token = localStorage.getItem('token')
-    fetch(`http://localhost:4000/api/v1/sales/${id}`, {
-        method: 'GET',
-        mode: "cors",
-        headers: {'Content-Type': 'application/json',
-                   'x-access-token':token,
-                   'pragma':'no-cache', 
-                   'cache-control': 'no-cache'                 
+  const token = localStorage.getItem('token')
+  fetch(`http://localhost:4000/api/v1/sales/${id}`, {
+    method: 'GET',
+    mode: "cors",
+    headers: {'Content-Type': 'application/json',
+      'x-access-token':token,
+      pragma:'no-cache', 
+      'cache-control': 'no-cache'                 
                            
-                  }
+    }
        
-    }).then((Response) =>{
-        status = Response.status;
-        return Response.json();
-    })
+  }).then((Response) =>{
+    status = Response.status;
+    return Response.json();
+  })
     .then((data) => {
-        switch(status){
-            case '200':
+      switch (status) {
+        case '200':
                 
-                    let sales =` <tr>
+          let sales =` <tr>
                     <th>salesID</th>
                     <th>Sold By</th>
                     <th>Product Name</th>
@@ -34,10 +32,10 @@ function filterSales(event){
                     <th>Total Amount</th>
                     <th>Date Sold</th>
                   </tr>`;
-                    data.forEach((sale) => {
-                        const {id, productname, price, attendants_id, totalprice, created_date} = sale;
+          data.forEach((sale) => {
+            const {id, productname, price, attendants_id, totalprice, created_date} = sale;
 
-                        sales +=
+            sales +=
                             `<tr>
                             <td>${id}</td>
                             <td>${attendants_id}</td>
@@ -47,22 +45,22 @@ function filterSales(event){
                             <td>${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
-                                document.getElementById('filSales').innerHTML = sales;
-                        })
+            document.getElementById('filSales').innerHTML = sales;
+          })
                     
-                        break;
-            case '401': 
+          break;
+        case '401': 
                             
-                        alert(`${data.message}`);
-                        window.location = 'login.html'
-                        break;
+          alert(`${data.message}`);
+          window.location = 'login.html'
+          break;
                     
-            default:
+        default:
                 
-                        alert(`${data.message}`);
-                        window.location = 'index.html';
-                        break;
-        }
-})  
+          alert(`${data.message}`);
+          window.location = 'index.html';
+          break;
+      }
+    })  
     .catch((err)=>console.log(err));
-}
+});

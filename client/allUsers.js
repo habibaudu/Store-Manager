@@ -1,28 +1,25 @@
-window.addEventListener("load",getUsers);
-
-function getUsers(){
-            
-    token = localStorage.getItem('token')
-    fetch('http://localhost:4000/api/v1/users', {
-        method: 'GET',
-        mode:'cors',
-        headers: {'Content-Type': 'application/json',
-                   'x-access-token':token,
-                   'pragma':'no-cache', 
-                   'cache-control': 'no-cache'               
+window.addEventListener("load", () => {          
+  const token = localStorage.getItem('token')
+  fetch('http://localhost:4000/api/v1/users', {
+    method: 'GET',
+    mode:'cors',
+    headers: {'Content-Type': 'application/json',
+      'x-access-token':token,
+      pragma:'no-cache', 
+      'cache-control': 'no-cache'               
                            
-                  }
+    }
        
-    }).then((Response) =>{
-        status = Response.status;
-        return Response.json();
-    })
+  }).then((Response) =>{
+    status = Response.status;
+    return Response.json();
+  })
     .then((data) => {
-        switch(status){
-            case '200':
+      switch (status) {
+        case '200':
                   
-                   data2 = data.rows
-                    let users =` <tr>
+          const data2 = data.rows
+          let users =` <tr>
                     <th>ID</th>
                     <th>Username</th>
                     <th>Email</th>
@@ -31,10 +28,9 @@ function getUsers(){
                     <th>Date Modified</th>
              
                   </tr>`;
-                    data2.forEach((user) => {
-                        const {id,username, role, email,modified_date, created_date} = user;
-                   
-                        users +=
+          data2.forEach((user) => {
+            const { id, username, role, email, modified_date, created_date } = user;
+            users +=
                             `<tr>
                             <td>${id}</td>
                             <td>${username}</td>
@@ -44,24 +40,24 @@ function getUsers(){
                             <td>${created_date}</td>
                             <td>${modified_date}</td>
                           </tr>`;
-                                document.getElementById('allusers').innerHTML = users;
-                        })
+            document.getElementById('allusers').innerHTML = users;
+          })
                     
-                        break;
-            case '401': 
+          break;
+        case '401': 
                             
-                        alert(`${data.message}`);
-                        window.location = 'login.html'
-                        break;
+          alert(`${data.message}`);
+          window.location = 'login.html'
+          break;
                     
-            default:
+        default:
                 
-                        alert(`${data.message}`);
-                        window.location = 'index.html';
-                        break;
+          alert(`${data.message}`);
+          window.location = 'index.html';
+          break;
                         
 
-        }
-})  
-    .catch((err)=>console.log(err));
-}
+      }
+    })  
+    .catch(err =>console.log(err));
+});
