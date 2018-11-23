@@ -3,7 +3,7 @@ import moment from 'moment';
 import jwt from 'jsonwebtoken';
 import request from 'supertest';
 import dotenv from 'dotenv';
-import server from './app';
+import server from '../app';
 
 dotenv.config();
 const secret = process.env.SECRET;
