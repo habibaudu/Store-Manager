@@ -18,7 +18,7 @@ router.post('/auth/signup',validation2.signup,auth.verifyToken,User.create);
 router.post('/auth/login',validation.login,User.login);
 router.get('/users',auth.verifyToken,User.getAllUsers);
 router.delete('/users/:userId',auth.verifyToken,User.delete);
-router.post('/products',validation.product,auth.verifyToken,Product.create);
+router.post('/products',validation.product,validation.product2,auth.verifyToken,Product.create);
 router.put('/products/:productId',validation2.Updateproduct,auth.verifyToken,Product.update);
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);

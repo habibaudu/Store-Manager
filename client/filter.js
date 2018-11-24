@@ -29,11 +29,12 @@ document.getElementById('filterSales').addEventListener('submit',(event) => {
                     <th>Product Name</th>
                     <th>Price Each</th>
                     <th>Quantity Sold</th>
+                    <th>Price Sold</th>
                     <th>Total Amount</th>
                     <th>Date Sold</th>
                   </tr>`;
           data.forEach((sale) => {
-            const {id, productname, price, attendants_id, totalprice, created_date} = sale;
+            const {id, productname, price, attendants_id, totalprice, total,quantity ,created_date} = sale;
 
             sales +=
                             `<tr>
@@ -41,8 +42,9 @@ document.getElementById('filterSales').addEventListener('submit',(event) => {
                             <td>${attendants_id}</td>
                             <td>${productname}</td>
                             <td>#${price}</td>
-                            <td>${totalprice/price}</td>
-                            <td>${totalprice}</td>
+                            <td>${quantity}</td>
+                            <td>#${total}</td>
+                            <td>#${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
             document.getElementById('filSales').innerHTML = sales;

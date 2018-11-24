@@ -26,11 +26,12 @@ window.addEventListener("load",() => {
                     <th>Product Name</th>
                     <th>Price Each</th>
                     <th>Quantity Sold</th>
+                    <th>Price Sold</th>
                     <th>Total Amount</th>
                     <th>Date Sold</th>
                   </tr>`;
           data2.forEach((sale) => {
-            const {id, productname, price, attendants_id, totalprice, created_date} = sale;
+            const {id, productname, price, attendants_id, totalprice,quantity,total, created_date} = sale;
                    
             sales +=
                             `<tr>
@@ -38,8 +39,9 @@ window.addEventListener("load",() => {
                             <td>${attendants_id}</td>
                             <td>${productname}</td>
                             <td>#${price}</td>
-                            <td>${totalprice/price}</td>
-                            <td>${totalprice}</td>
+                            <td>${quantity}</td>
+                            <td>#${total}</td>
+                            <td>#${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
             document.getElementById('myrecords').innerHTML = sales;
