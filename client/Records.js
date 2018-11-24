@@ -1,8 +1,21 @@
 
 window.addEventListener("load",() => {
-            
+  let mySales_endPoint ='http://localhost:4000/api/v1/sale';
+  let allSales_endPoint ='http://localhost:4000/api/v1/sales';
+  let renderIn = ''; 
+  let url ='';
+  let checkValue = document.getElementById('allSales')
+  console.log(checkValue);
+  if (checkValue === null) {
+      url ='http://localhost:4000/api/v1/sale';
+      renderIn = 'myrecords'
+  } else {
+      
+      url = 'http://localhost:4000/api/v1/sales';
+      renderIn = 'allSales'
+    }
   const token = localStorage.getItem('token')
-  fetch('http://localhost:4000/api/v1/sales', {
+  fetch(url, {
     method: 'GET',
     mode:'cors',
     headers: {'Content-Type': 'application/json',
@@ -45,7 +58,7 @@ window.addEventListener("load",() => {
                             <td>#${totalprice}</td>
                             <td>${created_date}</td>
                           </tr>`;
-            document.getElementById('allSales').innerHTML = sales;
+            document.getElementById(renderIn).innerHTML = sales;
           })
                     
           break;
