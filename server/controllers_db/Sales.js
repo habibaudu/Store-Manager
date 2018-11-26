@@ -7,6 +7,7 @@ export default {
    * @param {object} req 
    * @param {object} res
    * @returns {object} sales object 
+   * 
    */
 
   async create(req, res) {
@@ -57,10 +58,7 @@ export default {
         const { rows } = await db.query(find_Id,[req.user.id,dateNOW]);
         const Id = rows[0].id;
         for (let i = 0; i < prod.length; i++) {
-         
-          const { rows } = await db.query(querysales, [prod[i],quant[i], totalEach[i], Id, moment(new Date())]);
-
-        }
+          const { rows } = await db.query(querysales, [prod[i],quant[i], totalEach[i], Id, moment(new Date())]); }
         return res.status(201).send({ message: 'sales record record created' });
       } catch(error) {
         console.log(error);

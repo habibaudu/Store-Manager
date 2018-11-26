@@ -5,13 +5,13 @@ window.addEventListener("load",() => {
   let renderIn = ''; 
   let url ='';
   let checkValue = document.getElementById('allSales')
-  console.log(checkValue);
+  
   if (checkValue === null) {
-      url ='http://localhost:4000/api/v1/sale';
+      url = mySales_endPoint;
       renderIn = 'myrecords'
   } else {
       
-      url = 'http://localhost:4000/api/v1/sales';
+      url = allSales_endPoint;
       renderIn = 'allSales'
     }
   const token = localStorage.getItem('token')
