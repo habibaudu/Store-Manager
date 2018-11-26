@@ -1,13 +1,11 @@
 
 document.getElementById('search').addEventListener('submit', (event) => {
   event.preventDefault();
-  let id = document.getElementById('getaproduct').value;
-  id = parseInt(id,10);
-
+  let productName = document.getElementById('filter2').value;
 
   const token = localStorage.getItem('token')
 
-  fetch(`http://localhost:4000/api/v1/products/${id}`, {
+  fetch(`http://localhost:4000/api/v1/products`, {
     method: 'GET',
     mode:'cors',
     headers: {'Content-Type': 'application/json',
@@ -21,9 +19,11 @@ document.getElementById('search').addEventListener('submit', (event) => {
     return Response.json();
   })
     .then((data) => {
-      switch (status) {
-        case '200':
-          const { images, productname, price, quantity, minimum, description, created_date } = data;
+      if(status === '200') { 
+        const data2 = data.rows;
+        for(let product of data2) {
+        const { id, images, productname, price, quantity, minimum, description, created_date } = product;
+          if (productName.toLowerCase() === productname.toLowerCase()) { 
           let products =
                             `<section>
                             <img src='${images}'>
@@ -32,6 +32,7 @@ document.getElementById('search').addEventListener('submit', (event) => {
                             <section>
                             <span class ='note'> Details</span>
                              <hr>
+                             <span class='note2'>productId : ${id}</span><br>
                             <span class='note2'>product Name : ${productname}</span><br>
                             <span class='note'>Price : #${price}</span><br>
                             <span class='note2'>Quantity : ${quantity} in stock</span><br>
@@ -43,27 +44,16 @@ document.getElementById('search').addEventListener('submit', (event) => {
                             <section>
                             `;
 
-          document.getElementById('aproduct').innerHTML = products
-
+          document.getElementById('aproduct').innerHTML = products;
           break;
-        case '404':
+       } 
+  
+        }
+        } else { 
+            alert(`${productName} not Found `);
+        }
 
-          alert(`${data.message}`);
 
-          break;
-        case '401':
-
-          alert(`${data.message}`);
-
-          break;
-
-        default:
-
-          alert(`Please enter a number as Id and check your connection`);
-
-          break;
-
-      }
     })
     .catch(err => console.log(err));
 });
