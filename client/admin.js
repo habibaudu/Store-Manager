@@ -9,8 +9,7 @@ document.getElementById('postData').addEventListener('submit', () => {
   quantity = parseInt(quantity, 10);
   price = parseInt(price, 10);
   minimum = parseInt(minimum, 10);
-
-
+console.log(images);
   const token = localStorage.getItem('token')
   fetch('http://localhost:4000/api/v1/products', {
     method: 'POST',
@@ -46,9 +45,8 @@ document.getElementById('postData').addEventListener('submit', () => {
     .catch(err => console.log(err));
 });
 
-
 document.getElementById('updateData').addEventListener('submit', () => {
-    
+
   let id = document.getElementById('Id1').value;
   const productname = document.getElementById('Productname').value;
   let price = document.getElementById('price').value;
