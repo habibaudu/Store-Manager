@@ -23,6 +23,7 @@ router.put('/products/:productId',validation2.Updateproduct,auth.verifyToken,Pro
 router.delete('/products/:productId',auth.verifyToken,Product.delete);
 router.get('/products',auth.verifyToken,Product.getAll);
 router.get('/products/:productId',auth.verifyToken,Product.getOne);
+router.get('/product/:productName',auth.verifyToken,Product.getOneproduct);
 router.post('/sales',auth.verifyToken,Sales.create);
 router.get('/sales/:salesId',auth.verifyToken,Sales.getOne);
 router.get('/sales',auth.verifyToken,Sales.getAll);

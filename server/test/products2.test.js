@@ -127,8 +127,7 @@ describe('Products2', () => {
       .end((err, res) =>{ 
         expect(res.status).to.equal(400);
         expect(res.body.message).to.equal('description field is required');
-        done();
-      });
+        done();  });
   });
 
   it('should return only an admin can delete a product', (done) => {
@@ -137,8 +136,7 @@ describe('Products2', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        done();
-      });
+        done();  });
   });
 
   it('should return status code of 200', (done) => {
@@ -147,8 +145,7 @@ describe('Products2', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         expect(res.status).to.equal(200);
-        done();
-      });
+        done();  });
   });
 
   it('should return onli an admin should update a product', (done) => {
@@ -163,6 +160,27 @@ describe('Products2', () => {
       .set('x-access-token', attendantsToken)
       .end((err, res) => {
         expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+   it('it should return a status code of 201', (done) => {
+    request(server)
+      .post('/api/v1/products')
+      .send({ 
+        productname: 'Timberland women',
+        minimum:10,
+        description:'durable boots',
+        images :'hghhhhhh',
+        price:23000,
+        quantity:50,
+        created_date: moment(new Date()),
+        modified_date:  moment(new Date())
+      })
+      .set('x-access-token',adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(201);
+        expect(res.body.message).to.equal('Product Created sucessfully');
         done();
       });
   });
@@ -215,5 +233,7 @@ describe('Products2', () => {
         expect(res.status).to.equal(400);          
         done();
       });
-  }); 
+  });
+ 
 });
+

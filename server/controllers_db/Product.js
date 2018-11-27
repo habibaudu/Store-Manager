@@ -134,5 +134,30 @@ export default {
     } else { 
       return res.status(401).send({ message: 'Only An Admin or a store attendant can get a product' });
     }
+  },  
+
+
+  /**
+   * Get A product by product name
+   * @param {object} req 
+   * @param {object} res
+   * @returns {object} product object
+   */
+  async getOneproduct(req, res) {
+    if (req.user.role === 'ADMIN' || req.user.role === 'USER') {
+      const text = 'SELECT * FROM products WHERE productname = $1';
+      try {
+        
+        const { rows } = await db.query(text, [req.params.productName]);
+        if (!rows[0]) {
+          return res.status(404).send({message: 'product not found'});
+        }
+        return res.status(200).send(rows[0]);
+      } catch(error) {
+        return res.status(400).send(error)
+      }
+    } else { 
+      return res.status(401).send({ message: 'Only An Admin or a store attendant can get a product' });
+    }
   }  
 }

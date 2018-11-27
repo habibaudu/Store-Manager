@@ -61,12 +61,23 @@ describe('Products', () => {
       });
   });
 
-  it(' get should return status code of 400', (done) => {
+  it(' get should return status code of 200', (done) => {
     request(server)
       .get('/api/v1/products/1')
       .set('x-access-token', adminToken)
       .end((err, res) => {
         expect(res.status).to.equal(200);
+        done();
+      });
+  });
+
+  it(' get should return status code of 404', (done) => {
+    request(server)
+      .get('/api/v1/products/100')
+      .set('x-access-token', adminToken)
+      .end((err, res) => {
+        expect(res.status).to.equal(404);
+        expect(res.body.message).to.equal('product not found');
         done();
       });
   });
@@ -79,29 +90,37 @@ describe('Products', () => {
         done();
       });
   });
-
-  it('it should return a status code of 201', (done) => {
+ 
+  it('it should return status code of 400', (done) => {
     request(server)
-      .post('/api/v1/products')
-      .send({ 
-        productname: 'Timberland women',
-        minimum:10,
-        description:'durable boots',
-        images :'hghhhhhh',
-        price:23000,
-        quantity:50,
-        created_date: moment(new Date()),
-        modified_date:  moment(new Date())
-      })
-      .set('x-access-token',adminToken)
+      .get('/api/v1/product/Men Loafer')
+      .set('x-access-token', adminToken)
       .end((err, res) => {
-        expect(res.status).to.equal(201);
-        expect(res.body.message).to.equal('Product Created sucessfully');
+        expect(res.status).to.equal(404);
         done();
       });
   });
 
-  it('it should return a status code of 400', (done) => {
+  it(' delete should return product not found', (done) => {
+    request(server)
+      .get('/api/v1/product/Men loaf')
+      .set('x-access-token', adminToken)
+      .end((err, res) => {
+        expect(res.body.message).to.equal('product not found');
+        done();
+      });
+  });
+
+  it('it should return status code of 400', (done) => {
+    request(server)
+      .get('/api/v1/product/Men Loafer')
+      .end((err, res) => {
+        expect(res.status).to.equal(400);
+        done();
+      });
+  });
+
+   it('it should return a status code of 400', (done) => {
     request(server)
       .post('/api/v1/products')
       .send({ 

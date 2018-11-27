@@ -5,7 +5,7 @@ document.getElementById('search').addEventListener('submit', (event) => {
 
   const token = localStorage.getItem('token')
 
-  fetch(`http://localhost:4000/api/v1/products`, {
+  fetch(`http://localhost:4000/api/v1/product/${productName}`, {
     method: 'GET',
     mode:'cors',
     headers: {'Content-Type': 'application/json',
@@ -20,10 +20,7 @@ document.getElementById('search').addEventListener('submit', (event) => {
   })
     .then((data) => {
       if(status === '200') { 
-        const data2 = data.rows;
-        for(let product of data2) {
-        const { id, images, productname, price, quantity, minimum, description, created_date } = product;
-          if (productName.toLowerCase() === productname.toLowerCase()) { 
+        const { id, images, productname, price, quantity, minimum, description, created_date } = data; 
           let products =
                             `<section>
                             <img src='${images}'>
@@ -45,12 +42,11 @@ document.getElementById('search').addEventListener('submit', (event) => {
                             `;
 
           document.getElementById('aproduct').innerHTML = products;
-          break;
-       } 
   
-        }
-        } else { 
+        } else if(status === '404'){ 
             alert(`${productName} not Found `);
+        } else if(status === '400'){ 
+            alert(`unable to get  ${productName}  check your connection and try again `);
         }
 
 
