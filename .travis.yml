@@ -7,6 +7,11 @@ node_js:
 env:
  - DATABASE_URL=postgres://postgres:smirk200@localhost:5432/storemanager
 script:
+  - npm i -g npm@6.1.0
+  - p=$(which npm)
+  - rm $p
+  - ln -s /home/travis/.nvm/versions/node/v10.1.0/bin/npm $p || true
+  - npm -v
   - npm run migrate && npm run seed
   - npm test
   - npm install
