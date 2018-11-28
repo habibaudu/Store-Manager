@@ -9,7 +9,7 @@ env:
 script:
   - npm run migrate && npm run seed
   - npm test
-  - npm ci
+  - npm install
   - nyc --reporter=lcov npm run test
 services:
   - postgresql
