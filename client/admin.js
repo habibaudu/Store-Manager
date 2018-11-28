@@ -9,8 +9,7 @@ document.getElementById('postData').addEventListener('submit', () => {
   quantity = parseInt(quantity, 10);
   price = parseInt(price, 10);
   minimum = parseInt(minimum, 10);
-
-
+console.log(images);
   const token = localStorage.getItem('token')
   fetch('http://localhost:4000/api/v1/products', {
     method: 'POST',
@@ -46,9 +45,8 @@ document.getElementById('postData').addEventListener('submit', () => {
     .catch(err => console.log(err));
 });
 
-
 document.getElementById('updateData').addEventListener('submit', () => {
-    
+
   let id = document.getElementById('Id1').value;
   const productname = document.getElementById('Productname').value;
   let price = document.getElementById('price').value;
@@ -92,45 +90,6 @@ document.getElementById('updateData').addEventListener('submit', () => {
     })
 
     .catch(err=> console.log(err));
-});
-
-document.getElementById('deleteData').addEventListener('submit', () => {
-  
-  let id = document.getElementById('Id').value;
-  id = parseInt(id,10);
-
-  const token = localStorage.getItem('token')
-  fetch(`http://localhost:4000/api/v1/products/${id}`, {
-    method: 'DELETE',
-    mode: 'cors',
-    headers: {'Content-Type': 'application/json',
-      'x-access-token':token,
-
-    }
-
-  }).then((Response) => {
-    status = Response.status;
-    return Response.json();
-  })
-    .then((data) => {
-      switch ( status ) {
-        case '200':
-          alert(`${data.message}`);
-          window.location = 'admin.html';
-          break;
-
-        case '404':
-          alert(`${data.message}`);
-          break;
-
-        default:
-          alert(`${data.message}`);
-          window.location = 'index.html';
-          break;
-      }
-    })
-
-    .catch(err => console.log(err));
 });
 
 window.addEventListener('load',() => {

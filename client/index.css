@@ -331,7 +331,7 @@ header #nav_slide {
     cursor: pointer; 
  }
 
- .editproduct{ 
+ #modify{ 
     width:25%;
     margin-bottom: 1%;
     background-color:#e4c580;  
@@ -740,7 +740,6 @@ tr:nth-child(odd) {background-color: #e4c580;
 
 .article section img {
     width:100%;
-    
     height :200px;
     border-bottom: rgb(226,226,226) 2px solid;
     height:200px;
@@ -766,7 +765,6 @@ tr:nth-child(odd) {background-color: #e4c580;
 
 .article2 section img {
     width:100%;
-    
     height :200px;
     border-bottom: rgb(226,226,226) 2px solid;
     height:200px;
@@ -840,39 +838,6 @@ tr:nth-child(odd) {background-color: #e4c580;
     overflow: auto; 
     background-color: rgb(0,0,0);
     background-color: rgba(0,0,0,0.4); 
-}
-
-
-
-
-/* The Close Button */
-.close2 {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close2:hover,
-.close2:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-}
-
-/* The Close Button */
-.close3{
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.close3:hover,
-.close3:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
 }
 
 /* The Close Button */
@@ -1088,8 +1053,7 @@ footer{
  
 
     #article section img{
-        height :200px;
-        
+        height :250px;     
 
     }
     .article section p{
@@ -1128,7 +1092,7 @@ footer{
    
 
     #article section img{
-        height :200px;
+        height :250px;
         
 
     }
@@ -1142,6 +1106,7 @@ footer{
         width:60%;
         margin-left: 5%;
         box-shadow: 1px  1px 5px #000;
+        height:250px
     }
 
    

@@ -26,14 +26,14 @@ const navSlide = () => {
 
 navSlide();
 
-const modalOne = () => {
+const modal = () => {
 
-  const modal = document.getElementById('myModal');
+  for(let i = 0; i < 3; i++) { 
+  let modal = document.getElementsByClassName('modal')[i];
+  let  button = document.getElementsByClassName('addproduct')[i];
 
 
-  const  button = document.getElementById('butt');
-
-  const clox = document.getElementsByClassName('close')[0];
+  let clox = document.getElementsByClassName('close')[i];
 
 
   button.onclick = () => {
@@ -51,61 +51,10 @@ const modalOne = () => {
       modal.style.display = 'none';
     }
   };
+  }
+  
 };
 
-modalOne();
+modal();
 
-
-const modalTwo = () =>{
-
-  const modal2 = document.getElementById('myModal2');
-
-
- const button2 = document.getElementById('modify');
-
-  const clox2 = document.getElementsByClassName('close2')[0];
-
-  button2.onclick = () => {
-    modal2.style.display = 'block';
-  }
-
-  clox2.onclick = () => {
-    modal2.style.display = 'none';
-  }
-
-  window.onclick = (event) => {
-    if (event.target == modal2) {
-      modal2.style.display = 'none';
-    }
-  };
-};
-
-modalTwo();
-
-const modalThree = () => {
-
-  const modal3 = document.getElementById('myModal3');
-
-
-  const button3 = document.getElementById('del');
-
-  const clox3 = document.getElementsByClassName('close3')[0];
-
-  button3.onclick = () => {
-    modal3.style.display = 'block';
-  }
-
-
-  clox3.onclick = () => {
-    modal3.style.display = 'none';
-  }
-
-
-  window.onclick = (event) => {
-    if (event.target == modal3) {
-      modal3.style.display = 'none';
-    }
-  };
-};
-modalThree();
 

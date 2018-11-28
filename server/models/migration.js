@@ -42,6 +42,8 @@ CREATE TABLE sales(
 CREATE TABLE productSales(
     id SERIAL PRIMARY KEY,
     products_Id INT NOT NULL,
+    quantity INT NOT NULL,
+    total  INT,
     sales_Id INT NOT NULL,
     created_date TIMESTAMP,
     FOREIGN KEY (products_Id) REFERENCES products (id) ON DELETE CASCADE,
