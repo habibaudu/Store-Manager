@@ -4,12 +4,13 @@ document.getElementById('postData').addEventListener('submit', () => {
   let price = document.getElementById('Price').value;
   let minimum = document.getElementById('Minimum').value;
   let quantity = document.getElementById('Quantity').value;
-  const images = document.getElementById('avatar').value;
+  let images = document.getElementById('avatar').files[0].name;
+
+  alert(`${images}`);
   const description = document.getElementById('description').value;
   quantity = parseInt(quantity, 10);
   price = parseInt(price, 10);
   minimum = parseInt(minimum, 10);
-console.log(images);
   const token = localStorage.getItem('token')
   fetch('http://localhost:4000/api/v1/products', {
     method: 'POST',
@@ -111,7 +112,9 @@ window.addEventListener('load',() => {
       switch (status) {
         case '200':
           const  data2 = data.rows;
-          let products =` <tr>
+        
+          let products =` 
+                    <tr>
                             <th>ProductID</th>
                             <th>Name</th>
                             <th>Quantity</th>

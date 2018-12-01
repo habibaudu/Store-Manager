@@ -19,24 +19,24 @@ document.getElementById('search').addEventListener('submit', (event) => {
     return Response.json();
   })
     .then((data) => {
-      if(status === '200') { 
-        const { id, images, productname, price, quantity, minimum, description, created_date } = data; 
+      if(status === '200') {
+          
           let products =
                             `<section>
-                            <img src='${images}'>
+                            ${data.imgs}
                            
                             </section>
                             <section>
                             <span class ='note'> Details</span>
                              <hr>
-                             <span class='note2'>productId : ${id}</span><br>
-                            <span class='note2'>product Name : ${productname}</span><br>
-                            <span class='note'>Price : #${price}</span><br>
-                            <span class='note2'>Quantity : ${quantity} in stock</span><br>
-                            <span class='note2'>Minimum  : ${minimum} Allowed in stock</span><br>
-                            <span class='note2'>Date Added : ${created_date} </span><br>
+                             <span class='note2'>productId : ${data.id}</span><br>
+                            <span class='note2'>product Name : ${data.productname}</span><br>
+                            <span class='note'>Price : #${data.price}</span><br>
+                            <span class='note2'>Quantity : ${data.quantity} in stock</span><br>
+                            <span class='note2'>Minimum  : ${data.minimum} Allowed in stock</span><br>
+                            <span class='note2'>Date Added : ${data.created_date} </span><br>
                             <hr><br>
-                            <span class='note'>Description : ${description} </span><br>
+                            <span class='note'>Description : ${data.description} </span><br>
                             
                             <section>
                             `;
@@ -75,21 +75,26 @@ window.addEventListener('load',() => {
     .then((data) => {
       switch (status) {
         case '200':
+         const img = data.imgArr;
           const data2 = data.rows;
-
+          let count = 0;
           let products =` `;
           data2.forEach((product) => {
-            const { id, images, productname, price, quantity} = product
+            
+            const { id, productname, price, quantity } = product;
+            
             products +=
                                     `<section>
-                                    <img src='${images}'>
+                                    ${img[count]}
                                     <span class='note2'>${id}</span><br>
                                     <span class='note2'>${productname}</span><br>
                                     <span class='note'>#${price}</span><br>
                                     <span class='note2'>${quantity} in stock</span><br>
                                     <a href='addcart.html' class='btn2'>Add to Cart</a>
                                     </section>`;
-            document.getElementById('allproduct').innerHTML = products
+
+            document.getElementById('allproduct').innerHTML = products;
+            count += 1;
           })
 
           break;
