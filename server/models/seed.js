@@ -42,51 +42,51 @@ const sql = `INSERT INTO
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Timberland Women',10,'durable boots for hiking men','img/timberland women.jpg',30000,20,Now(),Now());
+    VALUES('Timberland Women',10,'durable boots for hiking men','timberland_women',30000,20,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Men Loafers',10,'light weight boots for hiking women','img/men loafers.jpg',5000,70,Now(),Now());
+    VALUES('Men Loafers',10,'light weight boots for hiking women','men_loafers',5000,70,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('steel pipe dance',10,'light weight  snikers','img/steel pipe dance.jpg',5000,25,Now(),Now());
+    VALUES('steel pipe dance',10,'light weight  snikers','steel_pipe_dance',5000,25,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Cycling Shoes',10,'light weight  snikers','img/ccling shoes.jpg',6000,20,Now(),Now());
+    VALUES('Cycling Shoes',10,'light weight  snikers','ccling_shoes',6000,20,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Adidas Women',10,'light weight  snikers','img/adidas women.jpg',6000,20,Now(),Now());
+    VALUES('Adidas Women',10,'light weight  snikers','itwgjqbvootc9artvfw8',6000,20,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Block Heel  Sandal',10,'light weight  snikers','img/block heel transparent sandal.jpg',7000,30,Now(),Now());
+    VALUES('Block Heel  Sandal',10,'light weight  snikers','block_heel_transparent_sandal',7000,30,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Vans pro skate',10,'light weight  snikers','img/vans pro skate.png',7000,30,Now(),Now());
+    VALUES('Vans pro skate',10,'light weight  snikers','vans_pro_skate',7000,30,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Blue Nike Shoes',10,'light weight  snikers','img/blue nike shoe.jpeg',7000,45,Now(),Now());
+    VALUES('Blue Nike Shoes',10,'light weight  snikers','blue_nike_shoe',7000,45,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Anbessa Women Shoe',10,'light weight  snikers','img/anbessa women shoe.jpg',3000,45,Now(),Now());
+    VALUES('Anbessa Women Shoe',10,'light weight  snikers','anbessa_women_shoe',3000,45,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Women Bridals',10,'light weight  snikers','img/women bridals.jpg',5000,30,Now(),Now());
+    VALUES('Women Bridals',10,'light weight  snikers','women_bridals',5000,30,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Blue Timberland',10,'light weight  snikers','img/shoe5.jpg',75000,30,Now(),Now());
+    VALUES('Blue Timberland',10,'light weight  snikers','shoe5',75000,30,Now(),Now());
 
     INSERT INTO
     products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-    VALUES('Men Shoe',10,'light weight  snikers','img/shoe3.jpg',7500,20,Now(),Now());
+    VALUES('Men Shoe',10,'light weight  snikers','shoe3',7500,20,Now(),Now());
 `;
 const client = new pg.Client(process.env.DATABASE_URL);
 client.connect();

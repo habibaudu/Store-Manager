@@ -1,6 +1,18 @@
 import moment from 'moment';
+import cloudinary from 'cloudinary';
 
 import db from '../db';
+
+import dotenv from 'dotenv';
+
+dotenv.config();
+
+/*configure our cloudinary*/
+cloudinary.config({
+  cloud_name:process.env.cloud_name, 
+  api_key: process.env.api_key, 
+  api_secret:process.env.api_secret
+});
 
 export default {
   /**
@@ -9,30 +21,42 @@ export default {
      * @param {object} res
      * @returns {object} product object 
      */
-  async create(req, res) {
-    if(req.user.role ==='ADMIN'){
+    async create(req, res) {
+    if (req.user.role ==='ADMIN') {
       const text = `INSERT INTO
         products(productname, minimum,description,images,price, quantity, created_date, modified_date)
         VALUES($1, $2, $3, $4, $5 , $6, $7, $8)
         returning *`;
-      const values = [
-        req.body.productname,
-        req.body.minimum,
-        req.body.description,
-        req.body.images,
-        req.body.price,
-        req.body.quantity,
-        moment(new Date()),
-        moment(new Date())
-      ];
-  
-      try {
-        const { rows } = await db.query(text, values);
-        return res.status(201).send({message: 'Product Created sucessfully' });
-      } catch(error) {
-        return res.status(400).send(error);
-      }
-    }else{
+      let imageUpload = new Promise(async (resolve, reject) => {
+        await cloudinary.v2.uploader.upload(req.body.images, (error, result) => {
+          if (result ) {
+            const values = [
+              req.body.productname,
+              req.body.minimum,
+              req.body.description,
+              result.public_id,
+              req.body.price,
+              req.body.quantity,
+              moment(new Date()),
+              moment(new Date())
+            ];
+            try {
+              const { rows } = db.query(text, values);
+              return res.status(201).send({message:'Product Created sucessfully'});
+            } catch (error) {
+              return res.status(400).send(err);
+            }
+
+          } else {
+            reject(error);
+          }
+
+        }).then(result => result)
+          .catch(error => error)
+       })
+      .then(result => result )
+        .catch(error =>error);  
+    } else {
             
       return res.status(401).send({message: 'Only An Admin can add or create a product' });
     }
@@ -67,7 +91,7 @@ export default {
       } catch(err) {
         return res.status(400).send(err); }
     } else {  
-      return res.status(401).send({ 'message': 'Only An Admin can update a product' }); }
+      return res.status(401).send({ message: 'Only An Admin can update a product' }); }
   },
 
   /**
@@ -103,8 +127,17 @@ export default {
     if (req.user.role === 'ADMIN' || req.user.role === 'USER') {
       const findAllQuery = 'SELECT * FROM products';
       try {
+        
+        let imgArr = []; 
         const { rows, rowCount } = await db.query(findAllQuery);
-        return res.status(200).send({ rows, rowCount });
+        rows.forEach((row) => {
+          const {images} = row;
+          let im = images+'.jpg';
+          const imgs=cloudinary.image(im, { alt: im })
+          imgArr.push(imgs);
+          
+        })
+        return res.status(200).send({ rows, rowCount, imgArr });
       } catch(error) {
         return res.status(400).send(error);
       }
@@ -152,7 +185,12 @@ export default {
         if (!rows[0]) {
           return res.status(404).send({message: 'product not found'});
         }
-        return res.status(200).send(rows[0]);
+       
+        let im  = rows[0].images;
+        im +='.jpg';
+        const imgs = cloudinary.image(im, { alt: im })
+          
+        return res.status(200).send({rows, imgs });
       } catch(error) {
         return res.status(400).send(error)
       }

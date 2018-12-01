@@ -19,11 +19,12 @@ document.getElementById('search').addEventListener('submit', (event) => {
     return Response.json();
   })
     .then((data) => {
-      if(status === '200') { 
+      if(status === '200') {
+         
         const { id, images, productname, price, quantity, minimum, description, created_date } = data; 
           let products =
                             `<section>
-                            <img src='${images}'>
+                            ${data.imgs}
                            
                             </section>
                             <section>
@@ -75,21 +76,26 @@ window.addEventListener('load',() => {
     .then((data) => {
       switch (status) {
         case '200':
+         const img = data.imgArr;
           const data2 = data.rows;
-
+          let count = 0;
           let products =` `;
           data2.forEach((product) => {
-            const { id, images, productname, price, quantity} = product
+            
+            const { id, productname, price, quantity } = product;
+            
             products +=
                                     `<section>
-                                    <img src='${images}'>
+                                    ${img[count]}
                                     <span class='note2'>${id}</span><br>
                                     <span class='note2'>${productname}</span><br>
                                     <span class='note'>#${price}</span><br>
                                     <span class='note2'>${quantity} in stock</span><br>
                                     <a href='addcart.html' class='btn2'>Add to Cart</a>
                                     </section>`;
-            document.getElementById('allproduct').innerHTML = products
+
+            document.getElementById('allproduct').innerHTML = products;
+            count += 1;
           })
 
           break;
