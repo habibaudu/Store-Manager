@@ -21,7 +21,7 @@ export default {
      * @param {object} res
      * @returns {object} product object 
      */
-    async create(req, res) {
+    create(req, res) {
     if (req.user.role ==='ADMIN') {
       const text = `INSERT INTO
         products(productname, minimum,description,images,price, quantity, created_date, modified_date)
@@ -52,10 +52,11 @@ export default {
           }
 
         }).then(result => result)
-          .catch(error => error)
+          .catch(error =>
+            console.log(error))
        })
       .then(result => result )
-        .catch(error =>error);  
+        .catch(error => console.log(error));  
     } else {
             
       return res.status(401).send({message: 'Only An Admin can add or create a product' });
@@ -185,12 +186,12 @@ export default {
         if (!rows[0]) {
           return res.status(404).send({message: 'product not found'});
         }
-       
+         const { id,productname, price, quantity, minimum, description, created_date} = rows[0] 
         let im  = rows[0].images;
         im +='.jpg';
         const imgs = cloudinary.image(im, { alt: im })
           
-        return res.status(200).send({rows, imgs });
+        return res.status(200).send({id, productname, price, quantity, minimum, description, created_date, imgs });
       } catch(error) {
         return res.status(400).send(error)
       }

@@ -4,8 +4,8 @@ document.getElementById('postData').addEventListener('submit', () => {
   let price = document.getElementById('Price').value;
   let minimum = document.getElementById('Minimum').value;
   let quantity = document.getElementById('Quantity').value;
-  let images = document.getElementById('avatar').value;
-  images = images.substring(12);
+  let images = document.getElementById('avatar').files[0].name;
+
   alert(`${images}`);
   const description = document.getElementById('description').value;
   quantity = parseInt(quantity, 10);

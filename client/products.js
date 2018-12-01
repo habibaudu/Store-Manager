@@ -20,8 +20,7 @@ document.getElementById('search').addEventListener('submit', (event) => {
   })
     .then((data) => {
       if(status === '200') {
-         
-        const { id, images, productname, price, quantity, minimum, description, created_date } = data; 
+          
           let products =
                             `<section>
                             ${data.imgs}
@@ -30,14 +29,14 @@ document.getElementById('search').addEventListener('submit', (event) => {
                             <section>
                             <span class ='note'> Details</span>
                              <hr>
-                             <span class='note2'>productId : ${id}</span><br>
-                            <span class='note2'>product Name : ${productname}</span><br>
-                            <span class='note'>Price : #${price}</span><br>
-                            <span class='note2'>Quantity : ${quantity} in stock</span><br>
-                            <span class='note2'>Minimum  : ${minimum} Allowed in stock</span><br>
-                            <span class='note2'>Date Added : ${created_date} </span><br>
+                             <span class='note2'>productId : ${data.id}</span><br>
+                            <span class='note2'>product Name : ${data.productname}</span><br>
+                            <span class='note'>Price : #${data.price}</span><br>
+                            <span class='note2'>Quantity : ${data.quantity} in stock</span><br>
+                            <span class='note2'>Minimum  : ${data.minimum} Allowed in stock</span><br>
+                            <span class='note2'>Date Added : ${data.created_date} </span><br>
                             <hr><br>
-                            <span class='note'>Description : ${description} </span><br>
+                            <span class='note'>Description : ${data.description} </span><br>
                             
                             <section>
                             `;
