@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel='stylesheet' href="index.css" type="text/css">
-    <title>Store Manager</title>
+    <title>Products Page</title>
+  
 </head>
 <body>
     
@@ -17,7 +18,7 @@
                         <ul class='nav-links'>
                             <li> <a href ='index.html'>Home</a></li>
                             <li class ='current'> <a href ='products.html'>Products</a></li>
-                            <li> <a href ='viewRecord.html'>View record</a></li>
+                            <li> <a href ='viewRecord.html'>Records</a></li>
                            
                             
                         </ul>
@@ -91,148 +92,30 @@
 <div class='mobile_header'>
             <img src ='img/walltims.jpg'>
 </div> 
-
 <section id="title">
- All products  
+ Search for Product
+ <form id='search' class='byid'>
+    <input type="text" placeholder="Search product by name.." name="search" id ='filter2'>
+    <button type="submit">search </button>
+  </form>  
 </section>
-<div id='ani'>
-    <form>
-    <input type="text" name="search" placeholder="Search..">
-  </form>
+     
+    <div id ="aproduct" class="article2 clearfix">
+         
     </div>
-
 <section id="title">
-   <a href ='viewCart.html'> view cart </a> 
+   <a href ='#'> products </a> 
    </section>
 
-<div class="article clearfix">
-    
-<section>
-    <img src='img/timberland women.jpg'>
-     <span class='note2'>Timberland Women</span><br>
-     <span class='note'>#30000</span><br>
-     <span class='note2'>30 in stock</span><br>
-    
-    <a href='addcart.html' class='btn2'>details</a>
-
-</section>
-
-<section>
-        <img src='img/men loafers.jpg'>
-    
-        <span class='note2'>Men Loafers</span><br>
-        <span class='note'>#5000</span><br>
-        <span class='note2'>150 in stock</span><br>
-        <a href='addcart.html' class='btn2'>details</a>
-</section>
-
-<section>
-            <img src='img/steel pipe dance.jpg'>
-            <span class='note2'>Steel Pipe Dance</span><br>
-            <span class='note'>#4000</span><br>
-            <span class='note2'>10 in stock</span><br>
-            <a href='addcart.html' class='btn2'>details</a>
-</section>
-
-<section>
-        <img src='img/ccling shoes.jpg'>
-           <span class='note2'>Cycling Shoes</span><br>
-            <span class='note'>#6000</span><br>
-            <span class='note2'>20 in stock</span><br>
-            <a href='addcart.html' class='btn2'>details</a>
-</section>
-
-
-<section>
-        <img src='img/adidas women.jpg'>
-         <span class='note2'>Adidas Women</span><br>
-         <span class='note'>#3000</span><br>
-         <span class='note2'>200 in stock</span><br>
-        
-        <a href='addcart.html' class='btn2'>details</a>
-    
-    </section>
-    
-    <section>
-            <img src='img/block heel transparent sandal.jpg'>
-        
-            <span class='note2'>Block Heel  Sandal</span><br>
-            <span class='note'>#7000</span><br>
-            <span class='note2'>95 in stock</span><br>
-            <a href='addcart.html' class='btn2'>details</a>
-    </section>
-    
-    <section>
-                <img src='img/vans pro skate.png'>
-                <span class='note2'>Vans Pro Skate</span><br>
-                <span class='note'>#4500</span><br>
-                <span class='note2'>100 in stock</span><br>
-                <a href='addcart.html' class='btn2'>details</a>
-    </section>
-    
-    <section>
-            <img src='img/blue nike shoe.jpeg'>
-               <span class='note2'>Blue Nike Shoes</span><br>
-                <span class='note'>#8000</span><br>
-                <span class='note2'>45 in stock</span><br>
-                <a href='addcart.html' class='btn2'>details</a>
-    </section>
-
-
-    <section>
-            <img src='img/anbessa women shoe.jpg'>
-             <span class='note2'>Anbessa Women Shoe</span><br>
-             <span class='note'>#3000</span><br>
-             <span class='note2'>24 in stock</span><br>
-            
-            <a href='addcart.html' class='btn2'>details</a>
-        
-        </section>
-        
-        <section>
-                <img src='img/women bridals.jpg'>
-            
-                <span class='note2'>Women Bridals</span><br>
-                <span class='note'>#5000</span><br>
-                <span class='note2'>150 in stock</span><br>
-                <a href='addcart.html' class='btn2'>details</a>
-        </section>
-        
-        <section>
-                    <img src='img/shoe5.jpg'>
-                    <span class='note2'>Blue Timberland</span><br>
-                    <span class='note'>#75000</span><br>
-                    <span class='note2'>10 in stock</span><br>
-                    <a href='addcart.html' class='btn2'>details</a>
-        </section>
-        
-        <section>
-                <img src='img/shoe3.jpg'>
-                   <span class='note2'>Men Shoe</span><br>
-                    <span class='note'>#6500</span><br>
-                    <span class='note2'>20 in stock</span><br>
-                    <a href='addcart.html' class='btn2'>details</a>
-        </section>
-            
-            
+<div id ="allproduct" class="article clearfix">
+         
 </div>
-
 <p class='note2'>page 1 of 4  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="#" class='btn2'>next</a></p>
-
-
-
-
-
-
-
 <footer id ='sec'>
         <p>Store Manager copyright &copy 2018 </p>         
 </footer>
-
+<script src ='products.js'></script>
 <script src ='index.js'></script>
-
-
  
 </body>
 </html>
-
