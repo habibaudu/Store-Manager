@@ -66,21 +66,24 @@ window.addEventListener('load',() => {
     .then((data) => {
       switch (status) {
         case '200':
+          const img = data.imgArr;
+          let count =0;
           data2 = data.rows;
           let grandtotal = 0;
           let cartproducts =` `;
           data2.forEach((product) => {
             const { id, images, productname, price, quantity } = product;
-
-            for (let i =0; i< order.length; i++ ) {
+            
+            for (let i = 0; i< order.length; i++ ) {
               let total = 0;
-
+                
               if ( id === order[i].product_id) {
+                
                 total = price * order[i].quantity;
                 grandtotal += total;
                 cartproducts +=
                             `
-                            <div class='show'><img src='${images}'></div>
+                            <div class='show'>${img[id]}</div>
                             <div class='discrip'>
                             <span class='note2'>${productname}</span><br>
                             <span class='note2'>Price :#${price}</span><br>
