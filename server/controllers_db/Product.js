@@ -21,47 +21,34 @@ export default {
      * @param {object} res
      * @returns {object} product object 
      */
-    create(req, res) {
-    if (req.user.role ==='ADMIN') {
-      const text = `INSERT INTO
-        products(productname, minimum,description,images,price, quantity, created_date, modified_date)
-        VALUES($1, $2, $3, $4, $5 , $6, $7, $8)
-        returning *`;
-      let imageUpload = new Promise(async (resolve, reject) => {
-        await cloudinary.v2.uploader.upload(req.body.images, (error, result) => {
-          if (result ) {
-            const values = [
-              req.body.productname,
-              req.body.minimum,
-              req.body.description,
-              result.public_id,
-              req.body.price,
-              req.body.quantity,
-              moment(new Date()),
-              moment(new Date())
-            ];
-            try {
-              const { rows } = db.query(text, values);
-              return res.status(201).send({message:'Product Created sucessfully'});
-            } catch (error) {
-              return res.status(400).send(err);
-            }
-
-          } else {
-            reject(error);
-          }
-
-        }).then(result => result)
-          .catch(error =>
-            console.log(error))
-       })
-      .then(result => result )
-        .catch(error => console.log(error));  
-    } else {
-            
-      return res.status(401).send({message: 'Only An Admin can add or create a product' });
-    }
-  },
+    async create(req, res) {
+      if(req.user.role ==='ADMIN'){
+        const text = `INSERT INTO
+          products(productname, minimum,description,images,price, quantity, created_date, modified_date)
+          VALUES($1, $2, $3, $4, $5 , $6, $7, $8)
+          returning *`;
+        const values = [
+          req.body.productname,
+          req.body.minimum,
+          req.body.description,
+          req.body.images,
+          req.body.price,
+          req.body.quantity,
+          moment(new Date()),
+          moment(new Date())
+        ];
+    
+        try {
+          const { rows } = await db.query(text, values);
+          return res.status(201).send({message: 'Product Created sucessfully' });
+        } catch(error) {
+          return res.status(400).send(error);
+        }
+      }else{
+              
+        return res.status(401).send({message: 'Only An Admin can add or create a product' });
+      }
+    },
 
   /**
    * Update A product for Admin only
