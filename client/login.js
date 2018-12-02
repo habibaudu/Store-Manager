@@ -5,7 +5,7 @@ document.getElementById('postData').addEventListener('submit',(event) => {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
         
-  fetch('http://localhost:4000/api/v1/auth/login', {
+  fetch('https://store-manager2.herokuapp.com/api/v1/auth/login', {
     method: 'POST',
     mode: 'cors',
     headers: {'Content-Type': 'application/json'},

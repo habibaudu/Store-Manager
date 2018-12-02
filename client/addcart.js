@@ -6,9 +6,10 @@ document.getElementById('cart').addEventListener('submit',() => {
 
 
   const token = localStorage.getItem('token');
-  fetch('http://localhost:4000/api/v1/sales', {
+  fetch('https://store-manager2.herokuapp.com/api/v1/sales', {
     method: 'POST',
     mode: 'cors',
+    credentials: 'include',
     headers: {'Content-Type': 'application/json',
       'x-access-token':token,
 
@@ -50,7 +51,7 @@ window.addEventListener('load',() => {
   let order = cartobj.salesOrders;
 
   const token = localStorage.getItem('token');
-  fetch('http://localhost:4000/api/v1/products', {
+  fetch('https://store-manager2.herokuapp.com/api/v1/products', {
     method: 'GET',
     mode:'cors',
     headers: {'Content-Type': 'application/json',
@@ -147,7 +148,7 @@ const addTocart = (values) => {
   createcart();
 
   const token = localStorage.getItem('token');
-  fetch('http://localhost:4000/api/v1/products', {
+  fetch('https://store-manager2.herokuapp.com/api/v1/products', {
     method: 'GET',
     mode: 'cors',
     headers: {'Content-Type': 'application/json',

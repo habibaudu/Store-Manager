@@ -58,7 +58,7 @@ document.getElementById('search').addEventListener('submit', (event) => {
 window.addEventListener('load',() => {
 
   const token = localStorage.getItem('token')
-  fetch('http://localhost:4000/api/v1/products', {
+  fetch('https://store-manager2.herokuapp.com/api/v1/products', {
     method: 'GET',
     mode: 'cors',
     headers: {'Content-Type': 'application/json',

@@ -1,7 +1,7 @@
 
 window.addEventListener("load",() => {
-  let mySales_endPoint ='http://localhost:4000/api/v1/sale';
-  let allSales_endPoint ='http://localhost:4000/api/v1/sales';
+  let mySales_endPoint ='https://store-manager2.herokuapp.com/api/v1/sale';
+  let allSales_endPoint ='https://store-manager2.herokuapp.com/api/v1/sales';
   let renderIn = ''; 
   let url ='';
   let checkValue = document.getElementById('allSales')
